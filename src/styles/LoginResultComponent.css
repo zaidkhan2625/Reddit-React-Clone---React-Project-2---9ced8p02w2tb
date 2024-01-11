@@ -1,0 +1,248 @@
+.Logincomponentresult {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    background: #cfcece;
+    margin-top: 60px;
+    /* justify-content: space-around; */
+}
+
+
+.leftSideofLoginResult {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    margin-left: 200px;
+    margin-right: 100px;
+    flex: 2;
+}
+
+.agreementTerm {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding-right: 15px;
+
+}
+.agreementTerme{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding-right: 15px;
+    margin-right: 60px;
+}
+.termname{
+    margin: 0;
+    font-size: 13px;
+    font-weight: 200px;
+}
+.termnamee{
+    margin: 0;
+    font-size: 13px;
+    font-weight: 200px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+.AgreementTerm {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 8px;
+    padding-right: 8px;
+    height: 70px;
+    border-bottom: 1px solid rgb(198, 194, 203);
+    margin-top: 5px;
+}
+
+.Agreement {
+    display: flex;
+    flex-direction: column;
+
+    /* width: 250px; */
+    max-height: 350px;
+    background: white;
+    margin-top: 15px;
+}
+
+/* .postdiv:hover{
+    border: 1px solid rgb(53, 52, 54);
+} */
+.postdiv {
+    margin-top: 15px;
+}
+
+.Bestdiv {
+    display: flex;
+    flex-direction: row;
+    background: #ffffff;
+    border: 1px solid #ccc;
+    height: 60px;
+    align-items: center;
+    margin-top: 15px;
+    padding: 8px;
+}
+
+.Icon {
+
+    height: 40px;
+    width: 100%;
+}
+
+.createPostdiv {
+    display: flex;
+    flex-direction: row;
+    background: #ffffff;
+    border: 1px solid #ccc;
+    height: 60px;
+    align-items: center;
+    padding: 8px;
+
+}
+
+.PostDivLogo {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+
+}
+
+.PostDivInput {
+    height: 38px;
+    width: 100%;
+    flex-grow: 1;
+    display: block;
+    border: 1px solid #edeff1;
+    background-color: #f6f7f8;
+    outline: none;
+    margin-right: 8px;
+    margin-left: 7px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    color: #1c1c1c;
+    border-color: #f6f7f8;
+}
+
+.PostDivInput:hover {
+    border-color: blue;
+    background-color: white;
+}
+
+.imagelogo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+    height: 35px;
+    width: 45px;
+    font-size: 20px;
+    color: #8b8989;
+}
+
+.imagelogo:hover {
+    background: #cfcece;
+    border-radius: 5px;
+}
+
+.rightSideOfLoginResult {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-top: 15px;
+}
+
+.rightSideOfLoginResult {
+    display: flex;
+    flex-direction: column;
+    margin-right: 100px;
+    margin-left: -70px;
+}
+
+.redditPrimeiumDiv {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    height: 100px;
+    padding: 10px;
+}
+
+.logopremeium {
+    display: flex;
+    flex-direction: row;
+}
+
+.premiumtextbody {
+    display: flex;
+    flex-direction: column;
+}
+
+.premiumtextbody>p {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 10px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+}
+
+.premiumButton {
+    margin-top: 30px;
+    border-style: none;
+    outline: none;
+    height: 35px;
+    border-radius: 25px;
+    color: white;
+    font-size: 15px;
+    background-color: #ff4500;
+}
+
+.homecreate {
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    background: white;
+    margin-top: 15px;
+}
+
+.Imageofhomepost {
+    width: 324px;
+}
+
+.HomeLogodiv {
+    display: flex;
+    align-items: center;
+    height: 70px;
+    border-bottom: 1px solid black;
+}
+
+.textParagraph {
+    padding: 5px;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 16px;
+}
+
+.creatPost {
+    height: 33px;
+    width: 300px;
+    border: none;
+    margin-left: 15px;
+    margin-right: 15px;
+    color: white;
+    border-radius: 25px;
+    background: blue;
+    margin-top: 10px;
+}
+
+.creatcommunity {
+    height: 33px;
+    border: none;
+    margin-left: 15px;
+    margin-right: 15px;
+    color: white;
+    border-radius: 25px;
+    background: rgb(171, 171, 172);
+    margin-top: 10px;
+}

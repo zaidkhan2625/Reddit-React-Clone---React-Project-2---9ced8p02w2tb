@@ -1,0 +1,101 @@
+<div className="commentPostdiv">
+                <div className="likesection">
+                  <span
+                    className="LikeInComment1"
+                    onClick={() => HandelUpVOte()}
+                  >
+                    ⇧
+                  </span>
+                  {voteCount}
+                  <p
+                    className="LikeInComment2"
+                    onClick={() => HandelDownVOte()}
+                  >
+                    ⇩
+                  </p>
+                </div>
+                <div className="PostDivInComment">
+                  <div className="headerLoginResult">
+                    <img className="logo" src={profileImage} />
+                    <p className="COMMUNITYNAme">{channelName}</p>
+                    <p className="posauth">Posted by</p>
+                    <p className="posauth" onMouseOver={handleOpen}>
+                      {name}
+                    </p>
+                    <div>
+                      <Modal
+                        open={open}
+                        onClose={handleClose}
+                        aria-labelledby="modal-modal-title"
+                        aria-describedby="modal-modal-description"
+                        style={{
+                          top: `${modalPosition.y}px`,
+                          left: `${modalPosition.x}px`,
+                        }}
+                      >
+                        <Box sx={style} className="ModelBox">
+                          <img className="imglogodrop" src={profileImage} />
+                          <p className="authorname"> {name}</p>
+                          <p className="ChannelName">{channelName}</p>
+                          <div className="likeandFallow">
+                            <div className="numberoffallower">
+                              <span className="numberofpodt">1.6K</span>
+                              <span className="karmatype">Post karma</span>
+                            </div>
+                            <div className="numberoffallower">
+                              <span className="numberofpodt">1.6K</span>
+                              <span className="karmatype">Comment karma</span>
+                            </div>
+                          </div>
+                          <button className="chatButton">Start Chat</button>
+                          {follobtn ? (
+                            <button
+                              className="fallowbtn"
+                              onClick={Handelfallow}
+                            >
+                              Follow
+                            </button>
+                          ) : (
+                            <button
+                              className="unfallow"
+                              onClick={HandelUnfallow}
+                            >
+                              Unfallow
+                            </button>
+                          )}
+                        </Box>
+                      </Modal>
+                    </div>
+
+                    <p className="posauth">posting time</p>
+                  </div>
+                  <p className="posttittle">post titel</p>
+                  <div className="imgdiv">
+                    <img className="LoginPostImge" src={channelImage} />
+                  </div>
+                  <div className="resultFooter">
+                    <div className="resultbutton">
+                      <FontAwesomeIcon
+                        icon={faComment}
+                        onClick={() => handleCommentOpen()}
+                      />{" "}
+                      <p>{commentCount}</p>
+                      <p>comments</p>
+                    </div>
+                    <div className="resultbutton">
+                      <FontAwesomeIcon icon={faShareNodes} />
+                      <p>share</p>
+                    </div>
+                    <div className="resultbutton">
+                      <FontAwesomeIcon icon={faBookmark} />
+                      <p>Save</p>
+                    </div>
+                    <div className="resultbutton">
+                      <p>...</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="forcomme">
+                zaid is here for
+              </div>
