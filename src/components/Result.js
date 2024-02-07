@@ -153,7 +153,7 @@ function PostDataFunction({ image, name, content, likeCount, commentCount }) {
          <div className="rightheaddata">
          <img className="profilelogo" src={image} />
           <p className="username">{name}</p>
-          <p className="timePost">here will be time of post</p>
+          <p className="timePost">time of post</p>
          </div>
           <div className="joinbutton">
             <button className="join">join</button>
