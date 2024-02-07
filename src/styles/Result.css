@@ -294,6 +294,7 @@
     }
     .resultBody > p{
         font-size: 15px;
+        margin: 0;
     }
     /* Add more media queries if needed */
 }
