@@ -1,5 +1,4 @@
 import React from "react";
-import Hader from "./Hader";
 import "../styles/LoginResultComponent.css";
 import { useStateValue } from "./StatePeovider";
 import ParkOutlinedIcon from "@mui/icons-material/ParkOutlined";
@@ -12,6 +11,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Hoc from "../Hoc/Hoc";
 function LoginResultComponent() {
   const [data, setData] = useState([]);
   const {LoginJwt} = useStateValue();
@@ -47,9 +47,9 @@ function LoginResultComponent() {
   console.log("jwt token is in logresult componeent:",LoginJwt);
   return (
     <>
-      <Hader />
+      {/* <Hader/> */}
       <div className="Logincomponentresult">
-        <div className="leftSideofLoginResult">
+        <div className="">
           <div className="createPostdiv">
             <img
               className="PostDivLogo"
@@ -158,4 +158,4 @@ function LoginResultComponent() {
   );
 }
 
-export default LoginResultComponent;
+export default Hoc (LoginResultComponent);

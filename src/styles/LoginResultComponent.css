@@ -246,3 +246,13 @@
     background: rgb(171, 171, 172);
     margin-top: 10px;
 }
+@media only screen and (max-width: 768px){
+    .rightSideOfLoginResult{
+        display: none ;
+    }
+    .leftSideofLoginResult{
+        margin-left: 0;
+        margin-right: 0;
+        width: auto;
+    }
+}

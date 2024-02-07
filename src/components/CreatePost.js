@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "../styles/CreatePost.css";
-import Hader from "./Hader";
 import { faImage } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -22,6 +21,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { CheckBox } from "@mui/icons-material";
 import { useStateValue } from "./StatePeovider";
+import Hoc from "../Hoc/Hoc";
 function CreatePost() {
   const [PostBox, SetPostBox] = useState(false);
   const [PostBoxImg, SetPostBoxImg] = useState(false);
@@ -154,7 +154,7 @@ function CreatePost() {
   }
   return (
     <>
-      <Hader />
+      {/* < /> */}
       <div className="CreatePostMainDiv">
         <div className="createpodtiv">
           <div className="leftsidecreatepost">
@@ -326,4 +326,4 @@ function CreatePost() {
   );
 }
 
-export default CreatePost;
+export default Hoc(CreatePost);

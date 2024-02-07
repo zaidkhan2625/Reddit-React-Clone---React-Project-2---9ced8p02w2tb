@@ -37,14 +37,16 @@
     height: 25px;
     margin-left: 10px;
 }
-.forTheoptionNamep{
+
+.forTheoptionNamep {
     display: flex;
     flex-direction: row;
     align-items: center;
     height: 35px;
-    margin-left:8px;
+    margin-left: 8px;
 }
-.forTheoptionName{
+
+.forTheoptionName {
     margin-left: 10px;
 }
 
@@ -81,7 +83,7 @@
     height: 45px;
     background-color: #c1c4c8;
     cursor: pointer;
-    width: 400px;    
+    width: 400px;
 }
 
 .headerlogoname {
@@ -242,7 +244,7 @@
     flex-direction: row;
     height: 45px;
     margin-right: 100px;
-   
+
     justify-content: space-between;
 }
 
@@ -301,7 +303,8 @@
     margin-left: 50px;
     width: 100px;
 }
-.logoinlogindiv{
+
+.logoinlogindiv {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -332,19 +335,23 @@
 .dropdown {
     border: none;
 }
+
 .SettingMenu:hover {
     background: #DAE0E6;
     border-radius: 50px;
 }
+
 .headerrightpart {
     display: flex;
     flex-direction: row;
     align-items: center;
     margin-right: 20px;
 }
+
 .barcode {
     margin-left: 3px;
 }
+
 .dropdownitem {
     display: flex;
     align-items: center;
@@ -352,35 +359,129 @@
     margin-top: 8px;
     width: 100%;
 }
+
 .name {
     font-size: 15px;
     margin-bottom: 5px;
     margin-left: 3px;
 }
+
 .bar {
     height: 25px;
     width: 30px;
     margin-right: 10px;
     border-right: 1px solid rgb(143, 141, 145);
 }
+
 .redditRecape {
     /* margin-right: 15px; */
 
 }
+
 .paragraph {
     margin-left: 35px;
     font-size: 15px;
 }
+
 .loginheadbar {
     margin-right: 7px;
     font-size: 25px;
     height: 20px;
     width: 30px;
 }
+
 .redditrecap {
     height: 20px;
     width: 30px;
 }
+
 .loginheadbar:hover {
     background: #DAE0E6;
+}
+
+@media only screen and (max-width: 768px) {
+    .header {
+        /* Adjust styles for smaller screens */
+        /* For example, reduce the height of the header */
+        width: auto;
+        height: 60px;
+        /* background: #000; */
+
+        /* You can add more specific styles for smaller screens here */
+    }
+
+    .headerlogodiv {
+        height: auto;
+    }
+
+    .headerlogo {
+        height: 45px;
+        width: 45px;
+    }
+
+    .headerlogoname {
+        font-size: 30px;
+    }
+
+    .headerserchinput {
+        width: 00%;
+        border-radius: 0px;
+        height: 30px;
+        /* flex: 1; */
+        background-color: transparent;
+        border: none;
+        outline: none;
+        /* font-size: 18px;
+        padding-left: 10px; */
+        margin-left: 500px;
+        margin-right: 0;
+    }
+
+    .bar {
+        height: 0px;
+        width: 00px;
+        margin-right: 0px;
+        border-right: 0px;
+    }
+
+    .headerserchinput input {
+        display: none;
+    }
+
+    .headerrightpart {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        /* margin-right: 20px; */
+    }
+
+    .redditRecape {
+        display: none;
+    }
+
+    .withloginheader {
+        width: 0;
+        margin: 0;
+    }
+
+    .headerrightpart {
+        max-width: 10px;
+        margin: 0;
+    }
+
+    .barcodelogo {
+        display: none;
+    }
+
+    .LOginbtn {
+        display: none;
+    }
+
+    .SettingMenu {
+        margin-left: 35px;
+    }
+    .redditrecap{
+        display: none;
+    }
+    /* Add more media queries if needed */
 }

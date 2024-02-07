@@ -7,6 +7,8 @@ const StateProvider = ({ children }) => {
   const [isloggedin, Setisloggedin] = useState(false);
   const [LoginJwt, setLoginjwt] = useState("");
   const [LoginUserId, SetLoginUserId] = useState("");
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(localStorage.getItem("login") === 'true');
+
 
   return (
     <stateContext.Provider
@@ -17,6 +19,7 @@ const StateProvider = ({ children }) => {
         setLoginjwt,
         LoginUserId,
         SetLoginUserId,
+        isUserLoggedIn, setIsUserLoggedIn
       }}
     >
       {children}

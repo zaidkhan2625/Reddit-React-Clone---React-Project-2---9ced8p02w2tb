@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUpFromBracket } from "@fortawesome/free-solid-svg-icons";
 
 import { useEffect } from "react";
+import Hoc from "../Hoc/Hoc";
 function Result({ isloggedin, Setisloggedin }) {
   const [popularData, SetpopularData] = useState("");
   const [showMore, setShowMore] = useState(false);
@@ -78,13 +79,15 @@ function Result({ isloggedin, Setisloggedin }) {
   const handleSeeLess = () => {
     setShowMore(false);
   };
-  return (
+  
+  
+return (
     <>
-      <Hader />
+      {/* <Hader /> */}
       {/* isloggedin={isloggedin} Setisloggedin={Setisloggedin}  */}
       <div className="resultmain">
         <div className="sidebar">
-          <HomeComponent />
+          <HomeComponent className="sidebar" />
         </div>
         <div className="resultboadypart">
           {postData.map((item) => 
@@ -148,7 +151,7 @@ function PostDataFunction({ image, name, content, likeCount, commentCount }) {
          <div className="rightheaddata">
          <img className="profilelogo" src={image} />
           <p className="username">{name}</p>
-          <p>here will be time of post</p>
+          <p className="timePost">here will be time of post</p>
          </div>
           <div className="joinbutton">
             <button className="join">join</button>
@@ -176,4 +179,4 @@ function PostDataFunction({ image, name, content, likeCount, commentCount }) {
     </>
   );
 }
-export default Result;
+export default Hoc (Result);

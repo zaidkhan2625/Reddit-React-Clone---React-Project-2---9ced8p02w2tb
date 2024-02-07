@@ -51,6 +51,7 @@ function Hader() {
     setLoginjwt,
     LoginUserId,
     SetLoginUserId,
+    setIsUserLoggedIn,
   } = useStateValue();
   const [signEmail, setsignEmail] = useState("");
   const [SignPassword, SetSignPassword] = useState("");
@@ -65,7 +66,6 @@ function Hader() {
   const [modalPosition, setModalPosition] = useState({ x: 0, y: 0 });
   const [searchValue, SetSdearchValue] = useState("");
   const [logindata, Slogindata] = useState([]);
-  localStorage.setItem("login", false);
   const handeldropdown = (e) => {
     SetdrowpOpen(true);
     setModalPosition({ x: e.clientX, y: e.clientY });
@@ -139,6 +139,7 @@ function Hader() {
       console.log("Login successful:", data);
       console.log("Setting isloggedin to true", isloggedin);
       if (data.status === "success") {
+        setIsUserLoggedIn(true)
         Setisloggedin(true);
         setloginjwt(data.token);
         setLoginjwt(data.token);
@@ -147,7 +148,6 @@ function Hader() {
         console.log("login status", localStorage.getItem("login"));
         localStorage.setItem("loginuserid", data.data._id);
         localStorage.setItem("loginuserName", data.data.name);
-
         console.log("user login id:", localStorage.getItem("loginuserid"));
         SetLoginUserId(localStorage.getItem("loginuserid"));
         console.log(
@@ -314,7 +314,10 @@ function Hader() {
     );
   }
   const Handellogout=()=>{
+    setIsUserLoggedIn(false);
     Setisloggedin(false);
+    localStorage.setItem("login",false);
+    console.log("after logout lgn stst",localStorage.getItem("login"));
   }
   return (
     <>
@@ -335,7 +338,11 @@ function Hader() {
             onChange={(e) => SetSdearchValue(e.target.value)}
           />
         </div>
+        {/* <div className="rightsidefromloginhed">
+
+        </div> */}
         {isloggedin ? <WithLogin /> : <Withoutloggin handleOpen={handleOpen} />}
+
       </div>
       <div>
         <Modal

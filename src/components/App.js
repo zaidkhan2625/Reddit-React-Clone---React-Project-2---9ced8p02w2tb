@@ -8,8 +8,13 @@ function App() {
   return (
     <Router>
     <div className="App">
+
     <Routes>
-    <Route path="/Createpost" element={<ProtectedRouter Component={CreatePost} />}/>
+    <Route path="/Createpost" element={
+        <ProtectedRouter>
+        <CreatePost/>
+        </ProtectedRouter>
+     }/>
     <Route path="/login" element={<LoginResultComponent/>}></Route>
     <Route path="/" element={<Home/>}></Route>
     </Routes>

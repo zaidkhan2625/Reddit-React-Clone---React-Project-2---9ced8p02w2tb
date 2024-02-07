@@ -103,7 +103,7 @@ function LoginResultPost({
   const HandelDownVOte = async () => {
     const apiUrl = `https://academics.newtonschool.co/api/v1/reddit/like/${id}`;
     const projectId = "pvxi7c9s239h";
-
+  
     try {
       const response = await fetch(apiUrl, {
         method: "DELETE",
@@ -115,18 +115,14 @@ function LoginResultPost({
       });
       console.log("jwt toke in login result post :", LoginJwt);
       console.log("authb id :", authid);
-
+  
       const data = await response.json();
       console.log("Follow user successful:", data);
-      // if (data.status === "success") {
-      //   Setfollobtn(false);
-      // }
+  
       // Handle success as needed
       if (data.status === "success") {
-        // Update the vote count
-        if (voteCount > 0) {
-          setVoteCount(voteCount - 1);
-        }
+        // Update the vote count based on the previous state
+        setVoteCount((prevCount) => (prevCount > 0 ? prevCount - 1 : 0));
       }
       return data;
     } catch (error) {
@@ -135,7 +131,6 @@ function LoginResultPost({
       throw error;
     }
   };
-
   const HandelComment = async () => {
     const apiUrl = `https://academics.newtonschool.co/api/v1/reddit/post/${id}/comments`;
     const projectId = "pvxi7c9s239h";
@@ -206,7 +201,7 @@ function LoginResultPost({
   const HandelUpVOte = async () => {
     const apiUrl = `https://academics.newtonschool.co/api/v1/reddit/like/${id}`;
     const projectId = "pvxi7c9s239h";
-
+  
     try {
       const response = await fetch(apiUrl, {
         method: "POST",
@@ -218,16 +213,14 @@ function LoginResultPost({
       });
       console.log("jwt toke in login result post :", LoginJwt);
       console.log("authb id :", authid);
-
+  
       const data = await response.json();
       console.log("Follow user successful:", data);
-      // if (data.status === "success") {
-      //   Setfollobtn(false);
-      // }
+  
       // Handle success as needed
       if (data.status === "success") {
-        // Update the vote count
-        setVoteCount(voteCount + 1);
+        // Update the vote count based on the previous state
+        setVoteCount((prevCount) => prevCount + 1);
       }
       return data;
     } catch (error) {
