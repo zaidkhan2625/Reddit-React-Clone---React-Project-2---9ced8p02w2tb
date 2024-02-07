@@ -413,7 +413,9 @@
 .loginheadbar:hover {
     background: #DAE0E6;
 }
-
+.MenuIcon{
+    display: none;
+}
 @media only screen and (max-width: 768px) {
     .header {
         /* Adjust styles for smaller screens */
@@ -428,7 +430,23 @@
     .headerlogodiv {
         height: auto;
     }
-
+    .MenuIcon {
+        /* Set the desired width and height */
+        display: flex;
+        /* justify-content: center; */
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        margin-left: 8px;
+    }
+    
+     .Menuicon {
+        /* Set the desired width and height */
+        display: flex;
+        width: 40px  !important;
+        height: 40px !important;
+        font-size: 100px;
+    } 
     .headerlogo {
         height: 45px;
         width: 45px;

@@ -3,6 +3,14 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import "./header.css";
+import {Menu as MenuPro,} from "react-pro-sidebar";
+
+import SportsEsportsOutlinedIcon from "@mui/icons-material/SportsEsportsOutlined";
+import SportsBaseballOutlinedIcon from "@mui/icons-material/SportsBaseballOutlined";
+import SignalCellularAltOutlinedIcon from "@mui/icons-material/SignalCellularAltOutlined";
+import WbSunnyOutlinedIcon from "@mui/icons-material/WbSunnyOutlined";
+import ConnectedTvOutlinedIcon from "@mui/icons-material/ConnectedTvOutlined";
+import StarBorderOutlinedIcon from "@mui/icons-material/StarBorderOutlined";
 import { Sidebar, SubMenu } from "react-pro-sidebar";
 import SearchIcon from "@mui/icons-material/Search";
 import Box from "@mui/material/Box";
@@ -22,6 +30,9 @@ import { faCommentDots, faL } from "@fortawesome/free-solid-svg-icons";
 import ExitToAppSharpIcon from "@mui/icons-material/ExitToAppSharp";
 import { createContext, useContext } from "react";
 export const stateContext = createContext();
+import HomeIcon from "@mui/icons-material/Home";
+import MenuIcon from '@mui/icons-material/Menu';
+import HomeComponent from "./HompeComponent";
 const style = {
   position: "absolute",
   top: "51%",
@@ -318,6 +329,41 @@ function Hader() {
       </div>
     );
   }
+  function MobileviewSideBar() {
+    const [anchorEl, setAnchorEl] = useState(null);
+    const handleMenuClick = (event) => {
+      setAnchorEl(event.currentTarget);
+    };
+    const handleMenuClose = () => {
+      setAnchorEl(null);
+    };
+    return (
+      <div className="">
+        <MenuIcon  className="Menuicon" onClick={handleMenuClick}/>        
+        <div className="">
+          <Sidebar>
+            <Menu
+              anchorEl={anchorEl}
+              open={Boolean(anchorEl)}
+              onClose={handleMenuClose}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "right",
+              }}
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              getContentAnchorEl={null}
+            >
+              <HomeComponent/>
+              
+             </Menu>
+          </Sidebar>
+        </div>
+      </div>
+    );
+  }
   const Handellogout=()=>{
     setIsUserLoggedIn(false);
     Setisloggedin(false);
@@ -328,6 +374,9 @@ function Hader() {
     <>
       <div className="header">
         <div className="headerlogodiv">
+        <div className="MenuIcon">
+        <MobileviewSideBar/>
+        </div>
           <img
             className="headerlogo"
             src="https://seeklogo.com/images/R/reddit-logo-23F13F6A6A-seeklogo.com.png"

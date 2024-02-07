@@ -369,3 +369,24 @@
     max-width: 200px;
     max-height: 200px;
 }
+@media only screen and (max-width: 768px) {
+    .rightsideofcreatepost{
+        display: none;
+    }
+    .posbuttontFeild{
+        width: 100%;
+    }
+    .inputcontent{
+     width: 100%;
+    }
+    .leftsidecreatepost{
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+    }
+    .createpodtiv {
+        display: flex;
+        min-height: 100vh;
+        margin-top: 40px;
+    }
+}
