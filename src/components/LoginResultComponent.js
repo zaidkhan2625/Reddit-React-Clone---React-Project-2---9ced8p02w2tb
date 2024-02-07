@@ -10,11 +10,12 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Hoc from "../Hoc/Hoc";
 function LoginResultComponent() {
   const [data, setData] = useState([]);
   const {LoginJwt} = useStateValue();
+  const navigate=useNavigate();
   useEffect(() => {
     const fetchPost = async () => {
       const projectId = "pvxi7c9s239h";
@@ -59,6 +60,7 @@ function LoginResultComponent() {
               className="PostDivInput"
               type="text"
               placeholder="Creat Post"
+              onClick={()=>navigate('/Createpost')}
             />
             {/* <ImageOutlinedIcon className="imagelogo" /> */}
             {/* <AttachFileOutlinedIcon className="imagelogo" /> */}

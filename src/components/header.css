@@ -483,5 +483,11 @@
     .redditrecap{
         display: none;
     }
+    .iconad{
+        display: none;
+    }
+    .loginheadbar{
+        display: none;
+    }
     /* Add more media queries if needed */
 }
