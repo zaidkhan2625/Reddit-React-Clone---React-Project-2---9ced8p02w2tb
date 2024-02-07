@@ -520,3 +520,109 @@
     }
     /* Add more media queries if needed */
 }
+@media only screen and (max-width: 480px) {
+    .header {
+        /* Adjust styles for smaller screens */
+        /* For example, reduce the height of the header */
+        width: 100%;
+        height: 60px;
+        /* background: #000; */
+
+        /* You can add more specific styles for smaller screens here */
+    }
+
+    .headerlogodiv {
+        height: auto;
+    }
+
+    .headerlogo {
+        height: 45px;
+        width: 45px;
+    }
+
+    .headerlogoname {
+        font-size: 30px;
+    }
+
+    .headerserchinput {
+        width: 00%;
+        /* border-radius: 0px; */
+        height: 30px;
+        flex: 1;
+        /* background-color: transparent;
+        border: none;
+        outline: none;
+        /* font-size: 18px;
+        padding-left: 10px; */
+        margin-left: 5px;
+        margin-right: 0; 
+    }
+
+    .bar {
+        height: 0px;
+        width: 00px;
+        margin-right: 0px;
+        border-right: 0px;
+    }
+
+    .headerrightpart {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        /* margin-right: 20px; */
+    }
+
+    .redditRecape {
+        display: none;
+    }
+
+    .withloginheader {
+        width: 0;
+        margin: 0;
+    }
+
+    /* .headerrightpart {
+        max-width: 10px;
+        margin: 0;
+    } */
+
+    .barcodelogo {
+        display: none;
+    }
+
+    .LOginbtn {
+        display: none;
+    }
+
+    .SettingMenu {
+        margin-left: 35px;
+    }
+    .redditrecap{
+        display: none;
+    }
+    .iconad{
+        display: none;
+    }
+    .loginheadbar{
+        display: none;
+    }
+    .loginheadbar{
+        display: none;
+    }
+    .logoinlogindiv{
+        display: none;
+    }
+    .username {
+        display: flex;
+       
+        margin-left: 0px;
+    }
+    .usernameinlogin {
+        width: 70px;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        margin-left: 170px;
+    }
+    /* Add more media queries if needed */
+}
