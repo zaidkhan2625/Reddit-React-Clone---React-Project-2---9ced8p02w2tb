@@ -292,5 +292,8 @@
         border-radius: 15px;
         min-height: 300px;
     }
+    .resultBody > p{
+        font-size: 10px;
+    }
     /* Add more media queries if needed */
 }
