@@ -50,7 +50,7 @@ function LoginResultComponent() {
     <>
       {/* <Hader/> */}
       <div className="Logincomponentresult">
-        <div className="">
+        <div className="leftSideofLoginResult">
           <div className="createPostdiv">
             <img
               className="PostDivLogo"

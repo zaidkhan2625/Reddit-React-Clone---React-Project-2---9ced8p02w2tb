@@ -66,7 +66,8 @@ function Hader() {
   const [modalPosition, setModalPosition] = useState({ x: 0, y: 0 });
   const [searchValue, SetSdearchValue] = useState("");
   const [logindata, Slogindata] = useState([]);
-  const handeldropdown = (e) => {
+  const [User , SetUser]= useState("");
+  const  handeldropdown = (e) => {
     SetdrowpOpen(true);
     setModalPosition({ x: e.clientX, y: e.clientY });
   };
@@ -143,6 +144,8 @@ function Hader() {
         Setisloggedin(true);
         setloginjwt(data.token);
         setLoginjwt(data.token);
+        console.log("user nme ",data.data.name);
+        SetUser(data.data.name);
         console.log("jwt token:", data.token);
         localStorage.setItem("login", true);
         console.log("login status", localStorage.getItem("login"));
@@ -212,8 +215,11 @@ function Hader() {
     );
   };
   const WithLogin = () => {
+    console.log("User:",usernamelogin);
+
     return (
       <>
+        <div className="withloginresult">
         <div className="withloginheader">
           <div className="logoinlogindiv">
           <OutboundOutlinedIcon className="loginheadbar" />
@@ -225,12 +231,11 @@ function Hader() {
             <CampaignOutlinedIcon className="iconad" /> <p>Adverties</p>
           </div>
           </div>
-          
-          
         </div>
         <div className="username">
             <YourComponentNoneComment />
           </div>
+        </div>
         
       </>
     );
@@ -270,7 +275,7 @@ function Hader() {
     return (
       <div className="usernameinlogin">
         <div className="loginuserName" onClick={handleMenuClick}>
-          <p>zaid</p>
+          <p>{usernamelogin}</p>
         </div>
         <div className="menuinusername">
           <Sidebar>
@@ -329,6 +334,12 @@ function Hader() {
           />
           <span className="headerlogoname">reddit</span>
         </div>
+        {/* <input
+            type="text"
+            name=""
+            placeholder="Search reddit"
+            onChange={(e) => SetSdearchValue(e.target.value)}
+          /> */}
         <div className="headerserchinput">
           <SearchIcon className="serchicon" onClick={fetchRedditPosts} />
           <input
@@ -338,10 +349,10 @@ function Hader() {
             onChange={(e) => SetSdearchValue(e.target.value)}
           />
         </div>
-        {/* <div className="rightsidefromloginhed">
-
-        </div> */}
+        <div className="rightsidefromloginhed">
         {isloggedin ? <WithLogin /> : <Withoutloggin handleOpen={handleOpen} />}
+
+        </div>
 
       </div>
       <div>
