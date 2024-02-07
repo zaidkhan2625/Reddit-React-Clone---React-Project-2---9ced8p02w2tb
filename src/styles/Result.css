@@ -250,3 +250,37 @@
     }
     /* Add more media queries if needed */
 }
+@media only screen and (max-width: 480px) {
+    .resultmain {
+        /* Adjust styles for smaller screens */
+        /* For example, reduce the hei ght of the header */
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        /* You can add more specific styles for smaller screens here */
+    }
+    .resultdivsection{
+        width: auto;
+    }
+    .sidebar{
+        display: none;
+    }
+    .resultBody > p{
+        font-size: 30px;
+    }
+    .username{
+        font-size: 20px;
+        width: auto;
+    }
+    .resultHeadin{
+        height: 35px;
+        margin-bottom: 0px;
+        margin-top: 8px;
+    }
+    .timePost{
+        margin-left: 10px;
+        font-size: 10px;
+    }
+    /* Add more media queries if needed */
+}
