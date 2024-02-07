@@ -341,7 +341,7 @@ function Hader() {
         {/* <div className="rightsidefromloginhed">
 
         </div> */}
-        {isloggedin ? <Withoutloggin handleOpen={handleOpen} /> : <WithLogin />}
+        {isloggedin ? <WithLogin /> : <Withoutloggin handleOpen={handleOpen} />}
 
       </div>
       <div>
