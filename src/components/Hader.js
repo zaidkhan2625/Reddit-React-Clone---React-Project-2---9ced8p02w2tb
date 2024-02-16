@@ -114,6 +114,10 @@ function Hader() {
       // Assuming the server returns JSON data, you can parse it
       const data = await response.json();
       console.log("Signup successful:", data);
+      if(data.status === "success")
+      {
+        alert("Your sign up is successful move backe for login");
+      }
       SetJwt(data.token);
       // Handle success as needed
     } catch (error) {
@@ -464,7 +468,6 @@ function Hader() {
                   placeholder="Name/Username"
                   onChange={(e) => SetSignusername(e.target.value)}
                 />
-                {jwt}
                 <input
                   type="email"
                   placeholder="email"
