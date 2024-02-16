@@ -117,6 +117,7 @@ function Hader() {
       if(data.status === "success")
       {
         alert("Your sign up is successful move backe for login");
+        handleOpen();
       }
       SetJwt(data.token);
       // Handle success as needed
