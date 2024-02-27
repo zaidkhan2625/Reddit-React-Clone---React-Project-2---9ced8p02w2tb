@@ -59,7 +59,7 @@ function Hader() {
   const [searchValue, SetSdearchValue] = useState("");
   const [logindata, Slogindata] = useState([]);
   const [User, SetUser] = useState("");
-  const [openSignUp ,SetopenSignUp]=useState(false);
+  const [openSignUp, SetopenSignUp] = useState(false);
   const handeldropdown = (e) => {
     SetdrowpOpen(true);
     setModalPosition({ x: e.clientX, y: e.clientY });
@@ -71,7 +71,7 @@ function Hader() {
   };
   const handleOpen = () => {
     setOpen(true);
-    settoggel(true);
+    SetopenSignUp(false);
   };
   const handleClose = () => setOpen(false);
   const handleClosedropw = () => SetdrowpOpen(false);
@@ -376,6 +376,13 @@ function Hader() {
     localStorage.setItem("login", false);
     console.log("after logout lgn stst", localStorage.getItem("login"));
   };
+  const HandelSignInPopUpBox = () => {
+    SetopenSignUp(true);
+    setOpen(false);
+  };
+  const handleCloseSignUp =()=>{
+    SetopenSignUp(false);
+  }
   return (
     <>
       <div className="header">
@@ -432,7 +439,7 @@ function Hader() {
             </a>
             <p className="Signup">
               New to Reddit?
-              <span className="signupinlogin" onClick={() => settoggel(false)}>
+              <span className="signupinlogin" onClick={HandelSignInPopUpBox}>
                 Sign in
               </span>
             </p>
@@ -443,7 +450,7 @@ function Hader() {
         </Modal>
         <Modal
           open={openSignUp}
-          onClose={handleClose}
+          onClose={handleCloseSignUp}
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
