@@ -3,20 +3,26 @@
     height: 60px;
     align-items: center;
     background-color: white;
-    border-bottom: 1px solid rgb(246, 243, 243);
     justify-content: space-between;
+    flex-direction: row;
     width: 100%;
     position: fixed;
     z-index: 999999;
+    box-shadow:0 1px 2px 0 rgba(0, 0, 0, 0.2), 
+    0 1px 5px 0 rgba(0, 0, 0, 0.19);
 
 }
 
 .headerlogo {
-    height: 35px;
-    width: 35px;
-    margin-left: 10px;
+    height: 25px;
+    width: 25px;
 }
-
+.LogoAndName{
+    display: flex;
+    flex: 1;
+    align-items: center;
+    margin-left: 15px;
+}
 .headerlogodiv {
     display: flex;
     align-items: center;
@@ -29,6 +35,11 @@
     display: flex;
 }
 
+.rightSideFortheloginHeader{
+    display: flex;
+    flex: 1;
+    height: 100%;
+}
 .forTheoption {
     width: 0px;
     display: flex;
@@ -71,12 +82,11 @@
 
 .headerserchinput {
     display: flex;
-    flex: 1;
+    flex: 2;
     border: 1px solid rgb(168, 164, 164);
     border-radius: 24px;
     align-items: center;
     background-color: rgb(240, 240, 245, 0.164);
-    margin-right: 150px;
 }
 
 .loginuserName {
@@ -97,7 +107,7 @@
 }
 
 .headerlogoname {
-    font-size: 35px;
+    font-size: 25px;
     color: orangered;
     margin-left: 10px;
 }
@@ -165,8 +175,7 @@
     height: 45px;
     border-radius: 25px;
     padding-left: 19px;
-    margin-left: 35px;
-    margin-right: 35px;
+    
     background-color: #94939381;
     border: 1px solid rgb(239, 239, 239);
 }
@@ -177,29 +186,23 @@
     border-radius: 25px;
     background: white;
     border: 1px solid rgb(213, 212, 212);
-    margin-left: 35px;
-    margin-right: 35px;
+    
 }
 
 .forgetPassword {
-    margin-left: 40px;
+    
     margin-top: 20px;
 }
 
-.Signup {
-    margin-left: 40px;
-}
-
 .LoginButton {
-    height: 50px;
-    border-radius: 20px;
+    height: 40px;
+    border-radius: 8px;
     outline: none;
-    background-color: rgb(247, 16, 12);
-    margin-left: 35px;
+    background-color: red;
     border-style: none;
-    margin-right: 35px;
     color: white;
-    font-size: 20px;
+    font-size: 15px;
+    width: 150px;
 }
 
 .SignUpPopupBox {
@@ -394,7 +397,7 @@
 }
 
 .paragraph {
-    margin-left: 35px;
+    
     font-size: 15px;
 }
 
@@ -416,58 +419,53 @@
 .MenuIcon{
     display: none;
 }
-@media only screen and (max-width: 768px) {
-    .header {
-        /* Adjust styles for smaller screens */
-        /* For example, reduce the height of the header */
-        width: 100%;
-        height: 60px;
-        /* background: #000; */
+.WithoutLoginPartHandel{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 80px;
+}
 
-        /* You can add more specific styles for smaller screens here */
+@media only screen and (max-width: 767px) {
+    .header {
+        justify-content: space-evenly;
+        height: 60px;
+       
     }
 
     .headerlogodiv {
         height: auto;
     }
     .MenuIcon {
-        /* Set the desired width and height */
-        display: flex;
-        /* justify-content: center; */
-        align-items: center;
-        width: 40px;
-        height: 40px;
+        width: 30px;
+        height: 30px;
         margin-left: 8px;
     }
-    
-     .Menuicon {
-        /* Set the desired width and height */
+    .WithoutLoginPartHandel{
         display: flex;
-        width: 40px  !important;
-        height: 40px !important;
-        font-size: 100px;
-    } 
-    .headerlogo {
-        height: 45px;
-        width: 45px;
+        justify-content: center;
+        align-items: center;
+        margin-left: 40px;
+        text-align: right;
     }
-
+    .headerlogo {
+        height: 25px;
+        width: 25px;
+    }
+    .barcode{
+        display: none;
+    }
     .headerlogoname {
-        font-size: 30px;
+        font-size: 18px;
+        margin-left: 5px;
+        padding-right: 5px;
     }
 
     .headerserchinput {
-        width: 00%;
-        /* border-radius: 0px; */
+        
         height: 30px;
-        flex: 1;
-        /* background-color: transparent;
-        border: none;
-        outline: none;
-        /* font-size: 18px;
-        padding-left: 10px; */
-        margin-left: 5px;
-        margin-right: 0; 
+        flex: 2;
+       
     }
 
     .bar {
@@ -492,11 +490,6 @@
         width: 0;
         margin: 0;
     }
-
-    /* .headerrightpart {
-        max-width: 10px;
-        margin: 0;
-    } */
 
     .barcodelogo {
         display: none;
@@ -536,127 +529,25 @@
         display: flex;
         margin-left: 170px;
     }
-    /* Add more media queries if needed */
-}
-@media only screen and (max-width: 480px) {
-    .header {
-        /* Adjust styles for smaller screens */
-        /* For example, reduce the height of the header */
-        width: 100%;
-        height: 60px;
-        /* background: #000; */
-
-        /* You can add more specific styles for smaller screens here */
-    }
-
-    .headerlogodiv {
-        height: auto;
-    }
-
-    .headerlogo {
-        height: 25px;
-        width: 25px;
-    }
-
-    .headerlogoname {
-        font-size: 15px;
-    }
-
-    .headerserchinput {
-        width: 00%;
-        /* border-radius: 0px; */
-        height: 30px;
-        flex: 1;
-        /* background-color: transparent;
-        border: none;
-        outline: none;
-        /* font-size: 18px;
-        padding-left: 10px; */
-        margin-left: 15px;
-        margin-right: 0; 
-    }
-
-    .bar {
-        height: 0px;
-        width: 00px;
-        margin-right: 0px;
-        border-right: 0px;
-    }
-
-    .headerrightpart {
+    .PopupBoxLogi{
         display: flex;
-        flex-direction: row;
-        align-items: center;
-        /* margin-right: 20px; */
-    }
-    .MenuIcon {
-        /* Set the desired width and height */
-        display: flex;
-        /* justify-content: center; */
-        align-items: center;
-        width: 20px;
-        height: 00px;
-        margin-left: 1px;
-    }
-    
-     .Menuicon {
-        /* Set the desired width and height */
-        display: flex;
-        width: 20px  !important;
-        height: 20px !important;
-        font-size: 20px;
-    } 
-    .redditRecape {
-        display: none;
-    }
-
-    .withloginheader {
-        width: 0;
-        margin: 0;
-    }
-
-    /* .headerrightpart {
-        max-width: 10px;
-        margin: 0;
-    } */
-
-    .barcodelogo {
-        display: none;
-    }
-
-    .LOginbtn {
-        display: none;
-    }
-
-    .SettingMenu {
-        margin-left: 35px;
-    }
-    .redditrecap{
-        display: none;
-    }
-    .iconad{
-        display: none;
-    }
-    .loginheadbar{
-        display: none;
-    }
-    .loginheadbar{
-        display: none;
-    }
-    .logoinlogindiv{
-        display: none;
-    }
-    .username {
-        display: flex;
-       
-        margin-left: 0px;
-    }
-    .usernameinlogin {
-        width: 70px;
         justify-content: center;
         align-items: center;
-        display: flex;
-        margin-left: 70px;
+        flex-direction: column;
+        width: 80% !important;
+        border-style: none !important;
+        border-radius: 8px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        min-height: 150px !important;
+        padding-top: 30px !important;
+        padding-bottom: 30px !important;
+
+    }
+    .LOgintext {
+        font-size: 15px;
+        margin-left: 35px;
+        color: #000;
     }
     /* Add more media queries if needed */
 }
