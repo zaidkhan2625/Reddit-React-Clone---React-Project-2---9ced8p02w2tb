@@ -86,10 +86,15 @@
 }
 .resultBody{
     display: flex;
+    flex-direction: column;
     flex: 1;
     padding-left: 10px;
 }
-
+.PostImage{
+    width: auto;
+    height: auto;
+    object-fit: cover;
+}
 .resultFooter {
     display: flex;
     flex-direction: row;
@@ -216,7 +221,15 @@
     color: #000;
     font-weight: 600;
 }
-@media only screen and (max-width: 768px) {
+.twoLineEllipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Number of lines to show */
+    -webkit-box-orient: vertical;
+  }
+  
+@media only screen and (max-width: 767px) {
     .resultmain {
         /* Adjust styles for smaller screens */
         /* For example, reduce the hei ght of the header */

@@ -320,12 +320,11 @@ function LoginResultPost({
             <img src={userData.profileImage} />
             <p>{userData.name}</p>
             <p>
-              Posting time of it{commentuserId}....{loginuserid}
+              Posting time of it
             </p>
           </div>
           <p>
             {commentcontent}
-            {commentid}
           </p>
           <div className="divforbuttonincomment">
             <div className="voteUpDownincomment">
@@ -555,7 +554,6 @@ function LoginResultPost({
             </Modal>
           </div>
 
-          <p className="posauth">posting time</p>
         </div>
         <p className="posttittle">post titel</p>
         <div className="imgdiv">

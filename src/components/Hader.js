@@ -4,6 +4,7 @@ import MenuItem from "@mui/material/MenuItem";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import "./header.css";
 import { Sidebar, SubMenu } from "react-pro-sidebar";
+import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import SearchIcon from "@mui/icons-material/Search";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
@@ -16,15 +17,9 @@ import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
 import OutboundOutlinedIcon from "@mui/icons-material/OutboundOutlined";
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
-import AdsClickOutlinedIcon from "@mui/icons-material/AdsClickOutlined";
-import WorkOutlineOutlinedIcon from "@mui/icons-material/WorkOutlineOutlined";
-import { faCommentDots, faL } from "@fortawesome/free-solid-svg-icons";
-import ExitToAppSharpIcon from "@mui/icons-material/ExitToAppSharp";
-import { createContext, useContext } from "react";
+import { faCommentDots } from "@fortawesome/free-solid-svg-icons";
+import { createContext } from "react";
 export const stateContext = createContext();
-import HomeIcon from "@mui/icons-material/Home";
-import MenuIcon from "@mui/icons-material/Menu";
-import HomeComponent from "./HompeComponent";
 const style = {
   position: "absolute",
   top: "50%",
@@ -235,24 +230,29 @@ function Hader() {
     );
   }
   const WithLogin = () => {
-    console.log("User:", usernamelogin);
-
     return (
       <>
         <div className="withloginresult">
-          <div className="withloginheader">
-            <div className="logoinlogindiv">
-              <OutboundOutlinedIcon className="loginheadbar" />
-              <p className="redditrecap">🍌</p>
-              <FontAwesomeIcon icon={faCommentDots} className="loginheadbar" />
-              <NotificationsNoneOutlinedIcon className="loginheadbar" />
-              <AddOutlinedIcon className="loginheadbar" />
-              <div className="Adverties">
-                <CampaignOutlinedIcon className="iconad" /> <p>Adverties</p>
-              </div>
-            </div>
+          <div className="pp">
+            <OutboundOutlinedIcon className="loginheadbar" />
           </div>
-          <div className="username">
+          <p className="redditrecap">🍌</p>
+          <div className="pp">
+            {" "}
+            <FontAwesomeIcon icon={faCommentDots} className="loginheadbar" />
+          </div>
+          <div className="pp">
+            {" "}
+            <AddOutlinedIcon className="loginheadbar" />
+          </div>
+          <div className="pp">
+            {" "}
+            <NotificationsNoneOutlinedIcon className="loginheadbar" />
+          </div>
+          <div className="Adverties">
+            <CampaignOutlinedIcon className="" /> <p>Adverties</p>
+          </div>
+          <div className="logindiv">
             <YourComponentNoneComment />
           </div>
         </div>
@@ -292,11 +292,13 @@ function Hader() {
       setAnchorEl(null);
     };
     return (
-      <div className="usernameinlogin">
-        <div className="loginuserName" onClick={handleMenuClick}>
+      <div>
+        <div onClick={handleMenuClick} className="ProfileLoginName">
+          <PersonOutlineIcon />
           <p>{usernamelogin}</p>
         </div>
-        <div className="menuinusername">
+        <div>
+          {/* className="menuinusername" */}
           <Sidebar>
             <Menu
               anchorEl={anchorEl}
@@ -313,20 +315,14 @@ function Hader() {
               getContentAnchorEl={null}
             >
               <div>
-                <MenuItem icon={<AccountCircleOutlinedIcon />}>
+                <MenuItem icon={<AccountCircleOutlinedIcon />} onClick={()=>alert("Still Working On it")}>
                   My Staff
                 </MenuItem>
-                <MenuItem>Online Status</MenuItem>
-                <MenuItem>Profile</MenuItem>
-                <MenuItem>Create Avatar</MenuItem>
-                <MenuItem>User Setting</MenuItem>
-                <MenuItem>View Option</MenuItem>
-                <MenuItem>Dark Mode</MenuItem>
-                <MenuItem>Create a Community</MenuItem>
-                <MenuItem>Adverties on reddit</MenuItem>
-                <MenuItem>Premium</MenuItem>
-                <MenuItem>Explore</MenuItem>
-                <MenuItem>Help Center</MenuItem>
+                <MenuItem  onClick={()=>alert("Still Working On it")}>Online Status</MenuItem>
+                <MenuItem  onClick={()=>alert("Still Working On it")}>Profile</MenuItem>
+                <MenuItem  onClick={()=>alert("Still Working On it")}>Create Avatar</MenuItem>
+                <MenuItem  onClick={()=>alert("Still Working On it")}>User Setting</MenuItem>
+
                 <MenuItem onClick={Handellogout}>Log out</MenuItem>
               </div>
               {/* Add more menu items as needed */}
@@ -336,40 +332,7 @@ function Hader() {
       </div>
     );
   }
-  function MobileviewSideBar() {
-    const [anchorEl, setAnchorEl] = useState(null);
-    const handleMenuClick = (event) => {
-      setAnchorEl(event.currentTarget);
-    };
-    const handleMenuClose = () => {
-      setAnchorEl(null);
-    };
-    return (
-      <div className="">
-        <MenuIcon className="Menuicon" onClick={handleMenuClick} />
-        <div className="">
-          <Sidebar>
-            <Menu
-              anchorEl={anchorEl}
-              open={Boolean(anchorEl)}
-              onClose={handleMenuClose}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "right",
-              }}
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              getContentAnchorEl={null}
-            >
-              <HomeComponent />
-            </Menu>
-          </Sidebar>
-        </div>
-      </div>
-    );
-  }
+
   const Handellogout = () => {
     setIsUserLoggedIn(false);
     Setisloggedin(false);
@@ -380,9 +343,9 @@ function Hader() {
     SetopenSignUp(true);
     setOpen(false);
   };
-  const handleCloseSignUp =()=>{
+  const handleCloseSignUp = () => {
     SetopenSignUp(false);
-  }
+  };
   return (
     <>
       <div className="header">

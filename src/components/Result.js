@@ -83,10 +83,6 @@ function Result({ isloggedin, Setisloggedin }) {
   
 return (
     <>
-      {/* <.
-        
-       /> */}
-      {/* isloggedin={isloggedin} Setisloggedin={Setisloggedin}  */}
       <div className="resultmain">
         <div className="sidebar">
           <HomeComponent className="sidebar" />
@@ -99,6 +95,8 @@ return (
               content={item.content}
               likeCount={item.likeCount}
               commentCount={item.commentCount}
+              PostImages={item.images[0]
+              }
             />
             
             
@@ -145,7 +143,7 @@ function Popular({ name, image }) {
     </>
   );
 }
-function PostDataFunction({ image, name, content, likeCount, commentCount }) {
+function PostDataFunction({ image, name, content, likeCount, commentCount,PostImages }) {
   return (
     <>
       <div className="resultdivsection">
@@ -161,7 +159,8 @@ function PostDataFunction({ image, name, content, likeCount, commentCount }) {
           </div>
         </div>
         <div className="resultBody">
-          <p>{content}</p>
+          <p className="twoLineEllipsis">{content}</p>
+          <img className="PostImage" src={PostImages}/>
         </div>
         <div className="resultFooter">
           <div className="Like">

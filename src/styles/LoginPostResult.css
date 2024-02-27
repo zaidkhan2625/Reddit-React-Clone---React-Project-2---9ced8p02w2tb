@@ -1,7 +1,7 @@
 .LoginResultPost {
     display: flex;
     /* margin-top: 20px; */
-    min-height: 500px;
+    min-height: 300px;
     background-color: #fff;
 }
 
@@ -23,9 +23,10 @@
     /* margin-top: 15px;
     margin-bottom: 5px; */
     cursor: pointer;
-    
+
 }
-.CommentUpVote{
+
+.CommentUpVote {
     /* display: inline-block;
     font-size: 4px;
     transform: scale(9, 9); */
@@ -35,40 +36,47 @@
     color: white;
     cursor: pointer;
 }
-.CommentDownVote{
+
+.CommentDownVote {
     transform: scale(1.7, 1.7);
     margin-left: 10px;
     color: white;
     cursor: pointer;
 }
-.imagelogoinhead{
+
+.imagelogoinhead {
     color: rgb(244, 232, 232);
     height: 20px;
     margin-left: 10px;
 }
-.CommentPopUpBox{
+
+.CommentPopUpBox {
     margin-top: 62px;
     position: absolute;
     width: 100%;
     max-height: 100vh;
-    background:white;
+    background: white;
     display: flex;
     flex-direction: column;
     z-index: -1;
     overflow-y: auto;
 }
-.MainCommentDiv{
-    width: 100%;
-    height: auto;
-    overflow-y: auto;
-    background:rgb(82, 80, 80);
-    display: flex;
+
+.MainCommentDiv {
+    height:100vh;
+    width: 90%;
+    
+
+    /* 
+    /* overflow-y: auto; */ 
+    /* background: rgb(82, 80, 80); */
+    /* display: flex;
     flex-direction: column;
     position: relative;
-    z-index: 0;
-}
+    z-index: 0; */
+} 
 
-.CommentHeader{
+.CommentHeader {
     display: flex;
     flex-direction: row;
     position: relative;
@@ -84,6 +92,7 @@
     align-items: center;
 
 }
+
 .CommentHeaderTitle {
     color: rgb(171, 167, 167);
     margin-left: 10px;
@@ -92,9 +101,11 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-.ptext{
-margin: 0;
+
+.ptext {
+    margin: 0;
 }
+
 .RestOfCommentPart{
     display: flex;
     flex-direction: row;
@@ -104,29 +115,33 @@ margin: 0;
     margin-right: 80px;
     height: auto;
     background: rgb(243, 247, 243);
-    
+    min-height: 100vh;
+
     /* overflow-y: auto; */
     z-index: 1;
 }
-.commentPostdiv{
+
+.commentPostdiv {
     display: flex;
     flex-direction: row;
     background: white;
     height: auto;
     width: 100%;
-    
+
     /* overflow-y: auto; */
     /* flex: 1; */
 
 }
-.likesection{
+
+.likesection {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-left: 8px;
 
 }
-.PostDetails{
+
+.PostDetails {
     display: flex;
     flex-direction: row;
     min-height: 200px;
@@ -137,14 +152,15 @@ margin: 0;
     margin-right: 20px;
 }
 
-.LikeInComment1{
+.LikeInComment1 {
     color: rgb(134, 126, 126);
     transform: scale(2, 2);
     margin: 0;
     margin-top: 5px;
     cursor: pointer;
 }
-.LikeInComment2{
+
+.LikeInComment2 {
     color: rgb(134, 126, 126);
     transform: scale(2, 2);
     margin: 0;
@@ -155,20 +171,22 @@ margin: 0;
 .DownVote {
     display: inline-block;
     font-size: 4px;
-   
+
     /* margin-left: 9px; */
-    
+
     /* margin-top: 15px; */
     margin-top: 15px;
     cursor: pointer;
 }
-.PostDivInComment{
+
+.PostDivInComment {
     display: flex;
     flex-direction: column;
     margin-left: 15px;
     min-height: auto;
-    
+
 }
+
 .headerLoginResult {
     display: flex;
     flex-direction: row;
@@ -208,7 +226,7 @@ margin: 0;
     margin-left: 4px;
     background-color: white;
     color: rgb(67, 65, 64);
-    
+
     pointer-events: auto;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -223,7 +241,8 @@ margin: 0;
 .resultbutton:hover {
     background-color: #e0dfdf;
 }
-.CommentBox{
+
+.CommentBox {
     display: flex;
     flex-direction: column;
     margin-left: 30px;
@@ -232,13 +251,15 @@ margin: 0;
     min-height: auto;
     border: 1px solid rgb(79, 78, 81);
 }
+
 .stylebtn {
     display: flex;
     flex-direction: row;
     width: 100%;
     align-items: center;
 }
-.styeltypeofcontent {
+
+/* .styeltypeofcontent {
     display: flex;
     flex-direction: row;
     height: 40px;
@@ -246,8 +267,9 @@ margin: 0;
     align-items: center;
     background-color: #f6f7f8;
     justify-content: space-between;
-}
-.stlbtn {
+} */
+
+/* .stlbtn {
     margin-left: 5px;
     height: auto;
     background: transparent;
@@ -256,7 +278,8 @@ margin: 0;
     font-size: 20px;
     color: #666666;
     z-index: 1;
-}
+} */
+
 .commentboxtext {
     min-height: 100px;
     border-style: none;
@@ -264,18 +287,19 @@ margin: 0;
     word-wrap: break-word;
     overflow-wrap: break-word;
     resize: vertical;
-   width: auto;
-   padding-top: 5px;
-   padding-left: 4px;
-   font-style: bold;
-   font-weight: bold;
+    width: auto;
+    padding-top: 5px;
+    padding-left: 4px;
+    font-style: bold;
+    font-weight: bold;
 }
 
 .LoginPostImge {
-    height: 400px;
-    min-width: 250px;
+    width: 100%;
+    height: 100%;
 }
-.restoftheloginresult{
+
+.restoftheloginresult {
     padding-left: 8px;
 }
 
@@ -286,63 +310,74 @@ margin: 0;
     height: auto;
     width: auto;
 }
-.posauth{
+
+.posauth {
     font-size: 15px;
     margin-left: 5px;
-    color:rgb(120, 124, 126);
+    color: rgb(120, 124, 126);
 
 }
-.COMMUNITYNAme{
+
+.COMMUNITYNAme {
     font-size: 15px;
     color: black;
     margin-left: 5px;
 }
-.imglogodrop{
+
+.imglogodrop {
     width: 100px;
     height: 100px;
     border-radius: 50px;
     margin-top: -22px;
 }
-.ModelBox{
+
+.ModelBox {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.authorname{
+
+.authorname {
     color: black;
     font-size: 25px;
     font-weight: 400;
-    margin:0;
-    
+    margin: 0;
+
 }
-.ChannelName{
+
+.ChannelName {
     color: rgb(51, 48, 48);
     margin: 0;
     font-weight: 300;
     font-size: 18px;
 }
-.likeandFallow{
+
+.likeandFallow {
     display: flex;
     font-display: row;
     justify-content: space-between;
     width: 100%;
 }
-.numberoffallower{
+
+.numberoffallower {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.numberofpodt{
+
+.numberofpodt {
     font-size: 15px;
     color: black;
 }
-.karmatype{
+
+.karmatype {
     color: rgb(38, 34, 34);
     font-size: 10px;
 }
-.chatButton{
+
+.chatButton {
     width: 100%;
     background: white;
     color: rgb(77, 129, 218);
@@ -351,7 +386,8 @@ margin: 0;
     height: 35px;
     border-radius: 50px;
 }
-.fallowbtn{
+
+.fallowbtn {
     width: 100%;
     background: blue;
     color: white;
@@ -361,7 +397,8 @@ margin: 0;
     outline: none;
     margin-top: 5px;
 }
-.unfallow{
+
+.unfallow {
     width: 100%;
     background: blue;
     color: white;
@@ -372,19 +409,23 @@ margin: 0;
     margin-top: 5px;
     font-weight: 400;
 }
-.postdivforcomment{
+.commentDataDiv{
+    min-height: 100vh;
+}
+.postdivforcomment {
     margin-top: 40px;
     display: flex;
     flex-direction: column;
-    min-height:  5000px;
+    min-height: 100vh;
     width: 70%;
     background: white;
-        margin-top: 60px;
+    margin-top: 60px;
     margin-left: 20px;
     /* background: yellow; */
 }
-.commentMarket{
-    margin-left: 200px;
+
+.commentMarket {
+    margin-left: 10px;
     border-radius: 50px;
     height: 30px;
     outline: none;
@@ -394,7 +435,8 @@ margin: 0;
     background: transparent;
     color: rgb(237, 167, 76);
 }
-.CommentBtn{
+
+.CommentBtn {
     /* margin-left: 50px; */
     border-radius: 50px;
     height: 30px;
@@ -406,28 +448,33 @@ margin: 0;
     color: white;
     z-index: 1;
 }
-.commentByUserName{
+
+.commentByUserName {
     margin: 0;
     margin-left: 27px;
     margin-top: 15px;
     margin-bottom: 3px;
     color: #000;
 }
-.commentcountnumber{
+
+.commentcountnumber {
     margin-left: 5px;
     margin-right: 5px;
 }
-.LeftHeader{
+
+.LeftHeader {
     display: flex;
     flex-direction: column;
     z-index: 2;
     color: aqua;
-    
+
 }
-.likecount{
+
+.likecount {
     color: white;
 }
-.voteUpDown{
+
+.voteUpDown {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -442,7 +489,8 @@ margin: 0;
     width: 60px;
 
 }
-.coloseButton{
+
+.coloseButton {
     color: rgb(209, 208, 208);
     background: none;
     margin-left: 40px;
@@ -450,13 +498,16 @@ margin: 0;
     border: none;
     height: 28px;
 }
-.faXmark{
+
+.faXmark {
     height: 25px;
 }
-.coloseButton >p{
+
+.coloseButton>p {
     height: 25px;
 }
-.CommentDataDiv{
+
+.CommentDataDiv {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -464,60 +515,70 @@ margin: 0;
     background: white;
     margin-top: 15px;
 }
-.CommentDataDivforchildcomment{
+
+.CommentDataDivforchildcomment {
     display: flex;
     flex-direction: column;
     width: 91%;
     min-height: 50px;
     background: white;
-    margin-left:40px;
+    margin-left: 40px;
 }
-.CommentDataDivforchildcomment >p{
+
+.CommentDataDivforchildcomment>p {
     margin: 0;
     margin-left: 50px;
     margin-top: 0;
     font-size: 10px;
 }
-.commentedUsertracknamelogo{
+
+.commentedUsertracknamelogo {
     display: flex;
     flex-direction: row;
     height: 45px;
     width: 100%;
     align-items: center;
 }
+
 .commentedUsertracknamelogo>img {
     width: 40px;
     height: 40px;
     border-radius: 50px;
 }
-.commentedUsertracknamelogo>p{
+
+.commentedUsertracknamelogo>p {
     margin-left: 12px;
     font-size: 15px;
     font-weight: 500;
 }
-.CommentDataDiv > p{
+
+.CommentDataDiv>p {
     margin: 0;
     margin-left: 50px;
 }
-.divforbuttonincomment{
+
+.divforbuttonincomment {
     display: flex;
     flex-direction: row;
     width: 100%;
     align-items: center;
     height: 30px;
-    
+
 }
-.voteUpDownincomment{
+
+.voteUpDownincomment {
     display: flex;
     flex-direction: row;
     align-items: center;
-    
+
     margin-left: 50px;
 }
-.voteUpDownincomment >p{
+
+.voteUpDownincomment>p {
     color: #000;
 }
-.insideCommentUpVote{
+
+.insideCommentUpVote {
     /* display: inline-block;
     font-size: 4px;
     transform: scale(9, 9); */
@@ -527,7 +588,9 @@ margin: 0;
     color: rgb(160, 153, 153);
     cursor: pointer;
     font-size: 8px;
-}.insideCommentDownVote{
+}
+
+.insideCommentDownVote {
     /* display: inline-block;
     font-size: 4px;
     transform: scale(9, 9); */
@@ -538,7 +601,8 @@ margin: 0;
     color: rgb(159, 154, 154);
     cursor: pointer;
 }
-.CommentinsideComment{
+
+.CommentinsideComment {
     display: flex;
     flex-direction: row;
     height: 31px;
@@ -549,13 +613,16 @@ margin: 0;
     padding-right: 7px;
     align-items: center;
 }
-.CommentinsideComment > p{
+
+.CommentinsideComment>p {
     margin-left: 4px;
 }
-.iconinreply{
+
+.iconinreply {
     color: rgb(131, 135, 138);
 }
-.btnshare{
+
+.btnshare {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -563,43 +630,75 @@ margin: 0;
     height: 100%;
     width: 50px;
 }
-.btnshare:hover{
+
+.btnshare:hover {
     background: #b6b1b1;
 
 }
-.Upvoteinpost{
-    transform: scale(2,2);
+
+.Upvoteinpost {
+    transform: scale(2, 2);
     cursor: pointer;
 }
-.UpvoteinpostDown{
-    transform: scale(2,2);
+
+.UpvoteinpostDown {
+    transform: scale(2, 2);
     cursor: pointer;
     margin-top: 0px;
 }
-@media only screen and (max-width: 768px){
-   .LoginResultPost{
-    width: auto;
-   }
-   .logo{
-    width: 40px;
-    height: 40px;
-   }
-   .COMMUNITYNAme{
-    font-size: 25px;
-   }
-   .headerLoginResult{
-    align-items: center;
-    margin-top: 8px;
-    height: 25px;
-   }
-   .posauth{
-    font-size: 25px;
-   }
-   .imgdiv{
-    margin-top: 10px;
-   }
-   .posttittle{
-    margin-top: 10px;
-   }
-  
+
+@media only screen and (max-width: 767px) {
+    .LoginResultPost {
+        width: auto;
+    }
+    .LoginPostImge {
+        width: 100%;
+        height: 100%;
+        margin-left: 0 !important;
+        padding-right: 15px;
+    }
+    .RestOfCommentPart{
+        margin: 0;
+    }
+    .PostDetails{
+        display: none;
+    }
+    .logo {
+        width: 40px;
+        height: 40px;
+    }
+
+    .COMMUNITYNAme {
+        font-size: 25px;
+    }
+
+    .headerLoginResult {
+        align-items: center;
+        margin-top: 8px;
+        height: 25px;
+    }
+
+    .posauth {
+        font-size: 25px;
+    }
+
+    .imgdiv {
+        margin-top: 10px;
+    }
+
+    .posttittle {
+        margin-top: 10px;
+    }
+    .CommentHeader{
+        width: 100%;
+    }
+    .postdivforcomment{
+        width: 100%;
+        margin-left: 0;
+        padding-bottom: 200px;
+    }
+    .commentMarket{
+        display: none;
+        margin-left: 0;
+    }
 }
