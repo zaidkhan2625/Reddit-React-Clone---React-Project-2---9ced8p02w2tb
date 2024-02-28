@@ -20,6 +20,7 @@ import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import { fa0, faCommentDots, faL } from "@fortawesome/free-solid-svg-icons";
 import MenuIcon from '@mui/icons-material/Menu';
 import { createContext } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 export const stateContext = createContext();
 const style = {
   position: "absolute",
@@ -59,6 +60,7 @@ function Hader() {
   const [EmailError , SetEmailError]= useState("");
   const [PasswordError ,SetPasswordError]=useState("");
   const [commonError , SetcommonError]=useState("");
+  const navigate=useNavigate();
   const handeldropdown = (e) => {
     SetdrowpOpen(true);
     setModalPosition({ x: e.clientX, y: e.clientY });
@@ -382,10 +384,10 @@ function Hader() {
                 <MenuItem icon={<AccountCircleOutlinedIcon />} onClick={()=>alert("Still Working On it")}>
                   My Staff
                 </MenuItem>
-                <MenuItem  onClick={()=>alert("Still Working On it")}>Online Status</MenuItem>
-                <MenuItem  onClick={()=>alert("Still Working On it")}>Profile</MenuItem>
-                <MenuItem  onClick={()=>alert("Still Working On it")}>Create Avatar</MenuItem>
-                <MenuItem  onClick={()=>alert("Still Working On it")}>User Setting</MenuItem>
+                <MenuItem  onClick={()=>alert("Still Working On it")}>Home</MenuItem>
+                <MenuItem  onClick={()=>alert("Still Working On it")}>Popular Community</MenuItem>
+                <MenuItem  onClick={()=>alert("Still Working On it")}>Creat Post</MenuItem>
+                <MenuItem  onClick={()=>alert("Still Working On it")}>User </MenuItem>
 
                 <MenuItem onClick={()=>alert("Still Working On it")}>Premiumn Reddit</MenuItem>
               </div>
@@ -413,6 +415,9 @@ function Hader() {
   const handleCloseSignUp = () => {
     SetopenSignUp(false);
   };
+  const HandelLOgoClick =()=>{
+    navigate("/");
+  }
   return (
     <>
       <div className="header">
@@ -421,7 +426,7 @@ function Hader() {
         </div>
        
 
-        <div className="LogoAndName">
+        <div className="LogoAndName" onClick={HandelLOgoClick}>
           <img
             className="headerlogo"
             src="https://seeklogo.com/images/R/reddit-logo-23F13F6A6A-seeklogo.com.png"

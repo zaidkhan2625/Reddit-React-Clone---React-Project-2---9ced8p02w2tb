@@ -121,9 +121,12 @@ function Result({ isloggedin, Setisloggedin }) {
   );
 }
 function Popular({ name, image }) {
+ const  HandelDead=()=>{
+    alert("there is no more details");
+  }
   return (
     <>
-      <div className="resultPopular">
+      <div className="resultPopular" onClick={HandelDead}>
         <div className="popularLogo">
           <img className="img" src={image} />
         </div>

@@ -54,6 +54,7 @@
     display: flex;
     flex: 0;
     height: 100%;
+    margin-right: 10px;
 }
 .forTheoption {
     width: 0px;
@@ -442,7 +443,13 @@
 .loginheadbar:hover {
     background: #DAE0E6;
 }
-
+.MenuIcon{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 5px;
+    width: 30px;
+}
 .WithoutLoginPartHandel{
     display: flex;
     flex-direction: row;
