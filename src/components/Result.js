@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import HomeComponent from "./HompeComponent";
 import "../styles/Result.css";
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import ThumbDownAltOutlinedIcon from "@mui/icons-material/ThumbDownAltOutlined";
 import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
@@ -79,39 +79,31 @@ function Result({ isloggedin, Setisloggedin }) {
   const handleSeeLess = () => {
     setShowMore(false);
   };
-  
-  
-return (
+
+  return (
     <>
       <div className="resultmain">
         <div className="sidebar">
           <HomeComponent className="sidebar" />
         </div>
         <div className="resultboadypart">
-          {postData.map((item) => 
+          {postData.map((item) => (
             <PostDataFunction
               image={item.author.profileImage}
               name={item.author.name}
               content={item.content}
               likeCount={item.likeCount}
               commentCount={item.commentCount}
-              PostImages={item.images[0]
-              }
+              PostImages={item.images[0]}
             />
-            
-            
-          )}
-          
-          
+          ))}
         </div>
-
         <div className="popularResult">
           <p className="PopularCommunites">POPULAR COMMUNITIES</p>
           {Array.isArray(popularData.data) &&
             popularData.data
               .slice(0, showMore ? popularData.data.length : 5)
               .map((item) => <Popular name={item.name} image={item.image} />)}
-
           {!showMore && (
             <button className="showmore" onClick={handleSeeMore}>
               See More
@@ -143,41 +135,48 @@ function Popular({ name, image }) {
     </>
   );
 }
-function PostDataFunction({ image, name, content, likeCount, commentCount,PostImages }) {
+function PostDataFunction({
+  image,
+  name,
+  content,
+  likeCount,
+  commentCount,
+  PostImages,
+}) {
   return (
     <>
       <div className="resultdivsection">
         <div className="resultHeadin">
-         <div className="rightheaddata">
-         <img className="profilelogo" src={image} />
-          <p className="username">{name}</p>
-          <p className="timePost">time of post</p>
-         </div>
+          <div className="rightheaddata">
+            <img className="profilelogo" src={image} />
+            <p className="username">{name}</p>
+            <p className="timePost">time of post</p>
+          </div>
           <div className="joinbutton">
             <button className="join">join</button>
-            <MoreHorizIcon className="horiz"/>
+            <MoreHorizIcon className="horiz" />
           </div>
         </div>
         <div className="resultBody">
           <p className="twoLineEllipsis">{content}</p>
-          <img className="PostImage" src={PostImages}/>
+          <img className="PostImage" src={PostImages} />
         </div>
         <div className="resultFooter">
           <div className="Like">
             <ThumbUpOutlinedIcon /> <p className="likecounnt">{likeCount}</p>
             <ThumbDownAltOutlinedIcon />
           </div>
-          <div className="commentdiv"> 
+          <div className="commentdiv">
             <ChatBubbleOutlineOutlinedIcon />
             <p className="comment">{commentCount}</p>
           </div>
           <div className="commentdiv">
-          <FontAwesomeIcon icon={faArrowUpFromBracket} /><p className="share">share</p>
+            <FontAwesomeIcon icon={faArrowUpFromBracket} />
+            <p className="share">share</p>
           </div>
         </div>
       </div>
-      
     </>
   );
 }
-export default Hoc (Result);
+export default Hoc(Result);

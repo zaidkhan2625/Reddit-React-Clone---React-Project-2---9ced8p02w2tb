@@ -17,7 +17,8 @@ import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
 import OutboundOutlinedIcon from "@mui/icons-material/OutboundOutlined";
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
-import { faCommentDots } from "@fortawesome/free-solid-svg-icons";
+import { fa0, faCommentDots, faL } from "@fortawesome/free-solid-svg-icons";
+import MenuIcon from '@mui/icons-material/Menu';
 import { createContext } from "react";
 export const stateContext = createContext();
 const style = {
@@ -55,10 +56,32 @@ function Hader() {
   const [logindata, Slogindata] = useState([]);
   const [User, SetUser] = useState("");
   const [openSignUp, SetopenSignUp] = useState(false);
+  const [EmailError , SetEmailError]= useState("");
+  const [PasswordError ,SetPasswordError]=useState("");
+  const [commonError , SetcommonError]=useState("");
   const handeldropdown = (e) => {
     SetdrowpOpen(true);
     setModalPosition({ x: e.clientX, y: e.clientY });
   };
+  const isValid=()=>{
+    let valid =true ;
+    if(LoginEmail.trim() === "")
+    {
+      valid =false;
+      SetEmailError("Hey Email is requierd")
+    }
+    else{
+      SetEmailError("");
+    }
+    if(LoginPassword.trim()=== ""){
+      valid = false;
+      SetPasswordError("Hello Password is requierd");
+    }
+    else{
+      SetPasswordError("");
+    }
+    return valid;
+  }
   const handelLogin = () => {
     setOpen(true);
     SetdrowpOpen(false);
@@ -103,6 +126,9 @@ function Hader() {
     }
   };
   const loginUser = async () => {
+    if(!isValid()){
+      return;
+    }
     const apiUrl = "https://academics.newtonschool.co/api/v1/user/login";
     const projectId = "pvxi7c9s239h";
     try {
@@ -123,8 +149,8 @@ function Hader() {
       // console.log("Login response:", response);
 
       if (!response.ok) {
-        // Handle login failure
-        throw new Error("Login failed");
+        SetcommonError("hey something is wrong");
+        return ;
       }
 
       // Assuming the server returns JSON data, you can parse it
@@ -190,16 +216,6 @@ function Hader() {
 
     const handleMenuClose = () => {
       setAnchorEl(null);
-    };
-    const HandelViewprofile = () => {
-      SetProfile(true);
-      SetBooking(false);
-      navigate("/BookingPageDetail");
-    };
-    const HandelViewBooking = () => {
-      SetProfile(false);
-      SetBooking(true);
-      navigate("/BookingPageDetail");
     };
     return (
       <div className="">
@@ -332,12 +348,63 @@ function Hader() {
       </div>
     );
   }
+  function YourComponentForHamburgerIcon() {
+    const [anchorEl, setAnchorEl] = useState(null);
+    const handleMenuClick = (event) => {
+      setAnchorEl(event.currentTarget);
+    };
+    const handleMenuClose = () => {
+      setAnchorEl(null);
+    };
+    return (
+      <div>
+        <div onClick={handleMenuClick} className="">
+        <MenuIcon className="MenuIcon"/>
+        </div>
+        <div>
+          {/* className="menuinusername" */}
+          <Sidebar>
+            <Menu
+              anchorEl={anchorEl}
+              open={Boolean(anchorEl)}
+              onClose={handleMenuClose}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "right",
+              }}
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              getContentAnchorEl={null}
+            >
+              <div>
+                <MenuItem icon={<AccountCircleOutlinedIcon />} onClick={()=>alert("Still Working On it")}>
+                  My Staff
+                </MenuItem>
+                <MenuItem  onClick={()=>alert("Still Working On it")}>Online Status</MenuItem>
+                <MenuItem  onClick={()=>alert("Still Working On it")}>Profile</MenuItem>
+                <MenuItem  onClick={()=>alert("Still Working On it")}>Create Avatar</MenuItem>
+                <MenuItem  onClick={()=>alert("Still Working On it")}>User Setting</MenuItem>
+
+                <MenuItem onClick={()=>alert("Still Working On it")}>Premiumn Reddit</MenuItem>
+              </div>
+              {/* Add more menu items as needed */}
+            </Menu>
+          </Sidebar>
+        </div>
+      </div>
+    );
+  }
 
   const Handellogout = () => {
+    if(!isloggedin){
+      alert("Hey LOg in First");
+      return ;
+    }
     setIsUserLoggedIn(false);
     Setisloggedin(false);
     localStorage.setItem("login", false);
-    console.log("after logout lgn stst", localStorage.getItem("login"));
   };
   const HandelSignInPopUpBox = () => {
     SetopenSignUp(true);
@@ -349,7 +416,10 @@ function Hader() {
   return (
     <>
       <div className="header">
-        {/* <MobileviewSideBar className="MenuIcon"/> */}
+        <div className="MenuIcon">
+        <YourComponentForHamburgerIcon/>
+        </div>
+       
 
         <div className="LogoAndName">
           <img
@@ -360,13 +430,14 @@ function Hader() {
         </div>
 
         <div className="headerserchinput">
-          <SearchIcon className="serchicon" onClick={fetchRedditPosts} />
+          
           <input
             type="text"
             name=""
             placeholder="Search reddit"
             onChange={(e) => SetSdearchValue(e.target.value)}
           />
+          <SearchIcon className="serchicon" onClick={fetchRedditPosts} />
         </div>
         <div className="rightSideFortheloginHeader">
           {isloggedin ? (
@@ -385,18 +456,24 @@ function Hader() {
         >
           <Box sx={style} className="PopupBoxLogi">
             <h5 className="LOgintext"> Log in</h5>
+            <p style={{color:"red"}}>{EmailError}</p>
+            <p style={{color:"red"}}>{commonError}</p>
+
             <input
               className="LoginInputFeild"
               type="text"
               placeholder="user Email"
               onChange={(e) => SetLoginEmail(e.target.value)}
             />
+            <p style={{color:"red"}}>{EmailError}</p>
             <input
               className="LoginInputFeild"
               type="password"
               placeholder="Password"
               onChange={(e) => SetLoginPassword(e.target.value)}
             />
+                        <p style={{color:"red"}}>{PasswordError}</p>
+
             <a className="forgetPassword" href="#">
               forget password?
             </a>
