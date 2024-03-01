@@ -1,0 +1,8 @@
+.divforpremium{
+    width: 100%;
+    height: 100vh;
+}
+.divforpremium>img{
+    width: 100%;
+    height: 100%;
+}

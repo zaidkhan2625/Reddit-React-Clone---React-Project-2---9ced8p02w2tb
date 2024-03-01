@@ -5,10 +5,6 @@ import Modal from "@mui/material/Modal";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ChatBubbleOutlineSharpIcon from "@mui/icons-material/ChatBubbleOutlineSharp";
-import InputLabel from '@mui/material/InputLabel';
-import FormHelperText from '@mui/material/FormHelperText';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import moment from "moment";
@@ -415,6 +411,7 @@ function LoginResultPost({
       </div>
     );
   }
+ 
   function YourComponentNoneComment({ commentid, DeleteComment }) {
     const [anchorEl, setAnchorEl] = useState(null);
   
@@ -494,6 +491,10 @@ function LoginResultPost({
       throw error;
     }
   }
+  const handleImageError = (event) => {
+    // Set a default image path when the image fails to load
+    event.target.src = 'https://fastly.picsum.photos/id/96/640/480.jpg?hmac=IAdq6eZIR1xi6-jdksJOpI6V1YhMxcWn9A8uDw4BS0E';
+  };
     return (
     <div className="LoginResultPost">
       <div className="Vote">
@@ -529,7 +530,8 @@ function LoginResultPost({
               <Box sx={style} className="ModelBox">
                 <img className="imglogodrop" src={profileImage} />
                 <p className="authorname"> {name}</p>
-                <p className="ChannelName">{channelName}</p>
+                <p className="ChannelName">{channelName}
+                </p>
                 <div className="likeandFallow">
                   <div className="numberoffallower">
                     <span className="numberofpodt">1.6K</span>
@@ -540,7 +542,7 @@ function LoginResultPost({
                     <span className="karmatype">Comment karma</span>
                   </div>
                 </div>
-                <button className="chatButton">Start Chat</button>
+                <button className="chatButton" onClick={()=>alert("still under work")}>Start Chat</button>
                 {follobtn ? (
                   <button className="fallowbtn" onClick={Handelfallow}>
                     Follow
@@ -557,7 +559,7 @@ function LoginResultPost({
         </div>
         <p className="posttittle">post titel</p>
         <div className="imgdiv">
-          <img className="LoginPostImge" src={channelImage} />
+          <img className="LoginPostImge" src={channelImage}  onError={handleImageError}/>
         </div>
         <div className="resultFooter">
           <div className="resultbutton" onClick={() => handleCommentOpen()}>
@@ -574,7 +576,7 @@ function LoginResultPost({
             <p>Save</p>
           </div>
           <div className="resultbutton">
-            <p>...</p>
+          <MoreHorizIcon/>
           </div>
         </div>
       </div>

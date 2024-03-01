@@ -16,36 +16,47 @@ function LoginResultComponent() {
   const [data, setData] = useState([]);
   const {LoginJwt} = useStateValue();
   const navigate=useNavigate();
-  const sortedData = data.splice().sort((a, b) => a.likeCount-b.likeCount);
+  const sortedData = [...data].sort((a, b) =>  b.likeCount - a.likeCount);
   useEffect(() => {
+    const projectId = "pvxi7c9s239h";
+  
     const fetchPost = async () => {
-      const projectId = "pvxi7c9s239h";
       try {
         const response = await fetch(
-          "https://academics.newtonschool.co/api/v1/reddit/post?limit=20",
+          "https://academics.newtonschool.co/api/v1/reddit/post?limit=100",
           {
             headers: {
-              projectID: "projectId",
+              projectId: projectId, // Use the same case for headers
             },
           }
         );
-
+  
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
-
+  
         const data = await response.json();
         // Handle the data as needed
         setData(data.data);
         console.log(data);
+  
+        // Log the result again (if needed)
+        console.log("rtesukygbuhkyib", data);
       } catch (error) {
         // Handle fetch errors
         console.error("Fetch error:", error);
       }
     };
-    fetchPost();
+  
     // Call the function to fetch data
+    fetchPost();
   }, []);
+  
+  // console.log("sorted data" , sortedData);
+  const gotopremium =()=>{
+    navigate("/premium");
+  }
+
    return (
     <>
       {/* <Hader/> */}
@@ -83,7 +94,6 @@ function LoginResultComponent() {
               <LoginResultPost
                 name={item.author.name}
                 commentCount={item.commentCount}
-                channelName={item.channel.name}
                 id={item._id}
                 authid={item.author._id}
                 likeCount={item.likeCount}
@@ -107,7 +117,7 @@ function LoginResultComponent() {
                 <p>The best Reddit Experience</p>
               </div>
             </div>
-            <button className="premiumButton" onClick={async()=>await alert("still under work")}>Try Now</button>
+            <button className="premiumButton" onClick={async()=>await gotopremium()}>Try Now</button>
           </div>
           <div className="homecreate">
             <img

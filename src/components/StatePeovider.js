@@ -8,6 +8,8 @@ const StateProvider = ({ children }) => {
   const [LoginJwt, setLoginjwt] = useState("");
   const [LoginUserId, SetLoginUserId] = useState("");
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(localStorage.getItem("login") === 'true');
+  const [nmberOfcomment , SetnmberOfcomment]=useState("");
+  const [cCount, SetcCount] = useState(nmberOfcomment);
 
 
   return (
@@ -19,7 +21,9 @@ const StateProvider = ({ children }) => {
         setLoginjwt,
         LoginUserId,
         SetLoginUserId,
-        isUserLoggedIn, setIsUserLoggedIn
+        isUserLoggedIn, setIsUserLoggedIn,
+        cCount, SetcCount,
+        SetnmberOfcomment,
       }}
     >
       {children}

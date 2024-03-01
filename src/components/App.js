@@ -4,11 +4,13 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import LoginResultComponent from "./LoginResultComponent";
 import CreatePost from "./CreatePost";
 import ProtectedRouter from "./ProtectedRouter";
+import PremiumimComponent from "./PremiumimComponent";
 function App() {
   return (
     <Router>
       <div className="App">
         <Routes>
+         <Route path="/premium" element={<PremiumimComponent/>}></Route>
           <Route
             path="/Createpost"
             element={

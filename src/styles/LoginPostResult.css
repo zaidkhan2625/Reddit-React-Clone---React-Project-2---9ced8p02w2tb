@@ -411,6 +411,7 @@
 }
 .commentDataDiv{
     min-height: 100vh;
+    margin-bottom: 100px;
 }
 .postdivforcomment {
     margin-top: 40px;
