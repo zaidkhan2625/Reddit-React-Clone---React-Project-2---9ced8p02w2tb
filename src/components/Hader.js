@@ -192,9 +192,9 @@ function Hader() {
     return (
       <>
         <div className="WithoutLoginPartHandel">
-          <p className="redditRecape">🍌</p>
+          <p className="redditRecape"  onClick={async()=>await alert("still under work")}>🍌</p>
           <span className="bar"> </span>
-          <div className="barcodelogo">
+          <div className="barcodelogo" onClick={async()=>await alert("still under work")}>
             <QrCode2OutlinedIcon className="barcode" />
             Get App
           </div>
@@ -252,22 +252,22 @@ function Hader() {
       <>
         <div className="withloginresult">
           <div className="pp">
-            <OutboundOutlinedIcon className="loginheadbar" />
+            <OutboundOutlinedIcon className="loginheadbar" onClick={async()=>await alert("still under work")}/>
           </div>
-          <p className="redditrecap">🍌</p>
+          <p className="redditrecap" onClick={async()=>await alert("still under work")}>🍌</p>
           <div className="pp">
             {" "}
-            <FontAwesomeIcon icon={faCommentDots} className="loginheadbar" />
+            <FontAwesomeIcon icon={faCommentDots} className="loginheadbar" onClick={async()=>await alert("still under work")} />
           </div>
-          <div className="pp">
+          <div className="pp" onClick={async()=>await alert("still under work")}>
             {" "}
             <AddOutlinedIcon className="loginheadbar" />
           </div>
           <div className="pp">
             {" "}
-            <NotificationsNoneOutlinedIcon className="loginheadbar" />
+            <NotificationsNoneOutlinedIcon onClick={async()=>await alert("still under")}className="loginheadbar" />
           </div>
-          <div className="Adverties">
+          <div className="Adverties" onClick={async()=>await alert("still under work")}>
             <CampaignOutlinedIcon className="" /> <p>Adverties</p>
           </div>
           <div className="logindiv">

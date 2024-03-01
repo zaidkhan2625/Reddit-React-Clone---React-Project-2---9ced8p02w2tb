@@ -242,7 +242,6 @@ function CreatePost() {
             <button className="Markdown">MarkDown Mode</button>
           </div>
         </div>
-       {textareaContent}
         <textarea
           placeholder="Text (optional)"
           className="inputcontent"

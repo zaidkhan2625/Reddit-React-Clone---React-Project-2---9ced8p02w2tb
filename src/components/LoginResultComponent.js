@@ -16,6 +16,7 @@ function LoginResultComponent() {
   const [data, setData] = useState([]);
   const {LoginJwt} = useStateValue();
   const navigate=useNavigate();
+  const sortedData = data.splice().sort((a, b) => a.likeCount-b.likeCount);
   useEffect(() => {
     const fetchPost = async () => {
       const projectId = "pvxi7c9s239h";
@@ -45,8 +46,7 @@ function LoginResultComponent() {
     fetchPost();
     // Call the function to fetch data
   }, []);
-  console.log("jwt token is in logresult componeent:",LoginJwt);
-  return (
+   return (
     <>
       {/* <Hader/> */}
       <div className="Logincomponentresult">
@@ -77,7 +77,7 @@ function LoginResultComponent() {
             <FontAwesomeIcon icon={faFireFlameSimple} />
             Hot
           </div>
-          {data.map((item) => {
+          {sortedData.map((item) => {
             return(
             <div className="postdiv">
               <LoginResultPost
@@ -107,7 +107,7 @@ function LoginResultComponent() {
                 <p>The best Reddit Experience</p>
               </div>
             </div>
-            <button className="premiumButton">Try Now</button>
+            <button className="premiumButton" onClick={async()=>await alert("still under work")}>Try Now</button>
           </div>
           <div className="homecreate">
             <img
@@ -122,7 +122,7 @@ function LoginResultComponent() {
             <Link to="/Createpost">
               <button className="creatPost">Creat Post</button>
             </Link>
-            <button className="creatcommunity">Creat Communitiy</button>
+            <button className="creatcommunity" onClick={async()=>await alert("still under work")}>Creat Communitiy</button>
           </div>
           <div className="Agreement">
             <div className="AgreementTerm">
