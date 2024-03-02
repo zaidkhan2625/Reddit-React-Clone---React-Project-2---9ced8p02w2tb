@@ -18,7 +18,7 @@ import OutboundOutlinedIcon from "@mui/icons-material/OutboundOutlined";
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import { fa0, faCommentDots, faL } from "@fortawesome/free-solid-svg-icons";
-import MenuIcon from '@mui/icons-material/Menu';
+import MenuIcon from "@mui/icons-material/Menu";
 import { createContext } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 export const stateContext = createContext();
@@ -37,7 +37,6 @@ function Hader() {
   const {
     isloggedin,
     Setisloggedin,
-    setLoginjwt,
     LoginUserId,
     SetLoginUserId,
     setIsUserLoggedIn,
@@ -54,36 +53,31 @@ function Hader() {
   const [drowpOpen, SetdrowpOpen] = useState(false);
   const [modalPosition, setModalPosition] = useState({ x: 0, y: 0 });
   const [searchValue, SetSdearchValue] = useState("");
-  const [logindata, Slogindata] = useState([]);
-  const [User, SetUser] = useState("");
   const [openSignUp, SetopenSignUp] = useState(false);
-  const [EmailError , SetEmailError]= useState("");
-  const [PasswordError ,SetPasswordError]=useState("");
-  const [commonError , SetcommonError]=useState("");
-  const navigate=useNavigate();
+  const [EmailError, SetEmailError] = useState("");
+  const [PasswordError, SetPasswordError] = useState("");
+  const [commonError, SetcommonError] = useState("");
+  const navigate = useNavigate();
   const handeldropdown = (e) => {
     SetdrowpOpen(true);
     setModalPosition({ x: e.clientX, y: e.clientY });
   };
-  const isValid=()=>{
-    let valid =true ;
-    if(LoginEmail.trim() === "")
-    {
-      valid =false;
-      SetEmailError("Hey Email is requierd")
-    }
-    else{
+  const isValid = () => {
+    let valid = true;
+    if (LoginEmail.trim() === "") {
+      valid = false;
+      SetEmailError("Hey Email is requierd");
+    } else {
       SetEmailError("");
     }
-    if(LoginPassword.trim()=== ""){
+    if (LoginPassword.trim() === "") {
       valid = false;
       SetPasswordError("Hello Password is requierd");
-    }
-    else{
+    } else {
       SetPasswordError("");
     }
     return valid;
-  }
+  };
   const handelLogin = () => {
     setOpen(true);
     SetdrowpOpen(false);
@@ -98,7 +92,6 @@ function Hader() {
   const signupUser = async () => {
     const apiUrl = "https://academics.newtonschool.co/api/v1/user/signup";
     const projectId = "pvxi7c9s239h";
-
     try {
       const response = await fetch(apiUrl, {
         method: "POST",
@@ -113,22 +106,18 @@ function Hader() {
           appType: "reddit",
         }),
       });
-      // Assuming the server returns JSON data, you can parse it
       const data = await response.json();
       console.log("Signup successful:", data);
       if (data.status === "success") {
         alert("Your sign up is successful move backe for login");
         handleOpen();
       }
-      SetJwt(data.token);
-      // Handle success as needed
     } catch (error) {
       console.error("Error during signup:", error.message);
-      // Handle the error as needed
     }
   };
   const loginUser = async () => {
-    if(!isValid()){
+    if (!isValid()) {
       return;
     }
     const apiUrl = "https://academics.newtonschool.co/api/v1/user/login";
@@ -146,56 +135,42 @@ function Hader() {
           appType: "reddit",
         }),
       });
-
-      // Log the entire response object
-      // console.log("Login response:", response);
-
       if (!response.ok) {
         SetcommonError("hey something is wrong");
-        return ;
+        return;
       }
-
-      // Assuming the server returns JSON data, you can parse it
       const data = await response.json();
-      // console.log("Login successful:", data);
-      // console.log("Setting isloggedin to true", isloggedin);
+      console.log("Login successful:", data);
       if (data.status === "success") {
         setIsUserLoggedIn(true);
         Setisloggedin(true);
-        sessionStorage.setItem("jwttoken",data.token)
-        // setloginjwt(data.token);
-        // console.log("user nme ", data.data.name);
-        SetUser(data.data.name);
-      //  console.log("LoginJwt",LoginJwt);
-        // console.log("jwt token:", data.token);
-        // localStorage.setItem("login", true);
-        // console.log("login status", localStorage.getItem("login"));
-        localStorage.setItem("loginuserid", data.data._id);
+        sessionStorage.setItem("jwttoken", data.token);
         localStorage.setItem("loginuserName", data.data.name);
-        // console.log("user login id:", localStorage.getItem("loginuserid"));
-        SetLoginUserId(localStorage.getItem("loginuserid"));
-        console.log(
-          "login user id after setting from local storage",
-          LoginUserId
-        );
+        SetLoginUserId(data.data._id);
       }
-
-      // Handle success as needed
       return data;
     } catch (error) {
       console.error("Error during login:", error.message);
-      // Handle the error as needed
       throw error;
     }
   };
   const usernamelogin = localStorage.getItem("loginuserName");
+  console.log("login user id after setting from local storage", LoginUserId);
   const Withoutloggin = () => {
     return (
       <>
         <div className="WithoutLoginPartHandel">
-          <p className="redditRecape"  onClick={async()=>await alert("still under work")}>🍌</p>
+          <p
+            className="redditRecape"
+            onClick={async () => await alert("still under work")}
+          >
+            🍌
+          </p>
           <span className="bar"> </span>
-          <div className="barcodelogo" onClick={async()=>await alert("still under work")}>
+          <div
+            className="barcodelogo"
+            onClick={async () => await alert("still under work")}
+          >
             <QrCode2OutlinedIcon className="barcode" />
             Get App
           </div>
@@ -212,11 +187,9 @@ function Hader() {
   };
   function YourComponentNoneCommentinLoging() {
     const [anchorEl, setAnchorEl] = useState(null);
-
     const handleMenuClick = (event) => {
       setAnchorEl(event.currentTarget);
     };
-
     const handleMenuClose = () => {
       setAnchorEl(null);
     };
@@ -225,8 +198,6 @@ function Hader() {
         <div className="" onClick={handleMenuClick}>
           <MoreHorizOutlinedIcon />
         </div>
-
-        {/* Dropdown Menu */}
         <Menu
           anchorEl={anchorEl}
           open={Boolean(anchorEl)}
@@ -253,22 +224,43 @@ function Hader() {
       <>
         <div className="withloginresult">
           <div className="pp">
-            <OutboundOutlinedIcon className="loginheadbar" onClick={async()=>await alert("still under work")}/>
+            <OutboundOutlinedIcon
+              className="loginheadbar"
+              onClick={async () => await alert("still under work")}
+            />
           </div>
-          <p className="redditrecap" onClick={async()=>await alert("still under work")}>🍌</p>
+          <p
+            className="redditrecap"
+            onClick={async () => await alert("still under work")}
+          >
+            🍌
+          </p>
           <div className="pp">
             {" "}
-            <FontAwesomeIcon icon={faCommentDots} className="loginheadbar" onClick={async()=>await alert("still under work")} />
+            <FontAwesomeIcon
+              icon={faCommentDots}
+              className="loginheadbar"
+              onClick={async () => await alert("still under work")}
+            />
           </div>
-          <div className="pp" onClick={async()=>await alert("still under work")}>
+          <div
+            className="pp"
+            onClick={async () => await alert("still under work")}
+          >
             {" "}
             <AddOutlinedIcon className="loginheadbar" />
           </div>
           <div className="pp">
             {" "}
-            <NotificationsNoneOutlinedIcon onClick={async()=>await alert("still under")}className="loginheadbar" />
+            <NotificationsNoneOutlinedIcon
+              onClick={async () => await alert("still under")}
+              className="loginheadbar"
+            />
           </div>
-          <div className="Adverties" onClick={async()=>await alert("still under work")}>
+          <div
+            className="Adverties"
+            onClick={async () => await alert("still under work")}
+          >
             <CampaignOutlinedIcon className="" /> <p>Adverties</p>
           </div>
           <div className="logindiv">
@@ -310,9 +302,9 @@ function Hader() {
     const handleMenuClose = () => {
       setAnchorEl(null);
     };
-    const  handelDead =()=>{
+    const handelDead = () => {
       navigate("/Dead");
-    }
+    };
     return (
       <div>
         <div onClick={handleMenuClick} className="ProfileLoginName">
@@ -320,7 +312,6 @@ function Hader() {
           <p>{usernamelogin}</p>
         </div>
         <div>
-          {/* className="menuinusername" */}
           <Sidebar>
             <Menu
               anchorEl={anchorEl}
@@ -337,13 +328,16 @@ function Hader() {
               getContentAnchorEl={null}
             >
               <div>
-                <MenuItem icon={<AccountCircleOutlinedIcon />} onClick={()=>alert("Still Working On it")}>
+                <MenuItem
+                  icon={<AccountCircleOutlinedIcon />}
+                  onClick={() => alert("Still Working On it")}
+                >
                   My Staff
                 </MenuItem>
-                <MenuItem  onClick={handelDead}>Online Status</MenuItem>
-                <MenuItem  onClick={handelDead}>Profile</MenuItem>
-                <MenuItem  onClick={handelDead}>Create Avatar</MenuItem>
-                <MenuItem  onClick={handelDead}>User Setting</MenuItem>
+                <MenuItem onClick={handelDead}>Online Status</MenuItem>
+                <MenuItem onClick={handelDead}>Profile</MenuItem>
+                <MenuItem onClick={handelDead}>Create Avatar</MenuItem>
+                <MenuItem onClick={handelDead}>User Setting</MenuItem>
 
                 <MenuItem onClick={Handellogout}>Log out</MenuItem>
               </div>
@@ -362,16 +356,15 @@ function Hader() {
     const handleMenuClose = () => {
       setAnchorEl(null);
     };
-    const  handelDead =()=>{
+    const handelDead = () => {
       navigate("/Dead");
-    }
+    };
     return (
       <div>
         <div onClick={handleMenuClick} className="">
-        <MenuIcon className="MenuIcon"/>
+          <MenuIcon className="MenuIcon" />
         </div>
         <div>
-          {/* className="menuinusername" */}
           <Sidebar>
             <Menu
               anchorEl={anchorEl}
@@ -388,28 +381,29 @@ function Hader() {
               getContentAnchorEl={null}
             >
               <div>
-                <MenuItem icon={<AccountCircleOutlinedIcon />} onClick={()=>alert("Still Working On it")}>
+                <MenuItem
+                  icon={<AccountCircleOutlinedIcon />}
+                  onClick={() => alert("Still Working On it")}
+                >
                   My Staff
                 </MenuItem>
-                <MenuItem  onClick={handelDead}>Home</MenuItem>
-                <MenuItem  onClick={handelDead}>Popular Community</MenuItem>
-                <MenuItem  onClick={handelDead}>Creat Post</MenuItem>
-                <MenuItem  onClick={handelDead}>User </MenuItem>
+                <MenuItem onClick={handelDead}>Home</MenuItem>
+                <MenuItem onClick={handelDead}>Popular Community</MenuItem>
+                <MenuItem onClick={handelDead}>Creat Post</MenuItem>
+                <MenuItem onClick={handelDead}>User </MenuItem>
 
                 <MenuItem onClick={handelDead}>Premiumn Reddit</MenuItem>
               </div>
-              {/* Add more menu items as needed */}
             </Menu>
           </Sidebar>
         </div>
       </div>
     );
   }
-
   const Handellogout = () => {
-    if(!isloggedin){
+    if (!isloggedin) {
       alert("Hey LOg in First");
-      return ;
+      return;
     }
     setIsUserLoggedIn(false);
     Setisloggedin(false);
@@ -422,16 +416,15 @@ function Hader() {
   const handleCloseSignUp = () => {
     SetopenSignUp(false);
   };
-  const HandelLOgoClick =()=>{
+  const HandelLOgoClick = () => {
     navigate("/");
-  }
+  };
   return (
     <>
       <div className="header">
         <div className="MenuIcon">
-        <YourComponentForHamburgerIcon/>
+          <YourComponentForHamburgerIcon />
         </div>
-       
 
         <div className="LogoAndName" onClick={HandelLOgoClick}>
           <img
@@ -442,7 +435,6 @@ function Hader() {
         </div>
 
         <div className="headerserchinput">
-          
           <input
             type="text"
             name=""
@@ -468,24 +460,18 @@ function Hader() {
         >
           <Box sx={style} className="PopupBoxLogi">
             <h5 className="LOgintext"> Log in</h5>
-            {/* <p style={{color:"red"}}>{EmailError}</p>
-            <p style={{color:"red"}}>{commonError}</p> */}
-
             <input
               className="LoginInputFeild"
               type="text"
               placeholder="user Email"
               onChange={(e) => SetLoginEmail(e.target.value)}
             />
-            {/* <p style={{color:"red"}}>{EmailError}</p> */}
             <input
               className="LoginInputFeild"
               type="password"
               placeholder="Password"
               onChange={(e) => SetLoginPassword(e.target.value)}
             />
-                        {/* <p style={{color:"red"}}>{PasswordError}</p> */}
-
             <a className="forgetPassword" href="#">
               forget password?
             </a>

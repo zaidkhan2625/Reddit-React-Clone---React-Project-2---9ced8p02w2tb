@@ -11,12 +11,14 @@ import moment from "moment";
 import { useStateValue } from "./StatePeovider";
 
 function CommentData({ commentcontent, commentuserId, commentid }) {
-    const {LoginJwt,LoginUserId,cCount, SetcCount} = useStateValue();
+    const {LoginUserId,cCount, SetcCount} = useStateValue();
+
     const [userData, setUserData] = useState([]);
     const [delteboxincmnt,Setdelteboxincmnt] = useState(false);
     const [modalPosition, setModalPosition] = useState({ x: 0, y: 0 });
-
-
+    const  LoginJwt=sessionStorage.getItem("jwttoken");
+    console.log("jwt in commendaata" ,LoginJwt);
+    console.log("id",LoginUserId);
     useEffect(() => {
       const fetchData = async () => {
         const apiUrl = `https://academics.newtonschool.co/api/v1/reddit/user/${commentuserId}`;
@@ -42,7 +44,7 @@ function CommentData({ commentcontent, commentuserId, commentid }) {
 
       fetchData();
     }, [commentuserId, LoginJwt]);
-    async function DeleteComment(commentId) {
+    async function DeleteComment({commentId,LoginJwt}) {
         const projectId = "pvxi7c9s239h";
       
         try {
@@ -57,9 +59,9 @@ function CommentData({ commentcontent, commentuserId, commentid }) {
             }
           );
       
-          if (!response.ok) {
-            throw new Error(`Failed to delete comment. Status: ${response.status}`);
-          }
+          // if (!response.ok) {
+          //   throw new Error(`Failed to delete comment. Status: ${response.status}`);
+          // }
       
           // Check if response body is not empty
           const contentType = response.headers.get("content-type");
@@ -215,11 +217,11 @@ function CommentData({ commentcontent, commentuserId, commentid }) {
             <img src={userData.profileImage} />
             <p>{userData.name}</p>
             <p>
-              Posting time of it
+              {commentuserId}
             </p>
           </div>
           <p>
-            {commentcontent}
+            {commentcontent}{LoginUserId}
           </p>
           <div className="divforbuttonincomment">
             <div className="voteUpDownincomment">

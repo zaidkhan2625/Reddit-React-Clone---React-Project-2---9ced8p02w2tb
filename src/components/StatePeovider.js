@@ -5,6 +5,7 @@ export const stateContext = createContext();
 
 const StateProvider = ({ children }) => {
   const [isloggedin, Setisloggedin] = useState(false);
+  
 
   useEffect(() => {
     const saved_isloggedin = window.sessionStorage.getItem("isloggedin");
@@ -14,10 +15,11 @@ const StateProvider = ({ children }) => {
   useEffect(() => {
     window.sessionStorage.setItem("isloggedin", JSON.stringify(isloggedin))
   }, [isloggedin])
+  const [LoginUserId, SetLoginUserId] = useState("");
+
 
   // const [LoginJwt, setLoginjwt] fbwhjlvrhbhgrlhb bhvbjjrl
   // jkhlgeorwygbvlgo  
-  const [LoginUserId, SetLoginUserId] = useState("");
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(localStorage.getItem("login") === 'true');
   const [nmberOfcomment , SetnmberOfcomment]=useState("");
   const [cCount, SetcCount] = useState(nmberOfcomment);
