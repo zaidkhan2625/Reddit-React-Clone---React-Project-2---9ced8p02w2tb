@@ -22,6 +22,7 @@ import {
 import { CheckBox } from "@mui/icons-material";
 import { useStateValue } from "./StatePeovider";
 import Hoc from "../Hoc/Hoc";
+import { useNavigate } from "react-router-dom";
 function CreatePost() {
   const [PostBox, SetPostBox] = useState(false);
   const [PostBoxImg, SetPostBoxImg] = useState(false);
@@ -31,7 +32,7 @@ function CreatePost() {
   const { LoginJwt } = useStateValue();
   const [PostTitle, SetPostTitle] = useState("");
   const [textareaContent, setTextareaContent] = useState("");
-
+  const navigate= useNavigate();
   const HandelPostboxPostbgtm = () => {
     SetPostBox(true);
     SetPostBoxImg(false);
@@ -124,7 +125,7 @@ function CreatePost() {
       console.log("Post created successfully:", data);
       if(data.status==='success')
       {
-        alert("your post is created succesfullly");
+        navigate("/");
       }
       else
       {

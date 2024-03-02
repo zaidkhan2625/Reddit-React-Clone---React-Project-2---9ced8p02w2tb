@@ -1,9 +1,11 @@
 import React from 'react'
 import "../styles/Result.css";
+import { useNavigate } from 'react-router-dom';
 
 function Popular({ name, image }) {
+    const navigate = useNavigate();
     const  HandelDead=()=>{
-       alert("there is no more details");
+      navigate("/Dead");
      }
      return (
        <>

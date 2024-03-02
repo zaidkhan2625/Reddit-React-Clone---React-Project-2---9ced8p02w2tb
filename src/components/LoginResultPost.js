@@ -59,7 +59,7 @@ function LoginResultPost({
   const [cCount, SetcCount] = useState(commentCount);
   const [commentuserdetails, Setcommentuserdetails] = useState("");
   const [Commentdatebyuser, SetCommentdatebyuser] = useState("");
-  const [delteboxincmnt,Setdelteboxincmnt] = useState(false);
+  const [delteboxincmnt, Setdelteboxincmnt] = useState(false);
 
   // const [PostId, SetPostId] = useState("");
   const [follobtn, Setfollobtn] = useState(true);
@@ -99,7 +99,7 @@ function LoginResultPost({
   const HandelDownVOte = async () => {
     const apiUrl = `https://academics.newtonschool.co/api/v1/reddit/like/${id}`;
     const projectId = "pvxi7c9s239h";
-  
+
     try {
       const response = await fetch(apiUrl, {
         method: "DELETE",
@@ -111,10 +111,10 @@ function LoginResultPost({
       });
       console.log("jwt toke in login result post :", LoginJwt);
       console.log("authb id :", authid);
-  
+
       const data = await response.json();
       console.log("Follow user successful:", data);
-  
+
       // Handle success as needed
       if (data.status === "success") {
         // Update the vote count based on the previous state
@@ -197,7 +197,7 @@ function LoginResultPost({
   const HandelUpVOte = async () => {
     const apiUrl = `https://academics.newtonschool.co/api/v1/reddit/like/${id}`;
     const projectId = "pvxi7c9s239h";
-  
+
     try {
       const response = await fetch(apiUrl, {
         method: "POST",
@@ -209,10 +209,10 @@ function LoginResultPost({
       });
       console.log("jwt toke in login result post :", LoginJwt);
       console.log("authb id :", authid);
-  
+
       const data = await response.json();
       console.log("Follow user successful:", data);
-  
+
       // Handle success as needed
       if (data.status === "success") {
         // Update the vote count based on the previous state
@@ -255,9 +255,9 @@ function LoginResultPost({
       throw error;
     }
   };
-  const handleCloseDelteBtn =()=>{
+  const handleCloseDelteBtn = () => {
     setOpen(false);
-  }
+  };
   const handleOpen = (e) => {
     setOpen(true);
     setModalPosition({ x: e.clientX, y: e.clientY });
@@ -276,12 +276,12 @@ function LoginResultPost({
   const handleCloseCommentpopupbox = () => {
     SetcommentPop(false);
   };
-  const  HandelDeleteComment = () =>{
+  const HandelDeleteComment = () => {
     Setdelteboxincmnt(true);
-  } 
-  const handelcommentboxclose =() =>{
+  };
+  const handelcommentboxclose = () => {
     Setdelteboxincmnt(false);
-  }
+  };
   function CommentData({ commentcontent, commentuserId, commentid }) {
     const [userData, setUserData] = useState([]);
     useEffect(() => {
@@ -315,13 +315,9 @@ function LoginResultPost({
           <div className="commentedUsertracknamelogo">
             <img src={userData.profileImage} />
             <p>{userData.name}</p>
-            <p>
-              Posting time of it
-            </p>
+            <p>Posting time of it</p>
           </div>
-          <p>
-            {commentcontent}
-          </p>
+          <p>{commentcontent}</p>
           <div className="divforbuttonincomment">
             <div className="voteUpDownincomment">
               <span className="insideCommentUpVote">⇧</span>
@@ -334,58 +330,61 @@ function LoginResultPost({
             </div>
             <div className="btnshare">share</div>
             {commentuserId === loginuserid ? (
-              <YourComponent commentid={commentid} DeleteComment={DeleteComment} />
+              <YourComponent
+                commentid={commentid}
+                DeleteComment={DeleteComment}
+              />
             ) : (
-              
-             <YourComponentNoneComment/>
-        
+              <YourComponentNoneComment />
             )}
             {/* <MoreHorizIcon /> */}
           </div>
           <Modal
-              open={delteboxincmnt}
-              onClose={handelcommentboxclose}
-              aria-labelledby="modal-modal-title"
-              aria-describedby="modal-modal-description"
-              style={{
-                top: `${modalPosition.y}px`,
-                left: `${modalPosition.x}px`,
+            open={delteboxincmnt}
+            onClose={handelcommentboxclose}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+            style={{
+              top: `${modalPosition.y}px`,
+              left: `${modalPosition.x}px`,
+            }}
+          >
+            <Box
+              sx={{
+                width: 200,
+                height: 280,
+                bgcolor: "white", // Background color for the Box
+                boxShadow: 4,
+                p: 4,
               }}
             >
-              <Box sx={{
-      width: 200,
-      height: 280,
-      bgcolor: 'white', // Background color for the Box
-      boxShadow: 4,
-      p: 4,
-    }}>
-               <p>Delete</p>
-              </Box>
-            </Modal>
+              <p>Delete</p>
+            </Box>
+          </Modal>
         </div>
       </>
     );
   }
   function YourComponent({ commentid, DeleteComment }) {
     const [anchorEl, setAnchorEl] = useState(null);
-  
+
     const handleMenuClick = (event) => {
       setAnchorEl(event.currentTarget);
     };
-  
+
     const handleMenuClose = () => {
       setAnchorEl(null);
     };
-  
+
     const handleDeleteClick = () => {
       DeleteComment(commentid); // Call the DeleteComment function
       handleMenuClose(); // Close the menu after handling delete
     };
-  
+
     return (
       <div>
         <MoreHorizIcon onClick={handleMenuClick} />
-  
+
         <Menu
           anchorEl={anchorEl}
           open={Boolean(anchorEl)}
@@ -400,9 +399,9 @@ function LoginResultPost({
           }}
           getContentAnchorEl={null}
         >
-                    <MenuItem >Save</MenuItem>
-                    <MenuItem >Edit</MenuItem>
-                    <MenuItem >Follow</MenuItem>
+          <MenuItem>Save</MenuItem>
+          <MenuItem>Edit</MenuItem>
+          <MenuItem>Follow</MenuItem>
 
           <MenuItem onClick={handleDeleteClick}>Delete </MenuItem>
 
@@ -411,22 +410,22 @@ function LoginResultPost({
       </div>
     );
   }
- 
+
   function YourComponentNoneComment({ commentid, DeleteComment }) {
     const [anchorEl, setAnchorEl] = useState(null);
-  
+
     const handleMenuClick = (event) => {
       setAnchorEl(event.currentTarget);
     };
-  
+
     const handleMenuClose = () => {
       setAnchorEl(null);
     };
-  
+
     return (
       <div>
         <MoreHorizIcon onClick={handleMenuClick} />
-  
+
         <Menu
           anchorEl={anchorEl}
           open={Boolean(anchorEl)}
@@ -441,11 +440,9 @@ function LoginResultPost({
           }}
           getContentAnchorEl={null}
         >
-                    <MenuItem >Save</MenuItem>
-                    <MenuItem >Edit</MenuItem>
-                    <MenuItem >Follow</MenuItem>
-
-          
+          <MenuItem>Save</MenuItem>
+          <MenuItem>Edit</MenuItem>
+          <MenuItem>Follow</MenuItem>
 
           {/* Add more menu items as needed */}
         </Menu>
@@ -454,7 +451,7 @@ function LoginResultPost({
   }
   async function DeleteComment(commentId) {
     const projectId = "pvxi7c9s239h";
-  
+
     try {
       const response = await fetch(
         `https://academics.newtonschool.co/api/v1/reddit/comment/${commentId}`,
@@ -466,11 +463,11 @@ function LoginResultPost({
           },
         }
       );
-  
+
       if (!response.ok) {
         throw new Error(`Failed to delete comment. Status: ${response.status}`);
       }
-  
+
       // Check if response body is not empty
       const contentType = response.headers.get("content-type");
       if (contentType && contentType.includes("application/json")) {
@@ -483,7 +480,6 @@ function LoginResultPost({
         SetcCount((pre) => pre - 1);
         await HandelComment();
 
-
         return; // Return undefined or another appropriate value
       }
     } catch (error) {
@@ -493,16 +489,17 @@ function LoginResultPost({
   }
   const handleImageError = (event) => {
     // Set a default image path when the image fails to load
-    event.target.src = 'https://fastly.picsum.photos/id/96/640/480.jpg?hmac=IAdq6eZIR1xi6-jdksJOpI6V1YhMxcWn9A8uDw4BS0E';
+    event.target.src =
+      "https://fastly.picsum.photos/id/96/640/480.jpg?hmac=IAdq6eZIR1xi6-jdksJOpI6V1YhMxcWn9A8uDw4BS0E";
   };
-    return (
+  return (
     <div className="LoginResultPost">
       <div className="Vote">
         {/* <FontAwesomeIcon icon={faUpLong} className="UpVote" /> */}
         <span className="Upvoteinpost" onClick={() => HandelUpVOte()}>
           ⇧
         </span>
-        {voteCount}
+        <p className="VoteCountinside"> {voteCount}</p>
         <p className="UpvoteinpostDown" onClick={() => HandelDownVOte()}>
           ⇩
         </p>
@@ -530,8 +527,7 @@ function LoginResultPost({
               <Box sx={style} className="ModelBox">
                 <img className="imglogodrop" src={profileImage} />
                 <p className="authorname"> {name}</p>
-                <p className="ChannelName">{channelName}
-                </p>
+                <p className="ChannelName">{channelName}</p>
                 <div className="likeandFallow">
                   <div className="numberoffallower">
                     <span className="numberofpodt">1.6K</span>
@@ -542,7 +538,12 @@ function LoginResultPost({
                     <span className="karmatype">Comment karma</span>
                   </div>
                 </div>
-                <button className="chatButton" onClick={()=>alert("still under work")}>Start Chat</button>
+                <button
+                  className="chatButton"
+                  onClick={() => alert("still under work")}
+                >
+                  Start Chat
+                </button>
                 {follobtn ? (
                   <button className="fallowbtn" onClick={Handelfallow}>
                     Follow
@@ -555,11 +556,14 @@ function LoginResultPost({
               </Box>
             </Modal>
           </div>
-
         </div>
         <p className="posttittle">post titel</p>
         <div className="imgdiv">
-          <img className="LoginPostImge" src={channelImage}  onError={handleImageError}/>
+          <img
+            className="LoginPostImge"
+            src={channelImage}
+            onError={handleImageError}
+          />
         </div>
         <div className="resultFooter">
           <div className="resultbutton" onClick={() => handleCommentOpen()}>
@@ -569,14 +573,14 @@ function LoginResultPost({
           </div>
           <div className="resultbutton">
             <FontAwesomeIcon icon={faShareNodes} />
-            <p>share</p>
+            <p className="ButtonNameforsher">Share</p>
           </div>
           <div className="resultbutton">
             <FontAwesomeIcon icon={faBookmark} />
-            <p>Save</p>
+            <p className="ButtonNameforsher">Save</p>
           </div>
           <div className="resultbutton">
-          <MoreHorizIcon/>
+            <MoreHorizIcon />
           </div>
         </div>
       </div>
@@ -703,10 +707,7 @@ function LoginResultPost({
                     </div>
                     <div className="resultFooter">
                       <div className="resultbutton">
-                        <FontAwesomeIcon
-                          
-                        />{" "}
-                        <p>{cCount}</p>
+                        <FontAwesomeIcon /> <p>{cCount}</p>
                         <p>comments</p>
                       </div>
                       <div className="resultbutton">

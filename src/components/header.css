@@ -18,13 +18,12 @@
     align-items: center;
     flex-direction: column;
     width: 25% !important;
-    border-style: none !important;
-    border-radius: 8px !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    min-height: 150px !important;
-    padding-top: 30px !important;
-    padding-bottom: 30px !important;
+    height: 400px;
+    border-style:none !important;
+    border-radius: 8px;
+   padding: 0 !important;
+   padding-bottom: 50px !important;
+   margin: 0 !important;
 
 }
 
@@ -160,7 +159,6 @@
 
 .LOgintext {
     font-size: 30px;
-    margin-left: 35px;
     color: #000;
 }
 
@@ -186,11 +184,11 @@
 }
 
 .LoginInputFeild {
-    margin-top: 20px;
     height: 45px;
     border-radius: 25px;
+    margin: 0;
+    margin-top: 10px;
     padding-left: 19px;
-    
     background-color: #94939381;
     border: 1px solid rgb(239, 239, 239);
 }
@@ -595,7 +593,6 @@
     }
     .LOgintext {
         font-size: 15px;
-        margin-left: 35px;
         color: #000;
     }
     .SignUpPopupBox{

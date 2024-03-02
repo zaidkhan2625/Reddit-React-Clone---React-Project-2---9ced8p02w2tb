@@ -49,7 +49,14 @@
     height: 20px;
     margin-left: 10px;
 }
-
+.VoteCountinside{
+    margin-bottom: 5px;
+    margin-top: 5px;
+    font-size: 18px;
+}
+.ButtonNameforsher{
+    margin-left: 8px;
+}
 .CommentPopUpBox {
     margin-top: 62px;
     position: absolute;
@@ -192,22 +199,23 @@
     flex-direction: row;
     align-items: center;
     height: 20px;
-    margin-top: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .logo {
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height:30px;
     border-radius: 50%;
 }
 
 .posttittle {
     font-size: 18px;
     font-weight: 500;
-    line-height: 22px;
     display: inline;
     padding-right: 5px;
     word-wrap: break-word;
+    margin-bottom: 15px;
 }
 
 .resultFooter {
@@ -309,6 +317,8 @@
     justify-content: center;
     height: auto;
     width: auto;
+    margin-top: 4px;
+    padding-right: 15px;
 }
 
 .posauth {
@@ -675,7 +685,6 @@
 
     .headerLoginResult {
         align-items: center;
-        margin-top: 8px;
         height: 25px;
     }
 

@@ -56,6 +56,9 @@ function LoginResultComponent() {
   const gotopremium =()=>{
     navigate("/premium");
   }
+  const  handelDead =()=>{
+    navigate("/Dead");
+  }
 
    return (
     <>
@@ -132,7 +135,7 @@ function LoginResultComponent() {
             <Link to="/Createpost">
               <button className="creatPost">Creat Post</button>
             </Link>
-            <button className="creatcommunity" onClick={async()=>await alert("still under work")}>Creat Communitiy</button>
+            <button className="creatcommunity" onClick={handelDead}>Creat Communitiy</button>
           </div>
           <div className="Agreement">
             <div className="AgreementTerm">

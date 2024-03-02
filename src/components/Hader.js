@@ -309,6 +309,9 @@ function Hader() {
     const handleMenuClose = () => {
       setAnchorEl(null);
     };
+    const  handelDead =()=>{
+      navigate("/Dead");
+    }
     return (
       <div>
         <div onClick={handleMenuClick} className="ProfileLoginName">
@@ -336,10 +339,10 @@ function Hader() {
                 <MenuItem icon={<AccountCircleOutlinedIcon />} onClick={()=>alert("Still Working On it")}>
                   My Staff
                 </MenuItem>
-                <MenuItem  onClick={()=>alert("Still Working On it")}>Online Status</MenuItem>
-                <MenuItem  onClick={()=>alert("Still Working On it")}>Profile</MenuItem>
-                <MenuItem  onClick={()=>alert("Still Working On it")}>Create Avatar</MenuItem>
-                <MenuItem  onClick={()=>alert("Still Working On it")}>User Setting</MenuItem>
+                <MenuItem  onClick={handelDead}>Online Status</MenuItem>
+                <MenuItem  onClick={handelDead}>Profile</MenuItem>
+                <MenuItem  onClick={handelDead}>Create Avatar</MenuItem>
+                <MenuItem  onClick={handelDead}>User Setting</MenuItem>
 
                 <MenuItem onClick={Handellogout}>Log out</MenuItem>
               </div>
@@ -358,6 +361,9 @@ function Hader() {
     const handleMenuClose = () => {
       setAnchorEl(null);
     };
+    const  handelDead =()=>{
+      navigate("/Dead");
+    }
     return (
       <div>
         <div onClick={handleMenuClick} className="">
@@ -384,12 +390,12 @@ function Hader() {
                 <MenuItem icon={<AccountCircleOutlinedIcon />} onClick={()=>alert("Still Working On it")}>
                   My Staff
                 </MenuItem>
-                <MenuItem  onClick={()=>alert("Still Working On it")}>Home</MenuItem>
-                <MenuItem  onClick={()=>alert("Still Working On it")}>Popular Community</MenuItem>
-                <MenuItem  onClick={()=>alert("Still Working On it")}>Creat Post</MenuItem>
-                <MenuItem  onClick={()=>alert("Still Working On it")}>User </MenuItem>
+                <MenuItem  onClick={handelDead}>Home</MenuItem>
+                <MenuItem  onClick={handelDead}>Popular Community</MenuItem>
+                <MenuItem  onClick={handelDead}>Creat Post</MenuItem>
+                <MenuItem  onClick={handelDead}>User </MenuItem>
 
-                <MenuItem onClick={()=>alert("Still Working On it")}>Premiumn Reddit</MenuItem>
+                <MenuItem onClick={handelDead}>Premiumn Reddit</MenuItem>
               </div>
               {/* Add more menu items as needed */}
             </Menu>
@@ -461,8 +467,8 @@ function Hader() {
         >
           <Box sx={style} className="PopupBoxLogi">
             <h5 className="LOgintext"> Log in</h5>
-            <p style={{color:"red"}}>{EmailError}</p>
-            <p style={{color:"red"}}>{commonError}</p>
+            {/* <p style={{color:"red"}}>{EmailError}</p>
+            <p style={{color:"red"}}>{commonError}</p> */}
 
             <input
               className="LoginInputFeild"
@@ -470,14 +476,14 @@ function Hader() {
               placeholder="user Email"
               onChange={(e) => SetLoginEmail(e.target.value)}
             />
-            <p style={{color:"red"}}>{EmailError}</p>
+            {/* <p style={{color:"red"}}>{EmailError}</p> */}
             <input
               className="LoginInputFeild"
               type="password"
               placeholder="Password"
               onChange={(e) => SetLoginPassword(e.target.value)}
             />
-                        <p style={{color:"red"}}>{PasswordError}</p>
+                        {/* <p style={{color:"red"}}>{PasswordError}</p> */}
 
             <a className="forgetPassword" href="#">
               forget password?

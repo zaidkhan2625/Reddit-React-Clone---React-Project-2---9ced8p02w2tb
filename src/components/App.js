@@ -5,12 +5,14 @@ import LoginResultComponent from "./LoginResultComponent";
 import CreatePost from "./CreatePost";
 import ProtectedRouter from "./ProtectedRouter";
 import PremiumimComponent from "./PremiumimComponent";
+import Dead from "./Dead";
 function App() {
   return (
     <Router>
       <div className="App">
         <Routes>
-         <Route path="/premium" element={<PremiumimComponent/>}></Route>
+         <Route path="/Dead" element={<Dead/>}></Route>   
+        <Route path="/premium" element={<PremiumimComponent/>}></Route>
           <Route
             path="/Createpost"
             element={
