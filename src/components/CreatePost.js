@@ -116,6 +116,7 @@ function CreatePost() {
         headers: {
           Authorization: `Bearer ${LoginJwt}`,
           projectID: projectId,
+          Authorization: `Bearer ${sessionStorage.getItem('jwttoken')}`
         },
         body: formData,
       });

@@ -50,7 +50,7 @@ function Hader() {
   const [toggel, settoggel] = useState(false);
   const [LoginEmail, SetLoginEmail] = useState("");
   const [LoginPassword, SetLoginPassword] = useState("");
-  const [loginjwt, setloginjwt] = useState("");
+  // const [loginjwt, setloginjwt] = useState("");
   const [drowpOpen, SetdrowpOpen] = useState(false);
   const [modalPosition, setModalPosition] = useState({ x: 0, y: 0 });
   const [searchValue, SetSdearchValue] = useState("");
@@ -157,21 +157,22 @@ function Hader() {
 
       // Assuming the server returns JSON data, you can parse it
       const data = await response.json();
-      console.log("Login successful:", data);
-      console.log("Setting isloggedin to true", isloggedin);
+      // console.log("Login successful:", data);
+      // console.log("Setting isloggedin to true", isloggedin);
       if (data.status === "success") {
         setIsUserLoggedIn(true);
         Setisloggedin(true);
-        setloginjwt(data.token);
-        setLoginjwt(data.token);
-        console.log("user nme ", data.data.name);
+        sessionStorage.setItem("jwttoken",data.token)
+        // setloginjwt(data.token);
+        // console.log("user nme ", data.data.name);
         SetUser(data.data.name);
-        console.log("jwt token:", data.token);
-        localStorage.setItem("login", true);
-        console.log("login status", localStorage.getItem("login"));
+      //  console.log("LoginJwt",LoginJwt);
+        // console.log("jwt token:", data.token);
+        // localStorage.setItem("login", true);
+        // console.log("login status", localStorage.getItem("login"));
         localStorage.setItem("loginuserid", data.data._id);
         localStorage.setItem("loginuserName", data.data.name);
-        console.log("user login id:", localStorage.getItem("loginuserid"));
+        // console.log("user login id:", localStorage.getItem("loginuserid"));
         SetLoginUserId(localStorage.getItem("loginuserid"));
         console.log(
           "login user id after setting from local storage",

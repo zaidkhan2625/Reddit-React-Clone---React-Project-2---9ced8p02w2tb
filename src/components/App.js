@@ -16,9 +16,9 @@ function App() {
           <Route
             path="/Createpost"
             element={
-              <ProtectedRouter>
+              // <ProtectedRouter>
                 <CreatePost />
-              </ProtectedRouter>
+              // </ProtectedRouter>
             }
           />
           <Route path="/login" element={<LoginResultComponent />}></Route>
