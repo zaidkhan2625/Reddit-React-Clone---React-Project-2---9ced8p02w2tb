@@ -1,11 +1,21 @@
 // StateProvider.js
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState ,useEffect } from "react";
 
 export const stateContext = createContext();
 
 const StateProvider = ({ children }) => {
   const [isloggedin, Setisloggedin] = useState(false);
-  const [LoginJwt, setLoginjwt] = useState("");
+
+  useEffect(() => {
+    const saved_isloggedin = window.sessionStorage.getItem("isloggedin");
+    if (saved_isloggedin != null) Setisloggedin(JSON.parse(saved_isloggedin))
+  }, [])
+
+  useEffect(() => {
+    window.sessionStorage.setItem("isloggedin", JSON.stringify(isloggedin))
+  }, [isloggedin])
+
+  // const [LoginJwt, setLoginjwt] = useState("");
   const [LoginUserId, SetLoginUserId] = useState("");
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(localStorage.getItem("login") === 'true');
   const [nmberOfcomment , SetnmberOfcomment]=useState("");
@@ -17,8 +27,8 @@ const StateProvider = ({ children }) => {
       value={{
         isloggedin,
         Setisloggedin,
-        LoginJwt,
-        setLoginjwt,
+        // LoginJwt,
+        // setLoginjwt,
         LoginUserId,
         SetLoginUserId,
         isUserLoggedIn, setIsUserLoggedIn,
