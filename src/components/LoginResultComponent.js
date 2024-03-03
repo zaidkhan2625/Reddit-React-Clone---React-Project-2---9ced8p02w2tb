@@ -57,6 +57,9 @@ function LoginResultComponent() {
         case "hot":
           sortedPosts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
           break;
+          case "odlf":
+          sortedPosts.sort((a, b) =>  new Date(a.createdAt)-new Date(b.createdAt));
+          break;
         case "likeIncrease":
           sortedPosts.sort((a, b) => a.likeCount - b.likeCount);
           break;
@@ -159,6 +162,9 @@ function LoginResultComponent() {
             </p>
             <p onClick={() => setSortCriteria("CommentDecrease")}className="FilterFunction">
               Comment Down
+            </p>
+            <p onClick={() => setSortCriteria("odlf")}className="FilterFunction">
+              Old First
             </p>
             {/* Add similar lines for other sorting criteria */}
           </div>

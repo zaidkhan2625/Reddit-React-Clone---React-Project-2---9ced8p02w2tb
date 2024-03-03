@@ -275,4 +275,7 @@
     .Logincomponentresult{
         width: 100%;
     }
+    .FilterFunction{
+        font-size: 10px;
+    }
 }
