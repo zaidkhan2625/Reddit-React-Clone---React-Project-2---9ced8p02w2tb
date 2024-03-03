@@ -184,7 +184,6 @@ function LoginResultComponent() {
                   Deltepoat={()=>HandelPostDelete(item._id)}
                   content={item.title ?item.title:item.content}
                   createdAt={formatCreatedAtDate(item.createdAt)}
-
                 />
               </div>
             );

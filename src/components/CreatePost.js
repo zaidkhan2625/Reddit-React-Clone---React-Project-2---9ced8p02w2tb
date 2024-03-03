@@ -52,16 +52,16 @@ function CreatePost() {
   const MediaSelector = () => {
     const handleMediaChange = (event) => {
       const mediaInput = event.target;
-
+    
       if (mediaInput.files && mediaInput.files[0]) {
         const reader = new FileReader();
-
+    
         reader.onload = function (e) {
           setSelectedMedia(e.target.result);
         };
-
+    
         reader.readAsDataURL(mediaInput.files[0]);
-
+    
         // Determine the media type
         setMediaType(
           mediaInput.files[0].type.startsWith("image/") ? "image" : "video"
@@ -107,7 +107,10 @@ function CreatePost() {
     const formData = new FormData();
   formData.append('title', PostTitle);
   formData.append('content', textareaContent);
-  formData.append('images', selectedMedia);
+  if (selectedMedia) {
+    const mediaBlob = convertDataUrlToBlob(selectedMedia);
+    formData.append('images', mediaBlob, 'image_filename.jpg');
+  }
 
   console.log("FormData content:");
 formData.forEach((value, key) => {
@@ -148,6 +151,19 @@ formData.forEach((value, key) => {
       </>
     );
   }
+  const convertDataUrlToBlob = (dataUrl) => {
+    const [, base64] = dataUrl.split(',');
+    const binaryString = atob(base64);
+    const arrayBuffer = new ArrayBuffer(binaryString.length);
+    const uint8Array = new Uint8Array(arrayBuffer);
+  
+    for (let i = 0; i < binaryString.length; i++) {
+      uint8Array[i] = binaryString.charCodeAt(i);
+    }
+  
+    return new Blob([uint8Array], { type: mediaType }); // use mediaType here to set the correct MIME type
+  };
+  
 
   function Link() {
     return (

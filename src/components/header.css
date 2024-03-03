@@ -12,6 +12,21 @@
     0 1px 5px 0 rgba(0, 0, 0, 0.19);
 
 }
+.redditRecape{
+    cursor: not-allowed;
+}
+.barcodelogo{
+    cursor: not-allowed;
+}
+.pp{
+    cursor: not-allowed;
+}
+.redditrecap{
+    cursor: not-allowed;
+}
+.loginheadbar{
+ cursor: not-allowed;
+}
 .PopupBoxLogi{
     display: flex;
     justify-content: center;

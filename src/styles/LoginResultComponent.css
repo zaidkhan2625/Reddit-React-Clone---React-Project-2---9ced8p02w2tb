@@ -24,7 +24,9 @@
     background: #faf9f9;
     color:black;
 }
-
+.imagelogo{
+    cursor: not-allowed;
+}
 .leftSideofLoginResult {
     display: flex;
     flex-direction: column;
