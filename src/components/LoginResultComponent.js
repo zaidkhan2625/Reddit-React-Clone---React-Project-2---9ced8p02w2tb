@@ -55,7 +55,7 @@ function LoginResultComponent() {
       let sortedPosts = [...data];
       switch (sortCriteria) {
         case "hot":
-          sortedPosts.sort((a, b) => b.likeCount - a.likeCount);
+          sortedPosts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
           break;
         case "likeIncrease":
           sortedPosts.sort((a, b) => a.likeCount - b.likeCount);
@@ -65,6 +65,9 @@ function LoginResultComponent() {
           break;
         case "CommentIncrese":
           sortedPosts.sort((a, b) => a.commentCount - b.commentCount);
+          break;
+        case "CommentDecrease":
+          sortedPosts.sort((a, b) =>b.commentCount-a.commentCount);
           break;
         default:
           break;
@@ -112,7 +115,13 @@ function LoginResultComponent() {
   const handelDead = () => {
     navigate("/Dead");
   };
-
+  const formatCreatedAtDate = (createdAt) => {
+    return new Date(createdAt).toLocaleDateString("en-US", {
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+    });
+  };
   return (
     <>
       {/* <Hader/> */}
@@ -142,12 +151,14 @@ function LoginResultComponent() {
           </div>
           <div className="Bestdiv">
             <FontAwesomeIcon icon={faFireFlameSimple} />
-            <FontAwesomeIcon icon={faFireFlameSimple} />
-            <p onClick={() => setSortCriteria("hot")}>Hot</p>
-            <p onClick={() => setSortCriteria("likeIncrease")}>Like Increase</p>
-            <p onClick={() => setSortCriteria("likeDecrease")}>Like Decrease</p>
-            <p onClick={() => setSortCriteria("CommentIncrese")}>
-              Comment icrese
+            <p onClick={() => setSortCriteria("hot")} className="FilterFunction">Hot</p>
+            <p onClick={() => setSortCriteria("likeIncrease")}className="FilterFunction">Like Up</p>
+            <p onClick={() => setSortCriteria("likeDecrease")}className="FilterFunction">Like Down</p>
+            <p onClick={() => setSortCriteria("CommentIncrese")}className="FilterFunction">
+              Comment Up
+            </p>
+            <p onClick={() => setSortCriteria("CommentDecrease")}className="FilterFunction">
+              Comment Down
             </p>
             {/* Add similar lines for other sorting criteria */}
           </div>
@@ -165,6 +176,9 @@ function LoginResultComponent() {
                   onLikeIncrease={() => handleLikeIncrease(item._id)}
                   onLikeIDecrease={()=>handleLikedecrese(item._id)}
                   Deltepoat={()=>HandelPostDelete(item._id)}
+                  content={item.title ?item.title:item.content}
+                  createdAt={formatCreatedAtDate(item.createdAt)}
+
                 />
               </div>
             );

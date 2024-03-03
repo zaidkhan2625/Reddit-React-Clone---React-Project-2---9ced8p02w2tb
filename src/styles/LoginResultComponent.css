@@ -7,7 +7,23 @@
     margin-top: 60px;
     /* justify-content: space-around; */
 }
-
+.FilterFunction{
+    margin-left: 8px;
+    height: 50%;
+    max-width: 150px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 5px;
+    padding-right: 5px;
+    background: red;
+    color: white;
+}
+.FilterFunction:hover{
+    background: #faf9f9;
+    color:black;
+}
 
 .leftSideofLoginResult {
     display: flex;
@@ -77,6 +93,7 @@
 .Bestdiv {
     display: flex;
     flex-direction: row;
+    align-items: center;
     background: #ffffff;
     border: 1px solid #ccc;
     height: 60px;

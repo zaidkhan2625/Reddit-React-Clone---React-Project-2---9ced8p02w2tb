@@ -47,13 +47,15 @@ function LoginResultPost({
   onLikeIncrease,
   onLikeIDecrease,
   Deltepoat,
+  content,
+  createdAt,
 }) {
   const [open, setOpen] = useState(false);
   const [modalPosition, setModalPosition] = useState({ x: 0, y: 0 });
   const [voteCount, setVoteCount] = useState(likeCount);
   const [commentPop, SetcommentPop] = useState(false);
-  const [commentdata, Setcommentdata] = useState([]);
-  const [cCount, SetcCount] = useState(commentCount);
+  const [commentdata, setCommentdata] = useState([]);
+   const [cCount, SetcCount] = useState(commentCount);
   const [Commentdatebyuser, SetCommentdatebyuser] = useState("");
   const [follobtn, Setfollobtn] = useState(true);
   const LoginJwt = sessionStorage.getItem("jwttoken");
@@ -84,6 +86,7 @@ function LoginResultPost({
       console.log(error);
     }
   }
+  
   function YourComponent(){
     const [anchorEl, setAnchorEl] = useState(null);
     const handleMenuClick = (event) => {
@@ -212,14 +215,13 @@ function LoginResultPost({
         },
       });
       console.log("authb id :", authid);
-
       const data = await response.json();
       console.log(
         "here is handel comment function is showing all the data for comment:",
         data
       );
       if (data.status === "success") {
-        Setcommentdata(data.data);
+        setCommentdata([...data.data]);
       }
       console.log("comment data:", commentdata);
       return data;
@@ -229,11 +231,8 @@ function LoginResultPost({
     }
   };
   const PostcommentHandel = async () => {
-    console.log("Commentdatebyuser:", Commentdatebyuser);
-
     const apiUrl = `https://academics.newtonschool.co/api/v1/reddit/comment/${id}`;
     const projectId = "pvxi7c9s239h";
-
     try {
       const response = await fetch(apiUrl, {
         method: "POST",
@@ -251,8 +250,6 @@ function LoginResultPost({
       await HandelComment();
       SetCommentdatebyuser("");
       SetcCount((pre) => pre + 1);
-
-      console.log("comment user  data:", cCount);
       return data;
     } catch (error) {
       console.error("Error during follow user:", error.message);
@@ -337,6 +334,10 @@ function LoginResultPost({
     event.target.src =
       "https://fastly.picsum.photos/id/96/640/480.jpg?hmac=IAdq6eZIR1xi6-jdksJOpI6V1YhMxcWn9A8uDw4BS0E";
   };
+  const handleImageErrorProfile = (event) => {
+    event.target.src =
+      "https://cdn.vectorstock.com/i/1000x1000/51/05/male-profile-avatar-with-brown-hair-vector-12055105.webp";
+  };
   return (
     <div className="LoginResultPost">
       <div className="Vote">
@@ -351,12 +352,12 @@ function LoginResultPost({
 
       <div className="restoftheloginresult">
         <div className="headerLoginResult">
-          <img className="logo" src={profileImage} onError={handleImageError} />
+          <img className="logo" src={profileImage} onError={handleImageErrorProfile} />
           <p className="COMMUNITYNAme">{channelName}</p>
-          <p className="posauth">Posted by</p>
           <p className="posauth" onMouseOver={handleOpen}>
             {name}
           </p>
+          <p style={{marginLeft:"8px"}}>createdAt {createdAt}</p>
           <div>
             <Modal
               open={open}
@@ -369,7 +370,7 @@ function LoginResultPost({
               }}
             >
               <Box sx={style} className="ModelBox">
-                <img className="imglogodrop" src={profileImage} />
+                <img className="imglogodrop" src={profileImage} onError={handleImageErrorProfile}/>
                 <p className="authorname"> {name}</p>
                 <p className="ChannelName">{channelName}</p>
                 <div className="likeandFallow">
@@ -401,7 +402,7 @@ function LoginResultPost({
             </Modal>
           </div>
         </div>
-        <p className="posttittle">post titel</p>
+        <p className="posttittle">{content}</p>
         <div className="imgdiv">
           <img
             className="LoginPostImge"
@@ -618,6 +619,7 @@ function LoginResultPost({
                           commentcontent={item.content}
                           commentuserId={item.author}
                           commentid={item._id}
+                          HandelComment={HandelComment}
                         />
                         {Array.isArray(item.children) &&
                           item.children.length > 0 && (
