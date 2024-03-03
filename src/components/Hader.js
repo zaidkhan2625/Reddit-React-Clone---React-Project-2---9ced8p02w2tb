@@ -37,7 +37,6 @@ function Hader() {
   const {
     isloggedin,
     Setisloggedin,
-    LoginUserId,
     SetLoginUserId,
     setIsUserLoggedIn,
   } = useStateValue();
@@ -146,7 +145,8 @@ function Hader() {
         Setisloggedin(true);
         sessionStorage.setItem("jwttoken", data.token);
         localStorage.setItem("loginuserName", data.data.name);
-        SetLoginUserId(data.data._id);
+        // SetLoginUserId(data.data._id);
+        sessionStorage.setItem("userId",data.data._id);
       }
       return data;
     } catch (error) {
@@ -155,7 +155,8 @@ function Hader() {
     }
   };
   const usernamelogin = localStorage.getItem("loginuserName");
-  console.log("login user id after setting from local storage", LoginUserId);
+  console.log("userid in login" , sessionStorage.getItem("userId"));
+  console.log("login user id after setting from local storage");
   const Withoutloggin = () => {
     return (
       <>

@@ -14,12 +14,15 @@ import { Link, useNavigate } from "react-router-dom";
 import Hoc from "../Hoc/Hoc";
 function LoginResultComponent() {
   const [data, setData] = useState([]);
-  const {LoginJwt} = useStateValue();
-  const navigate=useNavigate();
-  const sortedData = [...data].sort((a, b) =>  b.likeCount - a.likeCount);
+  const { LoginJwt } = useStateValue();
+  const navigate = useNavigate();
+  const [sortedData, setSortedData] = useState([]);
+  const [sortCriteria, setSortCriteria] = useState("hot");
+  const [likeChange, setLikeChange] = useState(0);
+
   useEffect(() => {
     const projectId = "pvxi7c9s239h";
-  
+
     const fetchPost = async () => {
       try {
         const response = await fetch(
@@ -30,37 +33,87 @@ function LoginResultComponent() {
             },
           }
         );
-  
+
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
-  
+
         const data = await response.json();
         // Handle the data as needed
         setData(data.data);
         console.log(data);
-  
-        // Log the result again (if needed)
         console.log("rtesukygbuhkyib", data);
       } catch (error) {
         // Handle fetch errors
         console.error("Fetch error:", error);
       }
     };
-  
-    // Call the function to fetch data
     fetchPost();
   }, []);
-  
-  // console.log("sorted data" , sortedData);
-  const gotopremium =()=>{
-    navigate("/premium");
-  }
-  const  handelDead =()=>{
-    navigate("/Dead");
-  }
+  useEffect(() => {
+    const sortData = () => {
+      let sortedPosts = [...data];
+      switch (sortCriteria) {
+        case "hot":
+          sortedPosts.sort((a, b) => b.likeCount - a.likeCount);
+          break;
+        case "likeIncrease":
+          sortedPosts.sort((a, b) => a.likeCount - b.likeCount);
+          break;
+        case "likeDecrease":
+          sortedPosts.sort((a, b) => b.likeCount - a.likeCount);
+          break;
+        case "CommentIncrese":
+          sortedPosts.sort((a, b) => a.commentCount - b.commentCount);
+          break;
+        default:
+          break;
+      }
 
-   return (
+      setSortedData(sortedPosts);
+    };
+
+    sortData();
+  }, [data, sortCriteria]);
+  const handleLikeIncrease = (postId) => {
+    // Assuming data is an array of posts
+    const updatedData = data.map((post) => {
+      if (post._id === postId) {
+        return { ...post, likeCount: post.likeCount + 1 };
+      }
+      return post;
+    });
+
+    setData(updatedData);
+  };
+  const handleLikedecrese= (postId) => {
+    // Assuming data is an array of posts
+    const updatedData = data.map((post) => {
+      if (post._id === postId) {
+        return { ...post, likeCount: post.likeCount - 1 };
+      }
+      return post;
+    });
+
+    setData(updatedData);
+  };
+  const HandelPostDelete = (postId) => {
+    // Assuming data is an array of posts
+    const updatedData = data.filter((post) => post._id !== postId);
+    setData(updatedData);
+};
+  console.log("sorted data", sortedData);
+
+  // console.log("sorted data after like increemnt", sortedData);
+
+  const gotopremium = () => {
+    navigate("/premium");
+  };
+  const handelDead = () => {
+    navigate("/Dead");
+  };
+
+  return (
     <>
       {/* <Hader/> */}
       <div className="Logincomponentresult">
@@ -74,7 +127,7 @@ function LoginResultComponent() {
               className="PostDivInput"
               type="text"
               placeholder="Creat Post"
-              onClick={()=>navigate('/Createpost')}
+              onClick={() => navigate("/Createpost")}
             />
             {/* <ImageOutlinedIcon className="imagelogo" /> */}
             {/* <AttachFileOutlinedIcon className="imagelogo" /> */}
@@ -89,22 +142,31 @@ function LoginResultComponent() {
           </div>
           <div className="Bestdiv">
             <FontAwesomeIcon icon={faFireFlameSimple} />
-            Hot
+            <FontAwesomeIcon icon={faFireFlameSimple} />
+            <p onClick={() => setSortCriteria("hot")}>Hot</p>
+            <p onClick={() => setSortCriteria("likeIncrease")}>Like Increase</p>
+            <p onClick={() => setSortCriteria("likeDecrease")}>Like Decrease</p>
+            <p onClick={() => setSortCriteria("CommentIncrese")}>
+              Comment icrese
+            </p>
+            {/* Add similar lines for other sorting criteria */}
           </div>
           {sortedData.map((item) => {
-            return(
-            <div className="postdiv">
-              <LoginResultPost
-                name={item.author.name}
-                commentCount={item.commentCount}
-                id={item._id}
-                authid={item.author._id}
-                likeCount={item.likeCount}
-                channelImage={item.images}
-                profileImage={item.author.profileImage}
-                LoginJwt={LoginJwt}
-              />
-            </div>
+            return (
+              <div className="postdiv">
+                <LoginResultPost
+                  name={item.author.name}
+                  commentCount={item.commentCount}
+                  id={item._id}
+                  authid={item.author._id}
+                  likeCount={item.likeCount}
+                  channelImage={item.images}
+                  profileImage={item.author.profileImage}
+                  onLikeIncrease={() => handleLikeIncrease(item._id)}
+                  onLikeIDecrease={()=>handleLikedecrese(item._id)}
+                  Deltepoat={()=>HandelPostDelete(item._id)}
+                />
+              </div>
             );
           })}
         </div>
@@ -120,7 +182,12 @@ function LoginResultComponent() {
                 <p>The best Reddit Experience</p>
               </div>
             </div>
-            <button className="premiumButton" onClick={async()=>await gotopremium()}>Try Now</button>
+            <button
+              className="premiumButton"
+              onClick={async () => await gotopremium()}
+            >
+              Try Now
+            </button>
           </div>
           <div className="homecreate">
             <img
@@ -135,37 +202,37 @@ function LoginResultComponent() {
             <Link to="/Createpost">
               <button className="creatPost">Creat Post</button>
             </Link>
-            <button className="creatcommunity" onClick={handelDead}>Creat Communitiy</button>
+            <button className="creatcommunity" onClick={handelDead}>
+              Creat Communitiy
+            </button>
           </div>
           <div className="Agreement">
             <div className="AgreementTerm">
               <div className="agreementTerm">
-                <p className="termname" >User Agreement</p>
-                <p className="termname" >Privacy Policy</p>
-
+                <p className="termname">User Agreement</p>
+                <p className="termname">Privacy Policy</p>
               </div>
               <div className="agreementTerm">
-                <p className="termname" >User Agreement</p>
-                <p className="termname" >Moderator Code Of </p>
-                <p className="termname" >Conduct</p>
+                <p className="termname">User Agreement</p>
+                <p className="termname">Moderator Code Of </p>
+                <p className="termname">Conduct</p>
               </div>
             </div>
             <div className="AgreementTerm">
               <div className="agreementTerm">
-                <p className="termname" >English</p>
-                <p className="termname" >Francais</p>
-                <p className="termname" >Italiano</p>
-
-
+                <p className="termname">English</p>
+                <p className="termname">Francais</p>
+                <p className="termname">Italiano</p>
               </div>
               <div className="agreementTerme">
-                <p className="termname" >Deutsch</p>
-                <p className="termname" >Espanoi </p>
-                <p className="termname" >Portugues</p>
+                <p className="termname">Deutsch</p>
+                <p className="termname">Espanoi </p>
+                <p className="termname">Portugues</p>
               </div>
             </div>
-            <p className="termnamee" >Reddit, Inc. © 2024. All rights reserved.</p>
-
+            <p className="termnamee">
+              Reddit, Inc. © 2024. All rights reserved.
+            </p>
           </div>
         </div>
       </div>
@@ -173,4 +240,4 @@ function LoginResultComponent() {
   );
 }
 
-export default Hoc (LoginResultComponent);
+export default Hoc(LoginResultComponent);

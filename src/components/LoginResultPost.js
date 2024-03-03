@@ -4,6 +4,9 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import moment from "moment";
 import CommentData from "./CommentData";
 import CommentDataforChild from "./CommentDataforChild";
 import {
@@ -20,6 +23,7 @@ import {
   faStrikethrough,
   faImage,
 } from "@fortawesome/free-solid-svg-icons";
+import { useStateValue } from "./StatePeovider";
 const style = {
   position: "absolute",
   top: "27%",
@@ -40,6 +44,9 @@ function LoginResultPost({
   channelImage,
   commentCount,
   authid,
+  onLikeIncrease,
+  onLikeIDecrease,
+  Deltepoat,
 }) {
   const [open, setOpen] = useState(false);
   const [modalPosition, setModalPosition] = useState({ x: 0, y: 0 });
@@ -49,12 +56,106 @@ function LoginResultPost({
   const [cCount, SetcCount] = useState(commentCount);
   const [Commentdatebyuser, SetCommentdatebyuser] = useState("");
   const [follobtn, Setfollobtn] = useState(true);
-  const  LoginJwt=sessionStorage.getItem("jwttoken");
-  const UserNameLogin =localStorage.getItem("loginuserName");
+  const LoginJwt = sessionStorage.getItem("jwttoken");
+  const UserNameLogin = localStorage.getItem("loginuserName");
+  const LoginUserId = sessionStorage.getItem("userId");
+  const HandelPostDelete = async (id)=>{
+    // alert(`"this post id delete" , ${id}`);
+    const projectId = "pvxi7c9s239h";
+    try{
+      const response = await fetch(`https://academics.newtonschool.co/api/v1/reddit/post/${id}`,{
+      headers:{
+        Authorization: `Bearer ${LoginJwt}`,
+        projectID: projectId,
+      }
+    });
+    const data =await response.json();
+    console.log("delete post data" , data);
+    if(data.status==="success"){
+      if(Deltepoat)
+      {
+        Deltepoat();
+      }
+    }
+
+    }
+    catch(error)
+    {
+      console.log(error);
+    }
+  }
+  function YourComponent(){
+    const [anchorEl, setAnchorEl] = useState(null);
+    const handleMenuClick = (event) => {
+      setAnchorEl(event.currentTarget);
+    };
+    const handleMenuClose = () => {
+      setAnchorEl(null);
+    };
+    return (
+      <div>
+        <MoreHorizIcon onClick={handleMenuClick} />
+
+        <Menu
+          anchorEl={anchorEl}
+          open={Boolean(anchorEl)}
+          onClose={handleMenuClose}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "right",
+          }}
+          transformOrigin={{
+            vertical: "top",
+            horizontal: "right",
+          }}
+          getContentAnchorEl={null}
+        >
+          <MenuItem>Save</MenuItem>
+          <MenuItem>Edit</MenuItem>
+          <MenuItem>Follow</MenuItem>
+          <MenuItem onClick={()=>HandelPostDelete(id)}>Delete </MenuItem>
+        </Menu>
+      </div>
+    );
+  }
+  function YourComponentNoneComment() {
+    const [anchorEl, setAnchorEl] = useState(null);
+    const handleMenuClick = (event) => {
+      setAnchorEl(event.currentTarget);
+    };
+
+    const handleMenuClose = () => {
+      setAnchorEl(null);
+    };
+
+    return (
+      <div>
+        <MoreHorizIcon onClick={handleMenuClick} />
+
+        <Menu
+          anchorEl={anchorEl}
+          open={Boolean(anchorEl)}
+          onClose={handleMenuClose}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "right",
+          }}
+          transformOrigin={{
+            vertical: "top",
+            horizontal: "right",
+          }}
+          getContentAnchorEl={null}
+        >
+          <MenuItem>Save</MenuItem>
+          <MenuItem>Edit</MenuItem>
+          <MenuItem>Follow</MenuItem>
+        </Menu>
+      </div>
+    );
+  }
   const Handelfallow = async () => {
     const apiUrl = `https://academics.newtonschool.co/api/v1/quora/follow/${authid}`;
     const projectId = "pvxi7c9s239h";
-
     try {
       const response = await fetch(apiUrl, {
         method: "POST",
@@ -64,26 +165,19 @@ function LoginResultPost({
           projectID: projectId,
         },
       });
-      console.log("jwt toke in login result post :", LoginJwt);
-      console.log("authb id :", authid);
-
       const data = await response.json();
-      console.log("Follow user successful:", data);
       if (data.status === "success") {
         Setfollobtn(false);
       }
-      // Handle success as needed
       return data;
     } catch (error) {
       console.error("Error during follow user:", error.message);
-      // Handle the error as needed
       throw error;
     }
   };
   const HandelDownVOte = async () => {
     const apiUrl = `https://academics.newtonschool.co/api/v1/reddit/like/${id}`;
     const projectId = "pvxi7c9s239h";
-
     try {
       const response = await fetch(apiUrl, {
         method: "DELETE",
@@ -93,21 +187,16 @@ function LoginResultPost({
           projectID: projectId,
         },
       });
-      console.log("jwt toke in login result post :", LoginJwt);
-      console.log("authb id :", authid);
-
       const data = await response.json();
-      console.log("Follow user successful:", data);
-
-      // Handle success as needed
       if (data.status === "success") {
-        // Update the vote count based on the previous state
-        setVoteCount((prevCount) => (prevCount > 0 ? prevCount - 1 : 0));
+        if (onLikeIDecrease) {
+          onLikeIDecrease();
+        }
       }
       return data;
     } catch (error) {
       console.error("Error during follow user:", error.message);
-      // Handle the error as needed
+
       throw error;
     }
   };
@@ -129,20 +218,13 @@ function LoginResultPost({
         "here is handel comment function is showing all the data for comment:",
         data
       );
-      // if (data.status === "success") {
-      //   Setfollobtn(false);
-      // }
-      // Handle success as needed
       if (data.status === "success") {
-        // Update the vote count
         Setcommentdata(data.data);
       }
       console.log("comment data:", commentdata);
-      // await HandelCommentUserName(CommentData[0].author);
       return data;
     } catch (error) {
       console.error("Error during follow user:", error.message);
-      // Handle the error as needed
       throw error;
     }
   };
@@ -181,7 +263,6 @@ function LoginResultPost({
   const HandelUpVOte = async () => {
     const apiUrl = `https://academics.newtonschool.co/api/v1/reddit/like/${id}`;
     const projectId = "pvxi7c9s239h";
-
     try {
       const response = await fetch(apiUrl, {
         method: "POST",
@@ -193,19 +274,16 @@ function LoginResultPost({
       });
       console.log("jwt toke in login result post :", LoginJwt);
       console.log("authb id :", authid);
-
       const data = await response.json();
       console.log("Follow user successful:", data);
-
-      // Handle success as needed
       if (data.status === "success") {
-        // Update the vote count based on the previous state
-        setVoteCount((prevCount) => prevCount + 1);
+        if (onLikeIncrease) {
+          onLikeIncrease();
+        }
       }
       return data;
     } catch (error) {
       console.error("Error during follow user:", error.message);
-      // Handle the error as needed
       throw error;
     }
   };
@@ -250,7 +328,7 @@ function LoginResultPost({
     HandelComment();
   };
   const handleClose = () => {
-     setOpen(false);
+    setOpen(false);
   };
   const handleCloseCommentpopupbox = () => {
     SetcommentPop(false);
@@ -262,11 +340,10 @@ function LoginResultPost({
   return (
     <div className="LoginResultPost">
       <div className="Vote">
-        {/* <FontAwesomeIcon icon={faUpLong} className="UpVote" /> */}
         <span className="Upvoteinpost" onClick={() => HandelUpVOte()}>
           ⇧
         </span>
-        <p className="VoteCountinside"> {voteCount}</p>
+        <p className="VoteCountinside"> {likeCount}</p>
         <p className="UpvoteinpostDown" onClick={() => HandelDownVOte()}>
           ⇩
         </p>
@@ -274,7 +351,7 @@ function LoginResultPost({
 
       <div className="restoftheloginresult">
         <div className="headerLoginResult">
-          <img className="logo" src={profileImage} />
+          <img className="logo" src={profileImage} onError={handleImageError} />
           <p className="COMMUNITYNAme">{channelName}</p>
           <p className="posauth">Posted by</p>
           <p className="posauth" onMouseOver={handleOpen}>
@@ -335,7 +412,7 @@ function LoginResultPost({
         <div className="resultFooter">
           <div className="resultbutton" onClick={() => handleCommentOpen()}>
             <FontAwesomeIcon icon={faComment} />
-            <p className="commentcountnumber">{cCount}</p>
+            <p className="commentcountnumber">{commentCount}</p>
             <p>Comments</p>
           </div>
           <div className="resultbutton">
@@ -347,10 +424,9 @@ function LoginResultPost({
             <p className="ButtonNameforsher">Save</p>
           </div>
           <div className="resultbutton">
-            <MoreHorizIcon />
+            {LoginUserId === authid ?<YourComponent/>:<YourComponentNoneComment/>}
           </div>
         </div>
-        
       </div>
       <Modal
         open={commentPop}
@@ -561,7 +637,6 @@ function LoginResultPost({
                   })}
                 </div>
               </div>
-              
             </div>
           </div>
         </Box>
