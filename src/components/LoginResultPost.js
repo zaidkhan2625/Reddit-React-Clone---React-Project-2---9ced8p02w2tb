@@ -46,9 +46,11 @@ function LoginResultPost({
   authid,
   onLikeIncrease,
   onLikeIDecrease,
+  Setcommentnumberfunction,
   Deltepoat,
   content,
   createdAt,
+  commentDelete,
 }) {
   const [open, setOpen] = useState(false);
   const [modalPosition, setModalPosition] = useState({ x: 0, y: 0 });
@@ -249,7 +251,9 @@ function LoginResultPost({
       console.log("daata after posting the comment:", data);
       await HandelComment();
       SetCommentdatebyuser("");
-      SetcCount((pre) => pre + 1);
+      if(Setcommentnumberfunction){
+        Setcommentnumberfunction();
+      }
       return data;
     } catch (error) {
       console.error("Error during follow user:", error.message);
@@ -552,7 +556,7 @@ function LoginResultPost({
                     </div>
                     <div className="resultFooter">
                       <div className="resultbutton">
-                        <FontAwesomeIcon /> <p>{cCount}</p>
+                        <FontAwesomeIcon /> <p>{commentCount}</p>
                         <p>comments</p>
                       </div>
                       <div className="resultbutton">
@@ -620,6 +624,7 @@ function LoginResultPost({
                           commentuserId={item.author}
                           commentid={item._id}
                           HandelComment={HandelComment}
+                          commentDelete={commentDelete}
                         />
                         {Array.isArray(item.children) &&
                           item.children.length > 0 && (

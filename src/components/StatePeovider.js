@@ -23,8 +23,6 @@ const StateProvider = ({ children }) => {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(localStorage.getItem("login") === 'true');
   const [nmberOfcomment , SetnmberOfcomment]=useState("");
   const [cCount, SetcCount] = useState(nmberOfcomment);
-
-
   return (
     <stateContext.Provider
       value={{

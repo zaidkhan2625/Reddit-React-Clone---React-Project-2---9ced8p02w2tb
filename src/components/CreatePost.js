@@ -126,7 +126,6 @@ formData.forEach((value, key) => {
         },
         body: formData,
       });
-      // Assuming the server returns JSON data, you can parse it
       const data = await response.json();
       console.log("Post created successfully:", data);
       if(data.status==='success')

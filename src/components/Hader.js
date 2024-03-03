@@ -163,14 +163,13 @@ function Hader() {
         <div className="WithoutLoginPartHandel">
           <p
             className="redditRecape"
-            onClick={async () => await alert("still under work")}
           >
             🍌
           </p>
           <span className="bar"> </span>
           <div
             className="barcodelogo"
-            onClick={async () => await alert("still under work")}
+            
           >
             <QrCode2OutlinedIcon className="barcode" />
             Get App
@@ -227,12 +226,12 @@ function Hader() {
           <div className="pp">
             <OutboundOutlinedIcon
               className="loginheadbar"
-              onClick={async () => await alert("still under work")}
+              
             />
           </div>
           <p
             className="redditrecap"
-            onClick={async () => await alert("still under work")}
+            
           >
             🍌
           </p>
@@ -241,7 +240,7 @@ function Hader() {
             <FontAwesomeIcon
               icon={faCommentDots}
               className="loginheadbar"
-              onClick={async () => await alert("still under work")}
+              
             />
           </div>
           <div

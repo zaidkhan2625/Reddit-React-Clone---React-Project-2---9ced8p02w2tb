@@ -9,7 +9,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import moment from "moment";
 import { useStateValue } from "./StatePeovider";
-function CommentData({ commentcontent, commentuserId, commentid ,HandelComment}) {
+function CommentData({ commentcontent, commentuserId, commentid ,HandelComment,commentDelete}) {
   const { cCount, SetcCount } = useStateValue();
   const [userData, setUserData] = useState([]);
   const [delteboxincmnt, Setdelteboxincmnt] = useState(false);
@@ -58,10 +58,14 @@ function CommentData({ commentcontent, commentuserId, commentid ,HandelComment})
       );
       const contentType = response.headers.get("content-type");
       await HandelComment();
+      if(commentDelete)
+      {
+        commentDelete();
+      }
       if (contentType && contentType.includes("application/json")) {
         const data = await response.json();
         console.log("Comment deleted successfully:", data);
-          SetcCount((pre) => pre + 1);
+          SetcCount((pre) => pre - 1);
         return data;
       } else {
         console.log("Comment deleted successfully.");

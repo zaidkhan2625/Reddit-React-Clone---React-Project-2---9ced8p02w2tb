@@ -18,7 +18,7 @@ function LoginResultComponent() {
   const navigate = useNavigate();
   const [sortedData, setSortedData] = useState([]);
   const [sortCriteria, setSortCriteria] = useState("hot");
-  const [likeChange, setLikeChange] = useState(0);
+  const [commentnumber, Setcommentnumber] = useState(0);
 
   useEffect(() => {
     const projectId = "pvxi7c9s239h";
@@ -78,7 +78,6 @@ function LoginResultComponent() {
 
       setSortedData(sortedPosts);
     };
-
     sortData();
   }, [data, sortCriteria]);
   const handleLikeIncrease = (postId) => {
@@ -108,10 +107,26 @@ function LoginResultComponent() {
     const updatedData = data.filter((post) => post._id !== postId);
     setData(updatedData);
 };
-  console.log("sorted data", sortedData);
+const commenchangefunction =(postId)=>{
+  const updatedData = data.map((post) => {
+    if (post._id === postId) {
+      return { ...post, commentCount: post.commentCount + 1 };
+    }
+    return post;
+  });
 
-  // console.log("sorted data after like increemnt", sortedData);
+  setData(updatedData);
+}
+const commentDeleteFunction =(postId)=>{
+  const updatedData = data.map((post) => {
+    if (post._id === postId) {
+      return { ...post, commentCount: post.commentCount - 1 };
+    }
+    return post;
+  });
 
+  setData(updatedData);
+}
   const gotopremium = () => {
     navigate("/premium");
   };
@@ -184,6 +199,8 @@ function LoginResultComponent() {
                   Deltepoat={()=>HandelPostDelete(item._id)}
                   content={item.title ?item.title:item.content}
                   createdAt={formatCreatedAtDate(item.createdAt)}
+                  Setcommentnumberfunction={() =>commenchangefunction(item._id)}
+                  commentDelete={()=>commentDeleteFunction(item._id)}
                 />
               </div>
             );
