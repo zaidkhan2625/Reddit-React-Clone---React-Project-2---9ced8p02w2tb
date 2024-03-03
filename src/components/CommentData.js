@@ -34,6 +34,7 @@ function CommentData({ commentcontent, commentuserId, commentid ,HandelComment})
         });
 
         const data = await response.json();
+        console.log("dess" , data);
         setUserData(data.data);
       } catch (error) {
         console.error("Error fetching user data:", error.message);
@@ -56,16 +57,15 @@ function CommentData({ commentcontent, commentuserId, commentid ,HandelComment})
         }
       );
       const contentType = response.headers.get("content-type");
+      await HandelComment();
       if (contentType && contentType.includes("application/json")) {
         const data = await response.json();
         console.log("Comment deleted successfully:", data);
-        if(HandelComment){
-          HandelComment();
-        }
+          SetcCount((pre) => pre + 1);
         return data;
       } else {
         console.log("Comment deleted successfully.");
-        SetcCount((pre) => pre - 1);
+       
        
       }
     } catch (error) {

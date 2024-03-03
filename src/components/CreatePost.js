@@ -104,12 +104,15 @@ function CreatePost() {
   const createPost = async () => {
     const apiUrl = "https://academics.newtonschool.co/api/v1/reddit/post/";
     const projectId = "pvxi7c9s239h";
-  
     const formData = new FormData();
-    formData.append('title', PostTitle);
-    formData.append('content', textareaContent);
-    formData.append('images', selectedMedia);
-  
+  formData.append('title', PostTitle);
+  formData.append('content', textareaContent);
+  formData.append('images', selectedMedia);
+
+  console.log("FormData content:");
+formData.forEach((value, key) => {
+  console.log(key, value);
+}); // Check the FormData content
     try {
       const response = await fetch(apiUrl, {
         method: "POST",
@@ -120,7 +123,6 @@ function CreatePost() {
         },
         body: formData,
       });
-  
       // Assuming the server returns JSON data, you can parse it
       const data = await response.json();
       console.log("Post created successfully:", data);
