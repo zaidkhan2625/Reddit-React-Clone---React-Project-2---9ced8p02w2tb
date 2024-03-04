@@ -23,6 +23,8 @@ const StateProvider = ({ children }) => {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(localStorage.getItem("login") === 'true');
   const [nmberOfcomment , SetnmberOfcomment]=useState("");
   const [cCount, SetcCount] = useState(nmberOfcomment);
+  const [update , Setupdate]= useState(false);
+  const [creatPost ,SetcreatPost]=useState(false);
   return (
     <stateContext.Provider
       value={{
@@ -35,6 +37,9 @@ const StateProvider = ({ children }) => {
         isUserLoggedIn, setIsUserLoggedIn,
         cCount, SetcCount,
         SetnmberOfcomment,
+        update , Setupdate,
+        creatPost ,SetcreatPost
+
       }}
     >
       {children}

@@ -14,12 +14,16 @@ import { Link, useNavigate } from "react-router-dom";
 import Hoc from "../Hoc/Hoc";
 function LoginResultComponent() {
   const [data, setData] = useState([]);
-  const { LoginJwt } = useStateValue();
+  const { LoginJwt,SetcreatPost,Setupdate } = useStateValue();
   const navigate = useNavigate();
   const [sortedData, setSortedData] = useState([]);
   const [sortCriteria, setSortCriteria] = useState("hot");
   const [commentnumber, Setcommentnumber] = useState(0);
-
+  const HandelCreatenewPost =()=>{
+    Setupdate(false);
+    SetcreatPost(true);
+    navigate("/Createpost");
+  }
   useEffect(() => {
     const projectId = "pvxi7c9s239h";
 
@@ -235,9 +239,9 @@ const commentDeleteFunction =(postId)=>{
               Your personal Reddit frontpage. Come here to check in with your
               favorite communities.
             </p>
-            <Link to="/Createpost">
-              <button className="creatPost">Creat Post</button>
-            </Link>
+            
+              <button className="creatPost" onClick={HandelCreatenewPost}>Creat Post</button>
+            
             <button className="creatcommunity" onClick={handelDead}>
               Creat Communitiy
             </button>

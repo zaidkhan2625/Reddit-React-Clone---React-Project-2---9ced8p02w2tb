@@ -19,20 +19,23 @@ import {
   faItalic,
   faStrikethrough,
 } from "@fortawesome/free-solid-svg-icons";
-import { CheckBox } from "@mui/icons-material";
+import { CheckBox, Update } from "@mui/icons-material";
 import { useStateValue } from "./StatePeovider";
 import Hoc from "../Hoc/Hoc";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 function CreatePost() {
   const [PostBox, SetPostBox] = useState(false);
   const [PostBoxImg, SetPostBoxImg] = useState(false);
   const [PostBoxLink, SetPostBoxLink] = useState(false);
   const [selectedMedia, setSelectedMedia] = useState(null);
   const [mediaType, setMediaType] = useState(null);
-  const { LoginJwt } = useStateValue();
+  const { LoginJwt, creatPost, update } = useStateValue();
   const [PostTitle, SetPostTitle] = useState("");
   const [textareaContent, setTextareaContent] = useState("");
-  const navigate= useNavigate();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const HotelId = location.state ? location.state.HotelId : null;
+
   const HandelPostboxPostbgtm = () => {
     SetPostBox(true);
     SetPostBoxImg(false);
@@ -52,16 +55,16 @@ function CreatePost() {
   const MediaSelector = () => {
     const handleMediaChange = (event) => {
       const mediaInput = event.target;
-    
+
       if (mediaInput.files && mediaInput.files[0]) {
         const reader = new FileReader();
-    
+
         reader.onload = function (e) {
           setSelectedMedia(e.target.result);
         };
-    
+
         reader.readAsDataURL(mediaInput.files[0]);
-    
+
         // Determine the media type
         setMediaType(
           mediaInput.files[0].type.startsWith("image/") ? "image" : "video"
@@ -105,36 +108,33 @@ function CreatePost() {
     const apiUrl = "https://academics.newtonschool.co/api/v1/reddit/post/";
     const projectId = "pvxi7c9s239h";
     const formData = new FormData();
-  formData.append('title', PostTitle);
-  formData.append('content', textareaContent);
-  if (selectedMedia) {
-    const mediaBlob = convertDataUrlToBlob(selectedMedia);
-    formData.append('images', mediaBlob, 'image_filename.jpg');
-  }
+    formData.append("title", PostTitle);
+    formData.append("content", textareaContent);
+    if (selectedMedia) {
+      const mediaBlob = convertDataUrlToBlob(selectedMedia);
+      formData.append("images", mediaBlob, "image_filename.jpg");
+    }
 
-  console.log("FormData content:");
-formData.forEach((value, key) => {
-  console.log(key, value);
-}); // Check the FormData content
+    console.log("FormData content:");
+    formData.forEach((value, key) => {
+      console.log(key, value);
+    }); // Check the FormData content
     try {
       const response = await fetch(apiUrl, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${LoginJwt}`,
           projectID: projectId,
-          Authorization: `Bearer ${sessionStorage.getItem('jwttoken')}`
+          Authorization: `Bearer ${sessionStorage.getItem("jwttoken")}`,
         },
         body: formData,
       });
       const data = await response.json();
       console.log("Post created successfully:", data);
-      if(data.status==='success')
-      {
+      if (data.status === "success") {
         navigate("/");
-      }
-      else
-      {
-       alert("not creted input or title error");
+      } else {
+        alert("not creted input or title error");
       }
       // Handle success as needed
     } catch (error) {
@@ -142,27 +142,61 @@ formData.forEach((value, key) => {
       // Handle the error as needed
     }
   };
-  
+
   function PostboxforPostTab() {
-    return (
-      <>
-        
-      </>
-    );
+    return <></>;
   }
+  const UpdatePost =async (props) => {
+    const { HotelId } = props;
+    const apiUrl = `https://academics.newtonschool.co/api/v1/reddit/post/${HotelId}`;
+    const projectId = "pvxi7c9s239h";
+    const formData = new FormData();
+    formData.append("title", PostTitle);
+    formData.append("content", textareaContent);
+    if (selectedMedia) {
+      const mediaBlob = convertDataUrlToBlob(selectedMedia);
+      formData.append("images", mediaBlob, "image_filename.jpg");
+    }
+
+    console.log("FormData content:");
+    formData.forEach((value, key) => {
+      console.log(key, value);
+    }); // Check the FormData content
+    try {
+      const response = await fetch(apiUrl, {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${LoginJwt}`,
+          projectID: projectId,
+          Authorization: `Bearer ${sessionStorage.getItem("jwttoken")}`,
+        },
+        body: formData,
+      });
+      const data = await response.json();
+      console.log("Post created successfully:", data);
+      if (data.status === "success") {
+        navigate("/");
+      } else {
+        alert("not creted input or title error");
+      }
+      // Handle success as needed
+    } catch (error) {
+      console.error("Error creating post:", error.message);
+      // Handle the error as needed
+    }
+  };  
   const convertDataUrlToBlob = (dataUrl) => {
-    const [, base64] = dataUrl.split(',');
+    const [, base64] = dataUrl.split(",");
     const binaryString = atob(base64);
     const arrayBuffer = new ArrayBuffer(binaryString.length);
     const uint8Array = new Uint8Array(arrayBuffer);
-  
+
     for (let i = 0; i < binaryString.length; i++) {
       uint8Array[i] = binaryString.charCodeAt(i);
     }
-  
+
     return new Blob([uint8Array], { type: mediaType }); // use mediaType here to set the correct MIME type
   };
-  
 
   function Link() {
     return (
@@ -215,60 +249,63 @@ formData.forEach((value, key) => {
                 </div>
               </div>
               <div className="title">
-                <textarea placeholder="Title" className="textarea" onChange={(e) => SetPostTitle(e.target.value)}></textarea>
+                <textarea
+                  placeholder="Title"
+                  className="textarea"
+                  onChange={(e) => SetPostTitle(e.target.value)}
+                ></textarea>
                 <div class="wordcount">0/300</div>
               </div>
               <div className="postcontent">
                 {PostBox ? (
-                 <div className="postcontentDiv">
-                 <div className="styeltypeofcontent">
-          <div className="stylebtn">
-            <button className="stlbtn">
-              <FontAwesomeIcon icon={faBold} />
-            </button>
-            <button className="stlbtn">
-              <FontAwesomeIcon icon={faItalic} />
-            </button>
-            <button className="stlbtn">
-              <FontAwesomeIcon icon={faLink} />
-            </button>
-            <button className="stlbtn">
-              <FontAwesomeIcon icon={faStrikethrough} />
-            </button>
-            <button className="stlbtn">b</button>
-            <button className="stlbtn">
-              <FontAwesomeIcon icon={faSuperscript} />
-            </button>
-            <button className="stlbtn">s</button>
-            <button className="stlbtn">
-              <FontAwesomeIcon icon={faHeading} />
-            </button>
-            <button className="stlbtn">
-              <FontAwesomeIcon icon={faList} />
-            </button>
-            <button className="stlbtn">
-              <FontAwesomeIcon icon={faListOl} />
-            </button>
-            <button className="stlbtn">
-              <FontAwesomeIcon icon={faQuoteRight} />
-            </button>
-            <button className="stlbtn">
-              <FontAwesomeIcon icon={faFolder} />
-            </button>
-            <button className="stlbtn">
-              <FontAwesomeIcon icon={faTable} />
-            </button>
-            <button className="Markdown">MarkDown Mode</button>
-          </div>
-        </div>
-        <textarea
-          placeholder="Text (optional)"
-          className="inputcontent"
-          // value={textareaContent}
-          onChange={(e) => setTextareaContent(e.target.value)}
-        />
-       
-                 </div>
+                  <div className="postcontentDiv">
+                    <div className="styeltypeofcontent">
+                      <div className="stylebtn">
+                        <button className="stlbtn">
+                          <FontAwesomeIcon icon={faBold} />
+                        </button>
+                        <button className="stlbtn">
+                          <FontAwesomeIcon icon={faItalic} />
+                        </button>
+                        <button className="stlbtn">
+                          <FontAwesomeIcon icon={faLink} />
+                        </button>
+                        <button className="stlbtn">
+                          <FontAwesomeIcon icon={faStrikethrough} />
+                        </button>
+                        <button className="stlbtn">b</button>
+                        <button className="stlbtn">
+                          <FontAwesomeIcon icon={faSuperscript} />
+                        </button>
+                        <button className="stlbtn">s</button>
+                        <button className="stlbtn">
+                          <FontAwesomeIcon icon={faHeading} />
+                        </button>
+                        <button className="stlbtn">
+                          <FontAwesomeIcon icon={faList} />
+                        </button>
+                        <button className="stlbtn">
+                          <FontAwesomeIcon icon={faListOl} />
+                        </button>
+                        <button className="stlbtn">
+                          <FontAwesomeIcon icon={faQuoteRight} />
+                        </button>
+                        <button className="stlbtn">
+                          <FontAwesomeIcon icon={faFolder} />
+                        </button>
+                        <button className="stlbtn">
+                          <FontAwesomeIcon icon={faTable} />
+                        </button>
+                        <button className="Markdown">MarkDown Mode</button>
+                      </div>
+                    </div>
+                    <textarea
+                      placeholder="Text (optional)"
+                      className="inputcontent"
+                      // value={textareaContent}
+                      onChange={(e) => setTextareaContent(e.target.value)}
+                    />
+                  </div>
                 ) : PostBoxImg ? (
                   <MediaSelector />
                 ) : PostBoxLink ? (
@@ -296,7 +333,19 @@ formData.forEach((value, key) => {
               </div>
               <div className="savepostdiv">
                 <button className="Savedraft">Save as Draft</button>
-                <button className="postbtn" onClick={createPost}>Post</button>
+                {creatPost ? (
+                  <button className="postbtn" onClick={createPost}>
+                    Post
+                  </button>
+                ) : update ? (
+                  <button className="postbtn" onClick={()=>UpdatePost({HotelId})}>
+                  Update
+                  </button>
+                ) : (
+                  <button className="postbtn" onClick={createPost}>
+                    Post
+                  </button>
+                )}
               </div>
               <div className="postvlidation">
                 <div className="checkbox">

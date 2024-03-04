@@ -24,6 +24,7 @@ import {
   faImage,
 } from "@fortawesome/free-solid-svg-icons";
 import { useStateValue } from "./StatePeovider";
+import { useNavigate } from "react-router-dom";
 const style = {
   position: "absolute",
   top: "27%",
@@ -63,6 +64,8 @@ function LoginResultPost({
   const LoginJwt = sessionStorage.getItem("jwttoken");
   const UserNameLogin = localStorage.getItem("loginuserName");
   const LoginUserId = sessionStorage.getItem("userId");
+  const {Setupdate,SetcreatPost}=useStateValue();
+  const navigate = useNavigate();
   const HandelPostDelete = async (id)=>{
     // alert(`"this post id delete" , ${id}`);
     const projectId = "pvxi7c9s239h";
@@ -88,6 +91,14 @@ function LoginResultPost({
       console.log(error);
     }
   }
+  const state = {
+    HotelId:id,
+  }
+  const HandPostEdit = (id) => {
+    Setupdate(true);
+    SetcreatPost(false);
+    navigate("/Createpost", { state });
+  };
   
   function YourComponent(){
     const [anchorEl, setAnchorEl] = useState(null);
@@ -97,6 +108,7 @@ function LoginResultPost({
     const handleMenuClose = () => {
       setAnchorEl(null);
     };
+ 
     return (
       <div>
         <MoreHorizIcon onClick={handleMenuClick} />
@@ -116,9 +128,10 @@ function LoginResultPost({
           getContentAnchorEl={null}
         >
           <MenuItem>Save</MenuItem>
-          <MenuItem>Edit</MenuItem>
+          <MenuItem onClick={()=>HandPostEdit(id)}>Edit</MenuItem>
           <MenuItem>Follow</MenuItem>
           <MenuItem onClick={()=>HandelPostDelete(id)}>Delete </MenuItem>
+          
         </Menu>
       </div>
     );
@@ -152,7 +165,6 @@ function LoginResultPost({
           getContentAnchorEl={null}
         >
           <MenuItem>Save</MenuItem>
-          <MenuItem>Edit</MenuItem>
           <MenuItem>Follow</MenuItem>
         </Menu>
       </div>
