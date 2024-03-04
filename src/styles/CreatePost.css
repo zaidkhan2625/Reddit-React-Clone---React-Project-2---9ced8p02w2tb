@@ -5,7 +5,21 @@
     min-height: 100vh;
     margin-top: 60px;
 }
-
+.checkbox{
+    cursor:not-allowed;
+}
+.Savedraft{
+    cursor:not-allowed;
+}
+.stlbtn,icon{
+    cursor: not-allowed;
+}
+.icon{
+    cursor: not-allowed;
+}
+.checkbox>input{
+    cursor:not-allowed;
+}
 .createpodtiv {
     display: flex;
     flex-direction: row;

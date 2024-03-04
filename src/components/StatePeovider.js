@@ -25,6 +25,8 @@ const StateProvider = ({ children }) => {
   const [cCount, SetcCount] = useState(nmberOfcomment);
   const [update , Setupdate]= useState(false);
   const [creatPost ,SetcreatPost]=useState(false);
+  const [PostBox, SetPostBox] = useState(false);
+
   return (
     <stateContext.Provider
       value={{
@@ -38,7 +40,8 @@ const StateProvider = ({ children }) => {
         cCount, SetcCount,
         SetnmberOfcomment,
         update , Setupdate,
-        creatPost ,SetcreatPost
+        creatPost ,SetcreatPost,
+        PostBox, SetPostBox
 
       }}
     >

@@ -24,12 +24,11 @@ import { useStateValue } from "./StatePeovider";
 import Hoc from "../Hoc/Hoc";
 import { useLocation, useNavigate } from "react-router-dom";
 function CreatePost() {
-  const [PostBox, SetPostBox] = useState(false);
   const [PostBoxImg, SetPostBoxImg] = useState(false);
   const [PostBoxLink, SetPostBoxLink] = useState(false);
   const [selectedMedia, setSelectedMedia] = useState(null);
   const [mediaType, setMediaType] = useState(null);
-  const { LoginJwt, creatPost, update } = useStateValue();
+  const { LoginJwt, creatPost, update ,PostBox, SetPostBox} = useStateValue();
   const [PostTitle, SetPostTitle] = useState("");
   const [textareaContent, setTextareaContent] = useState("");
   const navigate = useNavigate();

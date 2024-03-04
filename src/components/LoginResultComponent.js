@@ -14,7 +14,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Hoc from "../Hoc/Hoc";
 function LoginResultComponent() {
   const [data, setData] = useState([]);
-  const { LoginJwt,SetcreatPost,Setupdate } = useStateValue();
+  const { LoginJwt,SetcreatPost,Setupdate,SetPostBox } = useStateValue();
   const navigate = useNavigate();
   const [sortedData, setSortedData] = useState([]);
   const [sortCriteria, setSortCriteria] = useState("hot");
@@ -22,6 +22,7 @@ function LoginResultComponent() {
   const HandelCreatenewPost =()=>{
     Setupdate(false);
     SetcreatPost(true);
+    SetPostBox(true);
     navigate("/Createpost");
   }
   useEffect(() => {
