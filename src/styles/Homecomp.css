@@ -4,3 +4,6 @@
 .SiderClass{
     height: 100vh;
 }
+.disable{
+    cursor: not-allowed;
+}

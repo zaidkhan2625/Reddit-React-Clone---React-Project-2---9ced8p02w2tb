@@ -173,11 +173,11 @@ function CommentData({ commentcontent, commentuserId, commentid ,HandelComment,c
         <div className="commentedUsertracknamelogo">
           <img src={userData.profileImage} />
           <p>{userData.name}</p>
-          <p>{commentuserId}</p>
+          
         </div>
         <p>
           {commentcontent}
-          {LoginUserId}
+          
         </p>
         <div className="divforbuttonincomment">
           <div className="voteUpDownincomment">

@@ -72,6 +72,7 @@ function LoginResultPost({
     try{
       const response = await fetch(`https://academics.newtonschool.co/api/v1/reddit/post/${id}`,{
       headers:{
+        method:"DELETE",
         Authorization: `Bearer ${LoginJwt}`,
         projectID: projectId,
       }
@@ -463,7 +464,7 @@ function LoginResultPost({
                     >
                       ⇧
                     </span>
-                    <p className="likecount"> {voteCount}</p>
+                    <p className="likecount"> {likeCount}</p>
                     <p
                       className="CommentDownVote"
                       onClick={() => HandelDownVOte()}
@@ -564,7 +565,7 @@ function LoginResultPost({
                     </div>
                     <p className="posttittle">post titel</p>
                     <div className="imgdiv">
-                      <img className="LoginPostImge" src={channelImage} />
+                      <img className="LoginPostImge" src={channelImage} onError={handleImageError} />
                     </div>
                     <div className="resultFooter">
                       <div className="resultbutton">

@@ -18,40 +18,40 @@ function HomeComponent() {
           </div>
           <SubMenu label="TOPICS">
             <SubMenu icon={<SportsEsportsOutlinedIcon />} label="game">
-              <MenuItem onClick={()=>alert("Still Working On it")}>Valheim</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Genshin Impact</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Minecraft</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Pokimane</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Halo Infinite</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Call Of Duty: Warzone</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Path of Exile</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Hollow Knight: SilkSong</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Escape from Tarkov</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Watch Dogs: Legion</MenuItem>
+              <MenuItem  className="disable">Valheim</MenuItem>
+              <MenuItem className="disable">Genshin Impact</MenuItem>
+              <MenuItem className="disable">Minecraft</MenuItem>
+              <MenuItem className="disable">Pokimane</MenuItem>
+              <MenuItem className="disable">Halo Infinite</MenuItem>
+              <MenuItem className="disable">Call Of Duty: Warzone</MenuItem>
+              <MenuItem className="disable">Path of Exile</MenuItem>
+              <MenuItem className="disable">Hollow Knight: SilkSong</MenuItem>
+              <MenuItem className="disable">Escape from Tarkov</MenuItem>
+              <MenuItem className="disable">Watch Dogs: Legion</MenuItem>
             </SubMenu>
             <SubMenu icon={<SportsBaseballOutlinedIcon />} label="Sports">
-              <MenuItem onClick={()=>alert("Still Working On it")}>NFL</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>NBA</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Megan Anderson</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Atlanta Hawks</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Los Angeles Lakers</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Boston Celties</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Arsenal F.C.</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Philadelphia 76ers</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Premier League</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>UFC</MenuItem>
+              <MenuItem className="disable">NFL</MenuItem>
+              <MenuItem className="disable">NBA</MenuItem>
+              <MenuItem className="disable">Megan Anderson</MenuItem>
+              <MenuItem className="disable">Atlanta Hawks</MenuItem>
+              <MenuItem className="disable">Los Angeles Lakers</MenuItem>
+              <MenuItem className="disable">Boston Celties</MenuItem>
+              <MenuItem className="disable">Arsenal F.C.</MenuItem>
+              <MenuItem className="disable">Philadelphia 76ers</MenuItem>
+              <MenuItem className="disable">Premier League</MenuItem>
+              <MenuItem className="disable">UFC</MenuItem>
             </SubMenu>
             <SubMenu icon={<SignalCellularAltOutlinedIcon />} label="Business">
-              <MenuItem onClick={()=>alert("Still Working On it")}>GameStop</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Moderna</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Pfizer</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Johnson & johnson</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>AstraZeneca</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Walgreens</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Best Buy</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Novavax</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>SpaceX</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Tesla</MenuItem>
+              <MenuItem className="disable">GameStop</MenuItem>
+              <MenuItem className="disable">Moderna</MenuItem>
+              <MenuItem className="disable">Pfizer</MenuItem>
+              <MenuItem className="disable">Johnson & johnson</MenuItem>
+              <MenuItem className="disable">AstraZeneca</MenuItem>
+              <MenuItem className="disable">Walgreens</MenuItem>
+              <MenuItem className="disable">Best Buy</MenuItem>
+              <MenuItem className="disable">Novavax</MenuItem>
+              <MenuItem className="disable">SpaceX</MenuItem>
+              <MenuItem className="disable">Tesla</MenuItem>
             </SubMenu >
             <SubMenu icon={<WbSunnyOutlinedIcon />} label="Crypto">
               <MenuItem>Cardano</MenuItem>
@@ -63,87 +63,87 @@ function HomeComponent() {
               <MenuItem>BitcoinCash</MenuItem>
             </SubMenu>
             <SubMenu icon={<ConnectedTvOutlinedIcon />} label="Television">
-              <MenuItem onClick={()=>alert("Still Working On it")}>The Real HouseWives of Atlanta</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>The Bachelor</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Sister Wives</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>90 Day Finance</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Wife Swap</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>The Amazing Race Australia</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Married at First Sight</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>The Real Housewives of dalllas</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>My 600-lb life</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Last Week Tonight with john oliver</MenuItem>
+              <MenuItem className="disable">The Real HouseWives of Atlanta</MenuItem>
+              <MenuItem className="disable">The Bachelor</MenuItem>
+              <MenuItem className="disable">Sister Wives</MenuItem>
+              <MenuItem className="disable">90 Day Finance</MenuItem>
+              <MenuItem className="disable">Wife Swap</MenuItem>
+              <MenuItem className="disable">The Amazing Race Australia</MenuItem>
+              <MenuItem className="disable">Married at First Sight</MenuItem>
+              <MenuItem className="disable">The Real Housewives of dalllas</MenuItem>
+              <MenuItem className="disable">My 600-lb life</MenuItem>
+              <MenuItem className="disable">Last Week Tonight with john oliver</MenuItem>
             </SubMenu>
             <SubMenu icon={<StarBorderOutlinedIcon />} label="Celebrity">
-              <MenuItem onClick={()=>alert("Still Working On it")}>Kim kardashian</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Doja Cat</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Lggy Azalea </MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Any Taylor-Joy</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Natalie Portman</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Henry Cavil</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Millie Bobby Brown</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Tom Hiddelston</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Keanu Reeves</MenuItem>
+              <MenuItem className="disable">Kim kardashian</MenuItem>
+              <MenuItem className="disable">Doja Cat</MenuItem>
+              <MenuItem className="disable">Lggy Azalea </MenuItem>
+              <MenuItem className="disable">Any Taylor-Joy</MenuItem>
+              <MenuItem className="disable">Natalie Portman</MenuItem>
+              <MenuItem className="disable">Henry Cavil</MenuItem>
+              <MenuItem className="disable">Millie Bobby Brown</MenuItem>
+              <MenuItem className="disable">Tom Hiddelston</MenuItem>
+              <MenuItem className="disable">Keanu Reeves</MenuItem>
             </SubMenu>
             <SubMenu label="Show more">
-              <MenuItem onClick={()=>alert("Still Working On it")}>Animal & Pets</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Anime</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Art</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Cars And Motor Vehicles</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Crafts & DIY</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Culture,Race,And Ethnicity</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Ethics & Philosphy</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Fashion</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Food and Drink</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>History</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Hobbies</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Law</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Learning and Education</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Militry</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Movies</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Music</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Place</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>poadcat and Streamer</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Politics</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Programming</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Reading Writting and literature</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Religions and Sprituality</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Science</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>TableTops Games</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Technology</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Travel</MenuItem>
+              <MenuItem className="disable">Animal & Pets</MenuItem>
+              <MenuItem className="disable">Anime</MenuItem>
+              <MenuItem className="disable">Art</MenuItem>
+              <MenuItem className="disable">Cars And Motor Vehicles</MenuItem>
+              <MenuItem className="disable">Crafts & DIY</MenuItem>
+              <MenuItem className="disable">Culture,Race,And Ethnicity</MenuItem>
+              <MenuItem className="disable">Ethics & Philosphy</MenuItem>
+              <MenuItem className="disable">Fashion</MenuItem>
+              <MenuItem className="disable">Food and Drink</MenuItem>
+              <MenuItem className="disable">History</MenuItem>
+              <MenuItem className="disable">Hobbies</MenuItem>
+              <MenuItem className="disable">Law</MenuItem>
+              <MenuItem className="disable">Learning and Education</MenuItem>
+              <MenuItem className="disable">Militry</MenuItem>
+              <MenuItem className="disable">Movies</MenuItem>
+              <MenuItem className="disable">Music</MenuItem>
+              <MenuItem className="disable">Place</MenuItem>
+              <MenuItem className="disable">poadcat and Streamer</MenuItem>
+              <MenuItem className="disable">Politics</MenuItem>
+              <MenuItem className="disable">Programming</MenuItem>
+              <MenuItem className="disable">Reading Writting and literature</MenuItem>
+              <MenuItem className="disable">Religions and Sprituality</MenuItem>
+              <MenuItem className="disable">Science</MenuItem>
+              <MenuItem className="disable">TableTops Games</MenuItem>
+              <MenuItem className="disable">Technology</MenuItem>
+              <MenuItem className="disable">Travel</MenuItem>
             </SubMenu>
           </SubMenu>
           <div className="Resources">
             <SubMenu label="Resources">
-             <MenuItem onClick={()=>alert("Still Working On it")}>About reddit</MenuItem>
-             <MenuItem onClick={()=>alert("Still Working On it")}>Adverties</MenuItem>
-             <MenuItem onClick={()=>alert("Still Working On it")}>Help</MenuItem>
-             <MenuItem onClick={()=>alert("Still Working On it")}>Blog</MenuItem>
-             <MenuItem onClick={()=>alert("Still Working On it")}>Careers</MenuItem>
-             <MenuItem onClick={()=>alert("Still Working On it")}>Press</MenuItem>
+             <MenuItem className="disable">About reddit</MenuItem>
+             <MenuItem className="disable">Adverties</MenuItem>
+             <MenuItem className="disable">Help</MenuItem>
+             <MenuItem className="disable">Blog</MenuItem>
+             <MenuItem className="disable">Careers</MenuItem>
+             <MenuItem className="disable">Press</MenuItem>
              <SubMenu className="" label="see more">
               <div className="Resources">
-              <MenuItem onClick={()=>alert("Still Working On it")}>Community</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Best of reddit</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Topics</MenuItem>
+              <MenuItem className="disable">Community</MenuItem>
+              <MenuItem className="disable">Best of reddit</MenuItem>
+              <MenuItem className="disable">Topics</MenuItem>
 
               </div>
               <div className="Resources">
-              <MenuItem onClick={()=>alert("Still Working On it")}>Content Policy</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>Privacy Policy</MenuItem>
-              <MenuItem onClick={()=>alert("Still Working On it")}>User agreement</MenuItem>
+              <MenuItem className="disable">Content Policy</MenuItem>
+              <MenuItem className="disable">Privacy Policy</MenuItem>
+              <MenuItem className="disable">User agreement</MenuItem>
 
               </div>
              </SubMenu>
             </SubMenu>
             <SubMenu label="POPULAR POST">
-            <MenuItem onClick={()=>alert("Still Working On it")}>English / Gloable</MenuItem>
-            <MenuItem onClick={()=>alert("Still Working On it")}>Deutsch</MenuItem>
-            <MenuItem onClick={()=>alert("Still Working On it")}>Espanol</MenuItem>
-            <MenuItem onClick={()=>alert("Still Working On it")}>Francais</MenuItem>
-            <MenuItem onClick={()=>alert("Still Working On it")}>Italiano</MenuItem>
-            <MenuItem onClick={()=>alert("Still Working On it")}>Portugues</MenuItem>
+            <MenuItem className="disable">English / Gloable</MenuItem>
+            <MenuItem className="disable">Deutsch</MenuItem>
+            <MenuItem className="disable">Espanol</MenuItem>
+            <MenuItem className="disable">Francais</MenuItem>
+            <MenuItem className="disable">Italiano</MenuItem>
+            <MenuItem className="disable">Portugues</MenuItem>
 
             </SubMenu>
             
