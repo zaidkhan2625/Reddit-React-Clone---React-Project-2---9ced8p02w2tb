@@ -359,6 +359,9 @@ function Hader() {
     const handelDead = () => {
       navigate("/Dead");
     };
+    const handelpost =()=>{
+      navigate("/Createpost");
+    }
     return (
       <div>
         <div onClick={handleMenuClick} className="">
@@ -389,7 +392,7 @@ function Hader() {
                 </MenuItem>
                 <MenuItem onClick={handelDead}>Home</MenuItem>
                 <MenuItem onClick={handelDead}>Popular Community</MenuItem>
-                <MenuItem onClick={handelDead}>Creat Post</MenuItem>
+                <MenuItem onClick={handelpost}>Creat Post</MenuItem>
                 <MenuItem onClick={handelDead}>User </MenuItem>
 
                 <MenuItem onClick={handelDead}>Premiumn Reddit</MenuItem>

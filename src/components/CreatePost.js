@@ -29,11 +29,12 @@ function CreatePost() {
   const [selectedMedia, setSelectedMedia] = useState(null);
   const [mediaType, setMediaType] = useState(null);
   const { LoginJwt, creatPost, update ,PostBox, SetPostBox} = useStateValue();
-  const [PostTitle, SetPostTitle] = useState("");
+  const [PostTitle, SetPostTitle] = useState(null);
   const [textareaContent, setTextareaContent] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
   const HotelId = location.state ? location.state.HotelId : null;
+  const [posterro ,SetPostBoxerro] =useState("");
 
   const HandelPostboxPostbgtm = () => {
     SetPostBox(true);
@@ -103,7 +104,31 @@ function CreatePost() {
       </div>
     );
   };
+  const validation = () => {
+    let valid = true;
+  
+    if (!PostTitle || PostTitle.trim() === "") {
+      valid = false;
+      SetPostBoxerro("Title is required");
+    } 
+  
+    else if (!mediaType || mediaType.trim() === "") {
+      valid = false;
+      SetPostBoxerro("Media is required");
+    } 
+    
+    else {
+      SetPostBoxerro("");
+    }
+  
+    return valid;
+  };
+  
+  
   const createPost = async () => {
+    if(!validation()){
+      return;
+    }
     const apiUrl = "https://academics.newtonschool.co/api/v1/reddit/post/";
     const projectId = "pvxi7c9s239h";
     const formData = new FormData();
@@ -131,9 +156,10 @@ function CreatePost() {
       const data = await response.json();
       console.log("Post created successfully:", data);
       if (data.status === "success") {
+        SetPostTitle("");
         navigate("/");
       } else {
-        alert("not creted input or title error");
+        SetPostBoxerro("input or title requier");
       }
       // Handle success as needed
     } catch (error) {
@@ -176,7 +202,7 @@ function CreatePost() {
       if (data.status === "success") {
         navigate("/");
       } else {
-        alert("not creted input or title error");
+        SetPostBox("input or title requier");
       }
       // Handle success as needed
     } catch (error) {
@@ -216,7 +242,7 @@ function CreatePost() {
                 Drafts<span className="Spantag">0</span>
               </button>
             </div>
-            <div className="communityfeild"></div>
+            <div className="communityfeild"><p style={{color:"red"}}>{posterro}</p></div>
             <div className="posbuttontFeild">
               <div className="PostButton">
                 <div className="button">
