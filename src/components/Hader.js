@@ -273,7 +273,7 @@ function Hader() {
       <div >
         <div onClick={handleMenuClick} className="ProfileLoginName">
           <PersonOutlineIcon />
-          <p>{usernamelogin}</p>
+          <p>{usernamelogin.toLocaleUpperCase()}</p>
         </div>
         <div>
           <Sidebar>

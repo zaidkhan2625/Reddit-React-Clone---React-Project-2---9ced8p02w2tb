@@ -101,6 +101,7 @@
     width: auto;
     height: auto;
     object-fit: cover;
+    margin-right: 20px;
 }
 .resultFooter {
     display: flex;
@@ -234,6 +235,7 @@
     display: -webkit-box;
     -webkit-line-clamp: 2; /* Number of lines to show */
     -webkit-box-orient: vertical;
+    margin-top: 0px;
   }
   
 @media only screen and (max-width: 767px) {
