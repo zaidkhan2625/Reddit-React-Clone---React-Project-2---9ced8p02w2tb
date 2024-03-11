@@ -1,5 +1,6 @@
 import React from 'react'
 import '../styles/premiumi.css';
+import Hoc from '../Hoc/Hoc';
 function PremiumimComponent() {
   return (
     <div className='divforpremium'>
@@ -8,4 +9,4 @@ function PremiumimComponent() {
   )
 }
 
-export default PremiumimComponent
+export default Hoc(PremiumimComponent);
