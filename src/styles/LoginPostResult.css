@@ -650,10 +650,13 @@
 .Upvoteinpost {
     transform: scale(2, 2);
     cursor: pointer;
+    font-size: 18px;
+
 }
 
 .UpvoteinpostDown {
     transform: scale(2, 2);
+    font-size: 18px;
     cursor: pointer;
     margin-top: 0px;
 }
