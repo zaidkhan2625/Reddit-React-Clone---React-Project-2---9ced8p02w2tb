@@ -1,6 +1,7 @@
 import React from 'react'
 import '../styles/Dead.css';
 import { useNavigate } from 'react-router-dom';
+import Hoc from '../Hoc/Hoc';
 function Dead() {
   const navigate = useNavigate();
   const handeGoBack =()=>{
@@ -14,4 +15,4 @@ function Dead() {
   )
 }
 
-export default Dead
+export default Hoc(Dead);
