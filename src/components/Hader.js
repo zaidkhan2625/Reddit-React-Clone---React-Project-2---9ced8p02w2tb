@@ -306,7 +306,7 @@ function Hader() {
       navigate("/Dead");
     };
     return (
-      <div>
+      <div >
         <div onClick={handleMenuClick} className="ProfileLoginName">
           <PersonOutlineIcon />
           <p>{usernamelogin}</p>
@@ -327,7 +327,7 @@ function Hader() {
               }}
               getContentAnchorEl={null}
             >
-              <div>
+              <div className="popup">
                 <MenuItem
                   icon={<AccountCircleOutlinedIcon />}
                   onClick={handelDead}
@@ -383,14 +383,14 @@ function Hader() {
               }}
               getContentAnchorEl={null}
             >
-              <div>
+              <div  className="">
                 <MenuItem
                   icon={<AccountCircleOutlinedIcon />}
                   onClick={handelDead}
                 >
                   My Staff
                 </MenuItem>
-                <MenuItem onClick={handelDead}>Home</MenuItem>
+                <MenuItem onClick={HandelLOgoClick}>Home</MenuItem>
                 <MenuItem onClick={handelDead}>Popular Community</MenuItem>
                 <MenuItem onClick={handelpost}>Creat Post</MenuItem>
                 <MenuItem onClick={handelDead}>User </MenuItem>
