@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import "../styles/LoginResultComponent.css";
 import { useStateValue } from "./StatePeovider";
 import ParkOutlinedIcon from "@mui/icons-material/ParkOutlined";
@@ -12,6 +12,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Hoc from "../Hoc/Hoc";
+
 function LoginResultComponent() {
   const [data, setData] = useState([]);
   const { LoginJwt,SetcreatPost,Setupdate,SetPostBox } = useStateValue();
@@ -190,7 +191,8 @@ const commentDeleteFunction =(postId)=>{
           </div>
           {sortedData.map((item) => {
             return (
-              <div className="postdiv">
+             
+             <div className="postdiv">
                 <LoginResultPost
                   name={item.author.name}
                   commentCount={item.commentCount}
@@ -208,6 +210,7 @@ const commentDeleteFunction =(postId)=>{
                   commentDelete={()=>commentDeleteFunction(item._id)}
                 />
               </div>
+             
             );
           })}
         </div>

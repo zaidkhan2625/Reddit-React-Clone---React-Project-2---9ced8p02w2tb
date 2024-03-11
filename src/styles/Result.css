@@ -19,6 +19,7 @@
 }
 .horiz{
     height:25px;
+    cursor: not-allowed;
     padding-left: 7px;
     padding-right: 7px;
     border-radius: 50px;
@@ -62,8 +63,10 @@
     margin: 0;
 }
 .joinbutton{
+    cursor: not-allowed;
     display: flex;
-    
+    align-items: center;
+    justify-content: center;
 }
 .join{
     height: 26px;
@@ -75,6 +78,7 @@
     padding-left: 15px;
     padding-right: 15px;
     font-size: 12px;
+    cursor: not-allowed;
 }
 .resultHeadin > img{
     height: 25px;

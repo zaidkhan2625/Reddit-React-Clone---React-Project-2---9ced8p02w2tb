@@ -330,7 +330,7 @@ function Hader() {
               <div>
                 <MenuItem
                   icon={<AccountCircleOutlinedIcon />}
-                  onClick={() => alert("Still Working On it")}
+                  onClick={handelDead}
                 >
                   My Staff
                 </MenuItem>
@@ -386,7 +386,7 @@ function Hader() {
               <div>
                 <MenuItem
                   icon={<AccountCircleOutlinedIcon />}
-                  onClick={() => alert("Still Working On it")}
+                  onClick={handelDead}
                 >
                   My Staff
                 </MenuItem>
@@ -425,9 +425,10 @@ function Hader() {
   return (
     <>
       <div className="header">
-        <div className="MenuIcon">
-          <YourComponentForHamburgerIcon />
-        </div>
+      {isloggedin ?<div className="MenuIcon">
+        <YourComponentForHamburgerIcon />
+        </div> :null}
+        
 
         <div className="LogoAndName" onClick={HandelLOgoClick}>
           <img
