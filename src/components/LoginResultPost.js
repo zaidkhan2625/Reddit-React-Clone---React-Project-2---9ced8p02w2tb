@@ -500,7 +500,7 @@ function LoginResultPost({
                     >
                       ⇧
                     </span>
-                    {voteCount}
+                    {likeCount}
                     <p
                       className="LikeInComment2"
                       onClick={() => HandelDownVOte()}
