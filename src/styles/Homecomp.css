@@ -3,6 +3,7 @@
 }
 .SiderClass{
     height: 100vh;
+    position: sticky;
 }
 .disable{
     cursor: not-allowed;

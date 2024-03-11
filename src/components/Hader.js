@@ -177,48 +177,12 @@ function Hader() {
           <button className="LOginbtn" onClick={handleOpen}>
             Login In
           </button>
-          <p>
-            {" "}
-            <YourComponentNoneCommentinLoging />
-          </p>
+          
         </div>
       </>
     );
   };
-  function YourComponentNoneCommentinLoging() {
-    const [anchorEl, setAnchorEl] = useState(null);
-    const handleMenuClick = (event) => {
-      setAnchorEl(event.currentTarget);
-    };
-    const handleMenuClose = () => {
-      setAnchorEl(null);
-    };
-    return (
-      <div className="">
-        <div className="" onClick={handleMenuClick}>
-          <MoreHorizOutlinedIcon />
-        </div>
-        <Menu
-          anchorEl={anchorEl}
-          open={Boolean(anchorEl)}
-          onClose={handleMenuClose}
-          anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "right",
-          }}
-          transformOrigin={{
-            vertical: "top",
-            horizontal: "right",
-          }}
-          getContentAnchorEl={null}
-        >
-          <MenuItem onClick={handelLogin}>Login / Sign Up</MenuItem>
-          <MenuItem>View Popular raddit</MenuItem>
-          <MenuItem>Logout</MenuItem>
-        </Menu>
-      </div>
-    );
-  }
+
   const WithLogin = () => {
     return (
       <>
