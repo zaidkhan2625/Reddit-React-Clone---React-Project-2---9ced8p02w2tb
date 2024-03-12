@@ -717,4 +717,8 @@
         display: none;
         margin-left: 0;
     }
+    .stlbtn{
+        display: none;
+    }
+
 }
