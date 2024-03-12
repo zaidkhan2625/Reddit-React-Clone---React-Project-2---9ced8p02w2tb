@@ -586,7 +586,7 @@ function LoginResultPost({
                     </div>
                   </div>
                 </div>
-                <p className="commentByUserName" >Comment as {UserNameLogin.toLocaleLowerCase()}</p>
+                <p className="commentByUserName" >Comment as <strong>{UserNameLogin.toUpperCase()}</strong></p>
                 <div className="CommentBox">
                   <textarea
                     placeholder="What are your thought"
