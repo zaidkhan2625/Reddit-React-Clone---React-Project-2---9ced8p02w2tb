@@ -580,9 +580,7 @@ function LoginResultPost({
                         <FontAwesomeIcon icon={faBookmark} />
                         <p className="pline">Save</p>
                       </div>
-                      <div className="resultbutton">
-                        <p className="pline">...</p>
-                      </div>
+                     
                     </div>
                   </div>
                 </div>
