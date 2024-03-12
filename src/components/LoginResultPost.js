@@ -570,23 +570,23 @@ function LoginResultPost({
                     <div className="resultFooter">
                       <div className="resultbutton">
                         <FontAwesomeIcon /> <p>{commentCount}</p>
-                        <p>comments</p>
+                        <p className="pline">Comment</p>
                       </div>
                       <div className="resultbutton">
                         <FontAwesomeIcon icon={faShareNodes} />
-                        <p>share</p>
+                        <p className="pline">Share</p>
                       </div>
                       <div className="resultbutton">
                         <FontAwesomeIcon icon={faBookmark} />
-                        <p>Save</p>
+                        <p className="pline">Save</p>
                       </div>
                       <div className="resultbutton">
-                        <p>...</p>
+                        <p className="pline">...</p>
                       </div>
                     </div>
                   </div>
                 </div>
-                <p className="commentByUserName">comment as {UserNameLogin}</p>
+                <p className="commentByUserName" >Comment as {UserNameLogin.toLocaleLowerCase()}</p>
                 <div className="CommentBox">
                   <textarea
                     placeholder="What are your thought"
