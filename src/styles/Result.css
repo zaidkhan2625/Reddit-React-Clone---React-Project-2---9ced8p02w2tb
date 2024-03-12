@@ -94,11 +94,10 @@
 .resultBody{
     display: flex;
     flex-direction: column;
-    flex: 1;
+    /* flex: 1; */
     padding-left: 10px;
 }
 .PostImage{
-    width: auto;
     height: auto;
     object-fit: cover;
     margin-right: 20px;
