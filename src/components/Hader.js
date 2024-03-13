@@ -360,7 +360,7 @@ function Hader() {
                 <MenuItem onClick={handelpost}>Creat Post</MenuItem>
                 <MenuItem onClick={handelDead}>User </MenuItem>
 
-                <MenuItem onClick={handelDead}>Premiumn Reddit</MenuItem>
+                <MenuItem onClick={handelDead}>Premium Reddit</MenuItem>
               </div>
             </Menu>
           </Sidebar>

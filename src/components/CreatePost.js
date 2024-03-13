@@ -254,7 +254,7 @@ function CreatePost() {
                 <div className="button">
                   <button onClick={HandelPostboxImgbgtm}>
                     <FontAwesomeIcon icon={faImage} className="icon" />
-                    Image & Vedio
+                    Image
                   </button>
                 </div>
                 <div className="button">
@@ -349,7 +349,7 @@ function CreatePost() {
                 </button>
                 <button className="ptypebutton">
                   <FontAwesomeIcon icon={faPlus} />
-                  NSEW
+                  NSFW
                 </button>
                 <button className="ptypebutton">
                   <FontAwesomeIcon icon={faTag} />
