@@ -3,18 +3,18 @@ import { useNavigate } from 'react-router-dom';
 import { useStateValue } from './StatePeovider';
 
 function ProtectedRouter({ children }) {
-  const {isUserLoggedIn, setIsUserLoggedIn} = useStateValue();
+  const {isloggedin, setIsUserLoggedIn} = useStateValue();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!isUserLoggedIn) {
+    if (!isloggedin) {
       // Redirect to the home page if the user is not logged in
       navigate('/');
     }
-  }, [isUserLoggedIn, navigate]);
+  }, [isloggedin, navigate]);
 
   // Render children only if the user is logged in
-  return isUserLoggedIn ? children : null;
+  return isloggedin ? children : null;
 }
 
 export default ProtectedRouter;

@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense ,useEffect } from "react";
 import "../styles/LoginResultComponent.css";
 import { useStateValue } from "./StatePeovider";
 import ParkOutlinedIcon from "@mui/icons-material/ParkOutlined";
@@ -9,7 +9,7 @@ import {
   faImage,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Hoc from "../Hoc/Hoc";
 
@@ -22,11 +22,12 @@ function LoginResultComponent() {
   const [commentnumber, Setcommentnumber] = useState(0);
   const HandelCreatenewPost =()=>{
     navigate("/Createpost");
-
+    console.log("bkhdjvveg;lfwbkrnbkhgjv");
     Setupdate(false);
     SetcreatPost(true);
     SetPostBox(true);
   }
+
   useEffect(() => {
     const projectId = "pvxi7c9s239h";
 
@@ -244,7 +245,7 @@ const commentDeleteFunction =(postId)=>{
               favorite communities.
             </p>
             
-              <button className="creatPost" onClick={HandelCreatenewPost}>Creat Post</button>
+              <button className="creatPost" onClick={()=>HandelCreatenewPost()}>Creat Post</button>
             
             <button className="creatcommunity" onClick={handelDead}>
               Creat Communitiy
