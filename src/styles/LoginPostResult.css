@@ -49,14 +49,17 @@
     height: 20px;
     margin-left: 10px;
 }
-.VoteCountinside{
+
+.VoteCountinside {
     margin-bottom: 5px;
     margin-top: 5px;
     font-size: 18px;
 }
-.ButtonNameforsher{
+
+.ButtonNameforsher {
     margin-left: 8px;
 }
+
 .CommentPopUpBox {
     margin-top: 62px;
     position: absolute;
@@ -70,18 +73,18 @@
 }
 
 .MainCommentDiv {
-    height:100vh;
+    height: 100vh;
     width: 90%;
-    
+
 
     /* 
-    /* overflow-y: auto; */ 
+    /* overflow-y: auto; */
     /* background: rgb(82, 80, 80); */
     /* display: flex;
     flex-direction: column;
     position: relative;
     z-index: 0; */
-} 
+}
 
 .CommentHeader {
     display: flex;
@@ -113,7 +116,7 @@
     margin: 0;
 }
 
-.RestOfCommentPart{
+.RestOfCommentPart {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -147,7 +150,8 @@
     margin-left: 8px;
 
 }
-.pline{
+
+.pline {
     margin-left: 7px;
 }
 
@@ -208,7 +212,7 @@
 
 .logo {
     width: 30px;
-    height:30px;
+    height: 30px;
     border-radius: 50%;
 }
 
@@ -307,7 +311,8 @@
 
 .LoginPostImge {
     width: 100%;
-    height: 100%;
+    max-height: 75%;
+    object-fit: contain;
 }
 
 .restoftheloginresult {
@@ -318,7 +323,7 @@
     display: flex;
     justify-content: center;
     justify-content: center;
-    height: auto;
+    max-height: 700px;
     width: auto;
     margin-top: 4px;
     padding-right: 15px;
@@ -422,10 +427,12 @@
     margin-top: 5px;
     font-weight: 400;
 }
-.commentDataDiv{
+
+.commentDataDiv {
     min-height: 100vh;
     margin-bottom: 100px;
 }
+
 .postdivforcomment {
     margin-top: 40px;
     display: flex;
@@ -668,18 +675,22 @@
     .LoginResultPost {
         width: auto;
     }
+
     .LoginPostImge {
         width: 100%;
         height: 100%;
         margin-left: 0 !important;
         padding-right: 15px;
     }
-    .RestOfCommentPart{
+
+    .RestOfCommentPart {
         margin: 0;
     }
-    .PostDetails{
+
+    .PostDetails {
         display: none;
     }
+
     .logo {
         width: 40px;
         height: 40px;
@@ -705,19 +716,23 @@
     .posttittle {
         margin-top: 10px;
     }
-    .CommentHeader{
+
+    .CommentHeader {
         width: 100%;
     }
-    .postdivforcomment{
+
+    .postdivforcomment {
         width: 100%;
         margin-left: 0;
         padding-bottom: 200px;
     }
-    .commentMarket{
+
+    .commentMarket {
         display: none;
         margin-left: 0;
     }
-    .stlbtn{
+
+    .stlbtn {
         display: none;
     }
 
