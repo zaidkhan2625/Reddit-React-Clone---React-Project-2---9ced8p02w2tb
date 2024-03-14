@@ -9,7 +9,7 @@
 }
 .FilterFunction{
     margin-left: 8px;
-    height: 50%;
+    height: 90%;
     max-width: 150px;
     border-radius: 6px;
     display: flex;
@@ -89,18 +89,21 @@
     border: 1px solid rgb(53, 52, 54);
 } */
 .postdiv {
-    margin-top: 15px;
-    padding: 5px;
-    border-radius: 2px;
+    margin-top: 10px;
+    padding:5px;
+    border-radius: 8px;
 }
 
 .Bestdiv {
     display: flex;
+    border-radius: 7px;
+
     flex-direction: row;
     align-items: center;
-    background: #ffffff;
+    justify-content: space-between;
+    background: #eae8e8;
     border: 1px solid #ccc;
-    height: 60px;
+    height: 30px;
     align-items: center;
     margin-top: 15px;
     padding: 8px;
@@ -117,10 +120,10 @@
     flex-direction: row;
     background: #ffffff;
     border: 1px solid #ccc;
-    height: 60px;
+    height: 40px;
     align-items: center;
     padding: 8px;
-
+   border-radius: 7px;
 }
 
 .PostDivLogo {

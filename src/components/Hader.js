@@ -34,12 +34,8 @@ const style = {
   p: 4,
 };
 function Hader() {
-  const {
-    isloggedin,
-    Setisloggedin,
-    SetLoginUserId,
-    setIsUserLoggedIn,
-  } = useStateValue();
+  const { isloggedin, Setisloggedin, SetLoginUserId, setIsUserLoggedIn } =
+    useStateValue();
   const [signEmail, setsignEmail] = useState("");
   const [SignPassword, SetSignPassword] = useState("");
   const [Signusername, SetSignusername] = useState("");
@@ -146,7 +142,7 @@ function Hader() {
         sessionStorage.setItem("jwttoken", data.token);
         localStorage.setItem("loginuserName", data.data.name);
         // SetLoginUserId(data.data._id);
-        sessionStorage.setItem("userId",data.data._id);
+        sessionStorage.setItem("userId", data.data._id);
       }
       return data;
     } catch (error) {
@@ -155,29 +151,21 @@ function Hader() {
     }
   };
   const usernamelogin = localStorage.getItem("loginuserName");
-  console.log("userid in login" , sessionStorage.getItem("userId"));
+  console.log("userid in login", sessionStorage.getItem("userId"));
   console.log("login user id after setting from local storage");
   const Withoutloggin = () => {
     return (
       <>
         <div className="WithoutLoginPartHandel">
-          <p
-            className="redditRecape"
-          >
-            🍌
-          </p>
+          <p className="redditRecape">🍌</p>
           <span className="bar"> </span>
-          <div
-            className="barcodelogo"
-            
-          >
+          <div className="barcodelogo">
             <QrCode2OutlinedIcon className="barcode" />
             Get App
           </div>
           <button className="LOginbtn" onClick={handleOpen}>
             Login In
           </button>
-          
         </div>
       </>
     );
@@ -188,24 +176,12 @@ function Hader() {
       <>
         <div className="withloginresult">
           <div className="pp">
-            <OutboundOutlinedIcon
-              className="loginheadbar"
-              
-            />
+            <OutboundOutlinedIcon className="loginheadbar" />
           </div>
-          <p
-            className="redditrecap"
-            
-          >
-            🍌
-          </p>
+          <p className="redditrecap">🍌</p>
           <div className="pp">
             {" "}
-            <FontAwesomeIcon
-              icon={faCommentDots}
-              className="loginheadbar"
-              
-            />
+            <FontAwesomeIcon icon={faCommentDots} className="loginheadbar" />
           </div>
           <div
             className="pp"
@@ -270,7 +246,7 @@ function Hader() {
       navigate("/Dead");
     };
     return (
-      <div >
+      <div>
         <div onClick={handleMenuClick} className="ProfileLoginName">
           <PersonOutlineIcon />
           <p>{usernamelogin.toLocaleUpperCase()}</p>
@@ -290,6 +266,7 @@ function Hader() {
                 horizontal: "right",
               }}
               getContentAnchorEl={null}
+              PaperProps={{ style: { marginTop: '10.5px',} }}
             >
               <div className="popup">
                 <MenuItem
@@ -323,9 +300,9 @@ function Hader() {
     const handelDead = () => {
       navigate("/Dead");
     };
-    const handelpost =()=>{
+    const handelpost = () => {
       navigate("/Createpost");
-    }
+    };
     return (
       <div>
         <div onClick={handleMenuClick} className="">
@@ -339,23 +316,24 @@ function Hader() {
               onClose={handleMenuClose}
               anchorOrigin={{
                 vertical: "bottom",
-                horizontal: "right",
+                horizontal: "left",
               }}
               transformOrigin={{
                 vertical: "top",
                 horizontal: "right",
               }}
               getContentAnchorEl={null}
+              PaperProps={{ style: { marginTop: '16px'} }}
             >
-              <div  className="">
-              <MenuItem onClick={HandelLOgoClick}>Home</MenuItem>
+              <div className="">
+                <MenuItem onClick={HandelLOgoClick}>Home</MenuItem>
                 <MenuItem
                   icon={<AccountCircleOutlinedIcon />}
                   onClick={handelDead}
                 >
                   My Staff
                 </MenuItem>
-                
+
                 <MenuItem onClick={handelDead}>Popular Community</MenuItem>
                 <MenuItem onClick={handelpost}>Creat Post</MenuItem>
                 <MenuItem onClick={handelDead}>User </MenuItem>
@@ -390,10 +368,11 @@ function Hader() {
   return (
     <>
       <div className="header">
-      {isloggedin ?<div className="MenuIcon">
-        <YourComponentForHamburgerIcon />
-        </div> :null}
-        
+        {isloggedin ? (
+          <div className="MenuIcon">
+            <YourComponentForHamburgerIcon />
+          </div>
+        ) : null}
 
         <div className="LogoAndName" onClick={HandelLOgoClick}>
           <img

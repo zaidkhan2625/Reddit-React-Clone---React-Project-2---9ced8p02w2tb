@@ -19,7 +19,6 @@
 
 .popup {
     z-index: 999999999;
-
 }
 
 .redditRecape {
@@ -31,10 +30,12 @@
 }
 
 .pp {
+    margin-right: 20px;
     cursor: not-allowed;
 }
 
 .redditrecap {
+    margin-right: 20px;
     cursor: not-allowed;
 }
 
@@ -54,7 +55,6 @@
     padding: 0 !important;
     padding-bottom: 50px !important;
     margin: 0 !important;
-
 }
 
 .headerlogo {

@@ -174,7 +174,6 @@ const commentDeleteFunction =(postId)=>{
             </div>
           </div>
           <div className="Bestdiv">
-            <FontAwesomeIcon icon={faFireFlameSimple} />
             <p onClick={() => setSortCriteria("hot")} className="FilterFunction">Hot</p>
             <p onClick={() => setSortCriteria("likeIncrease")}className="FilterFunction">Like Up</p>
             <p onClick={() => setSortCriteria("likeDecrease")}className="FilterFunction">Like Down</p>
