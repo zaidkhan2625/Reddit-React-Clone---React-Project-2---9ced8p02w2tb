@@ -21,10 +21,11 @@ function LoginResultComponent() {
   const [sortCriteria, setSortCriteria] = useState("hot");
   const [commentnumber, Setcommentnumber] = useState(0);
   const HandelCreatenewPost =()=>{
+    navigate("/Createpost");
+
     Setupdate(false);
     SetcreatPost(true);
     SetPostBox(true);
-    navigate("/Createpost");
   }
   useEffect(() => {
     const projectId = "pvxi7c9s239h";

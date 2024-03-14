@@ -78,7 +78,7 @@
 .Agreement {
     display: flex;
     flex-direction: column;
-
+    border-radius: 8px;
     /* width: 250px; */
     max-height: 350px;
     background: white;
@@ -190,6 +190,7 @@
     background: white;
     height: 100px;
     padding: 10px;
+    border-radius: 8px;
 }
 
 .logopremeium {
@@ -228,10 +229,11 @@
     height: 300px;
     background: white;
     margin-top: 15px;
+    border-radius: 8px;
 }
 
 .Imageofhomepost {
-    width: 324px;
+    width: 100%;
 }
 
 .HomeLogodiv {
