@@ -299,7 +299,7 @@
     height: 40px;
     margin-left: 130px;
     border-style: none;
-    border-radius: 50px;
+    border-radius: 50px;cursor:not-allowed;
 }
 
 .Markdown:hover {
@@ -359,6 +359,7 @@
     color: white;
     width: 70px;
     border-style: none;
+    cursor: pointer;
 }
 
 .postvlidation {

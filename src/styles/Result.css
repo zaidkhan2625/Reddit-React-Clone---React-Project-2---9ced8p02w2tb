@@ -121,6 +121,7 @@
     padding-right: 18px;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 .likecounnt{
     margin-left: 3px;
@@ -139,6 +140,7 @@
     padding-right: 18px;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 .comment{
     padding-left: 4px;
@@ -181,6 +183,7 @@
     align-items: center;
     width: 250px;
     margin-top: 6px;
+    cursor: pointer;
 }
 
 .resultPopular:hover {

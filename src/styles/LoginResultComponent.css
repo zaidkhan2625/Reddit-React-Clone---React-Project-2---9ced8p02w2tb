@@ -19,6 +19,7 @@
     padding-right: 5px;
     background: red;
     color: white;
+    cursor: pointer;
 }
 .FilterFunction:hover{
     background: #faf9f9;
@@ -147,6 +148,7 @@
     border-radius: 4px;
     color: #1c1c1c;
     border-color: #f6f7f8;
+    cursor: pointer;
 }
 
 .PostDivInput:hover {
@@ -221,6 +223,7 @@
     color: white;
     font-size: 15px;
     background-color: #ff4500;
+    cursor: pointer;
 }
 
 .homecreate {
@@ -260,6 +263,7 @@
     border-radius: 25px;
     background: blue;
     margin-top: 10px;
+    cursor: pointer;
 }
 
 .creatcommunity {
@@ -271,6 +275,7 @@
     border-radius: 25px;
     background: rgb(171, 171, 172);
     margin-top: 10px;
+    cursor: pointer;
 }
 @media only screen and (max-width: 768px){
     .rightSideOfLoginResult{

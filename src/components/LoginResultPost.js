@@ -92,6 +92,9 @@ function LoginResultPost({
       console.log(error);
     }
   }
+  const handeldead =()=>{
+    navigate('/Dead');
+  }
   const state = {
     HotelId:id,
   }
@@ -369,7 +372,7 @@ function LoginResultPost({
 
       <div className="restoftheloginresult">
         <div className="headerLoginResult">
-          <img className="logo" src={profileImage} onError={handleImageErrorProfile} />
+          <img className="logo" src={profileImage} onError={handleImageErrorProfile} onClick={handeldead} />
           <p className="COMMUNITYNAme">{channelName}</p>
           <p className="posauth" onMouseOver={handleOpen}>
             {name}

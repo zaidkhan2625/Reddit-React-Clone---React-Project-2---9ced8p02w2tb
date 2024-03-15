@@ -199,7 +199,7 @@ function Hader() {
           </div>
           <div
             className="Adverties"
-            onClick={async () => await alert("still under work")}
+           
           >
             <CampaignOutlinedIcon className="" /> <p>Adverties</p>
           </div>
@@ -215,7 +215,7 @@ function Hader() {
     const projectId = "pvxi7c9s239h";
     try {
       const response = await fetch(
-        `${apiUrl}?search={"field":"${searchValue}"}`,
+        `https://academics.newtonschool.co/api/v1/reddit/post?search={"field":"author","value":"${searchValue}"}`,
         {
           method: "GET",
           headers: {
@@ -228,6 +228,7 @@ function Hader() {
       }
       const data = await response.json();
       console.log("search data is :", data);
+      console.log(searchValue);
       return data;
     } catch (error) {
       console.error("Error:", error.message);
@@ -266,7 +267,7 @@ function Hader() {
                 horizontal: "right",
               }}
               getContentAnchorEl={null}
-              PaperProps={{ style: { marginTop: '10.5px',} }}
+              PaperProps={{ style: { marginTop: "10.5px" } }}
             >
               <div className="popup">
                 <MenuItem
@@ -323,7 +324,7 @@ function Hader() {
                 horizontal: "right",
               }}
               getContentAnchorEl={null}
-              PaperProps={{ style: { marginTop: '16px'} }}
+              PaperProps={{ style: { marginTop: "16px" } }}
             >
               <div className="">
                 <MenuItem onClick={HandelLOgoClick}>Home</MenuItem>
@@ -414,12 +415,21 @@ function Hader() {
               placeholder="user Email"
               onChange={(e) => SetLoginEmail(e.target.value)}
             />
+            <p style={{ color: "red", padding: "0px", margin: "0px" }}>
+              {" "}
+              {EmailError}
+            </p>
+
             <input
               className="LoginInputFeild"
               type="password"
               placeholder="Password"
               onChange={(e) => SetLoginPassword(e.target.value)}
             />
+            <p style={{ color: "red", padding: "0px", margin: "0px" }}>
+              {PasswordError}
+            </p>
+
             <a className="forgetPassword" href="#">
               forget password?
             </a>
@@ -462,7 +472,7 @@ function Hader() {
                 login
               </span>
             </p>
-            <button onClick={signupUser}>Sign in</button>
+            <button className="ppp" onClick={signupUser}>Sign in</button>
           </Box>
         </Modal>
       </div>

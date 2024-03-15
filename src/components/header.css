@@ -67,6 +67,7 @@
     flex: 1;
     align-items: center;
     margin-left: 15px;
+    cursor: pointer;
 }
 
 .headerlogodiv {
@@ -177,6 +178,7 @@
     color: white;
     font-size: 13px;
     margin-right: 15px;
+    cursor: pointer;
 
 }
 
@@ -251,6 +253,7 @@
     color: white;
     font-size: 15px;
     width: 150px;
+    cursor: pointer;
 }
 
 .SignUpPopupBox {
@@ -301,6 +304,10 @@
 .logininsignup {
     color: blue;
     margin-left: 5px;
+    cursor: pointer;
+}
+.ppp{
+    cursor: pointer;
 }
 
 .signupinlogin {
@@ -338,6 +345,7 @@
     background: #DAE0E6;
     border-radius: 50px;
     font-size: 15px;
+    cursor: not-allowed;
 }
 
 .Icon {
@@ -384,6 +392,7 @@
     min-width: 45px;
     padding-left: 10px;
     height: 100%;
+    cursor: pointer;
 }
 
 .logoinlogindiv {
@@ -487,6 +496,7 @@
     align-items: center;
     margin-left: 5px;
     width: 30px;
+    cursor: pointer;
 }
 
 .WithoutLoginPartHandel {
