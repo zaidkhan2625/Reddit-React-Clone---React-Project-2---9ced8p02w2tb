@@ -6,11 +6,15 @@ import { useEffect } from "react";
 import Hoc from "../Hoc/Hoc";
 import PostDataFunction from "./PostDataFunction";
 import Popular from "./Popular";
-function Result({ isloggedin, Setisloggedin }) {
+import { useStateValue } from "./StatePeovider";
+import Noresultcomponent from "./Noresultcomponent";
+function Result() {
   const [popularData, SetpopularData] = useState("");
   const [showMore, setShowMore] = useState(false);
   const [postData, SetpostData] = useState([]);
-
+  const [filteredPostData, setFilteredPostData] = useState([]); // State for filtered data
+  const [searchtrue, Setsearchtrue] = useState(false);
+  const { searchValue } = useStateValue();
   useEffect(() => {
     // Fetch data when the component mounts
     const fetchData = async () => {
@@ -66,6 +70,31 @@ function Result({ isloggedin, Setisloggedin }) {
     fetchPost();
     // Call the function to fetch data
   }, []);
+  const debounce = (func, delay) => {
+    let debounceTimer;
+    return function () {
+      const context = this;
+      const args = arguments;
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => func.apply(context, args), delay);
+    };
+  };
+  const delayedSearch = debounce(() => {
+    // Filter post data whenever search value changes
+    Setsearchtrue(true);
+    const filteredData = postData.filter((item) => {
+      return (
+        item.content.toLowerCase().includes(searchValue.toLowerCase()) ||
+        item.author.name.toLowerCase() === searchValue.toLowerCase()
+      );
+    });
+    setFilteredPostData(filteredData);
+  }, 1000);
+  useEffect(() => {
+    // Filter post data whenever search value changes
+    delayedSearch();
+  }, [searchValue, postData]);
+  
 
   const handleSeeMore = () => {
     setShowMore(true);
@@ -81,16 +110,34 @@ function Result({ isloggedin, Setisloggedin }) {
           <HomeComponent className="sidebar" />
         </div>
         <div className="resultboadypart">
-          {postData.map((item) => (
-            <PostDataFunction
-              image={item.author.profileImage}
-              name={item.author.name}
-              content={item.content}
-              likeCount={item.likeCount}
-              commentCount={item.commentCount}
-              PostImages={item.images[0]}
-            />
-          ))}
+          {(searchValue.trim() === "" && postData.length === 0 )?(<Noresultcomponent />):
+          (searchValue.trim() !== "" && filteredPostData.length === 0) ?(<Noresultcomponent />)
+
+          :(searchValue.trim() === "" &&
+            postData.length > 0)?
+            postData.map((item) => (
+              <PostDataFunction
+                key={item.id}
+                image={item.author.profileImage}
+                name={item.author.name}
+                content={item.content}
+                likeCount={item.likeCount}
+                commentCount={item.commentCount}
+                PostImages={item.images[0]}
+              />
+            )):(searchValue.trim() !== "" &&
+            filteredPostData.length > 0 )?
+            filteredPostData.map((item) => (
+              <PostDataFunction
+                key={item.id}
+                image={item.author.profileImage}
+                name={item.author.name}
+                content={item.content}
+                likeCount={item.likeCount}
+                commentCount={item.commentCount}
+                PostImages={item.images[0]}
+              />
+            )):null}
         </div>
         <div className="popularResult">
           <p className="PopularCommunites">POPULAR COMMUNITIES</p>
@@ -114,6 +161,5 @@ function Result({ isloggedin, Setisloggedin }) {
     </>
   );
 }
-
 
 export default Hoc(Result);

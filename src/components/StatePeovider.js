@@ -25,6 +25,8 @@ const StateProvider = ({ children }) => {
   const [cCount, SetcCount] = useState(nmberOfcomment);
   const [update , Setupdate]= useState(false);
   const [creatPost ,SetcreatPost]=useState(false);
+  const [searchValue, SetSdearchValue] = useState("");
+
   const [PostBox, SetPostBox] = useState(false);
 
   return (
@@ -41,7 +43,8 @@ const StateProvider = ({ children }) => {
         SetnmberOfcomment,
         update , Setupdate,
         creatPost ,SetcreatPost,
-        PostBox, SetPostBox
+        PostBox, SetPostBox,
+        searchValue, SetSdearchValue
 
       }}
     >

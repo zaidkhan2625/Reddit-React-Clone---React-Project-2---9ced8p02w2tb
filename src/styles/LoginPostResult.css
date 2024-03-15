@@ -235,20 +235,17 @@
 
 .resultbutton {
     display: flex;
-    height: 36px;
+    height:15px ;
     width: auto;
     align-items: center;
     justify-content: center;
-    border-radius: 0%;
-    margin-left: 8px;
+    margin-right: 8px;
     background-color: white;
     color: rgb(67, 65, 64);
     cursor: pointer;
     pointer-events: auto;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 6px;
-    padding-right: 6px;
+    padding: 10px;
+    border-radius: 8px;
 }
 
 .resultbutton>p {

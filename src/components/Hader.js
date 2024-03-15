@@ -34,12 +34,11 @@ const style = {
   p: 4,
 };
 function Hader() {
-  const { isloggedin, Setisloggedin, SetLoginUserId, setIsUserLoggedIn } =
+  const { isloggedin, Setisloggedin, SetLoginUserId, setIsUserLoggedIn,searchValue, SetSdearchValue } =
     useStateValue();
   const [signEmail, setsignEmail] = useState("");
   const [SignPassword, SetSignPassword] = useState("");
   const [Signusername, SetSignusername] = useState("");
-  const [jwt, SetJwt] = useState("");
   const [open, setOpen] = useState(false);
   const [toggel, settoggel] = useState(false);
   const [LoginEmail, SetLoginEmail] = useState("");
@@ -47,7 +46,6 @@ function Hader() {
   // const [loginjwt, setloginjwt] = useState("");
   const [drowpOpen, SetdrowpOpen] = useState(false);
   const [modalPosition, setModalPosition] = useState({ x: 0, y: 0 });
-  const [searchValue, SetSdearchValue] = useState("");
   const [openSignUp, SetopenSignUp] = useState(false);
   const [EmailError, SetEmailError] = useState("");
   const [PasswordError, SetPasswordError] = useState("");
@@ -197,10 +195,7 @@ function Hader() {
               className="loginheadbar"
             />
           </div>
-          <div
-            className="Adverties"
-           
-          >
+          <div className="Adverties">
             <CampaignOutlinedIcon className="" /> <p>Adverties</p>
           </div>
           <div className="logindiv">
@@ -210,31 +205,31 @@ function Hader() {
       </>
     );
   };
-  async function fetchRedditPosts() {
-    const apiUrl = "https://academics.newtonschool.co/api/v1/reddit/post";
-    const projectId = "pvxi7c9s239h";
-    try {
-      const response = await fetch(
-        `https://academics.newtonschool.co/api/v1/reddit/post?search={"field":"author","value":"${searchValue}"}`,
-        {
-          method: "GET",
-          headers: {
-            projectID: projectId,
-          },
-        }
-      );
-      if (!response.ok) {
-        throw new Error("Failed to fetch Reddit posts");
-      }
-      const data = await response.json();
-      console.log("search data is :", data);
-      console.log(searchValue);
-      return data;
-    } catch (error) {
-      console.error("Error:", error.message);
-      throw error;
-    }
-  }
+  // async function fetchRedditPosts() {
+  //   const apiUrl = "https://academics.newtonschool.co/api/v1/reddit/post";
+  //   const projectId = "pvxi7c9s239h";
+  //   try {
+  //     const response = await fetch(
+  //       `https://academics.newtonschool.co/api/v1/reddit/post?search={"field":"author","value":"${searchValue}"}`,
+  //       {
+  //         method: "GET",
+  //         headers: {
+  //           projectID: projectId,
+  //         },
+  //       }
+  //     );
+  //     if (!response.ok) {
+  //       throw new Error("Failed to fetch Reddit posts");
+  //     }
+  //     const data = await response.json();
+  //     console.log("search data is :", data);
+  //     console.log(searchValue);
+  //     return data;
+  //   } catch (error) {
+  //     console.error("Error:", error.message);
+  //     throw error;
+  //   }
+  // }
   function YourComponentNoneComment() {
     const [anchorEl, setAnchorEl] = useState(null);
     const handleMenuClick = (event) => {
@@ -390,7 +385,9 @@ function Hader() {
             placeholder="Search reddit"
             onChange={(e) => SetSdearchValue(e.target.value)}
           />
-          <SearchIcon className="serchicon" onClick={fetchRedditPosts} />
+          {/* <SearchIcon className="serchicon" 
+          // onClick={fetchRedditPosts}
+           /> */}
         </div>
         <div className="rightSideFortheloginHeader">
           {isloggedin ? (
@@ -472,7 +469,9 @@ function Hader() {
                 login
               </span>
             </p>
-            <button className="ppp" onClick={signupUser}>Sign in</button>
+            <button className="ppp" onClick={signupUser}>
+              Sign in
+            </button>
           </Box>
         </Modal>
       </div>

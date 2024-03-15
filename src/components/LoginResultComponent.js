@@ -1,4 +1,4 @@
-import React, { Suspense ,useEffect } from "react";
+import React, { Suspense, useEffect } from "react";
 import "../styles/LoginResultComponent.css";
 import { useStateValue } from "./StatePeovider";
 import ParkOutlinedIcon from "@mui/icons-material/ParkOutlined";
@@ -12,22 +12,48 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Hoc from "../Hoc/Hoc";
+import Noresultcomponent from "./Noresultcomponent";
 
 function LoginResultComponent() {
   const [data, setData] = useState([]);
-  const { LoginJwt,SetcreatPost,Setupdate,SetPostBox } = useStateValue();
+  const { searchValue, SetcreatPost, Setupdate, SetPostBox } = useStateValue();
   const navigate = useNavigate();
   const [sortedData, setSortedData] = useState([]);
   const [sortCriteria, setSortCriteria] = useState("hot");
   const [commentnumber, Setcommentnumber] = useState(0);
-  const HandelCreatenewPost =()=>{
+  const [filteredPostData, setFilteredPostData] = useState([]); // State for filtered data
+
+  const HandelCreatenewPost = () => {
     navigate("/Createpost");
     console.log("bkhdjvveg;lfwbkrnbkhgjv");
     Setupdate(false);
     SetcreatPost(true);
     SetPostBox(true);
-  }
-
+  };
+  const debounce = (func, delay) => {
+    let debounceTimer;
+    return function () {
+      const context = this;
+      const args = arguments;
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => func.apply(context, args), delay);
+    };
+  };
+  const delayedSearch = debounce(() => {
+    // Filter post data whenever search value changes
+    const filteredData = data.filter((item) => {
+      return (
+        item.content.toLowerCase().includes(searchValue.toLowerCase()) ||
+        item.author.name.toLowerCase() === searchValue.toLowerCase() ||
+        (item.title &&
+          item.title.toLowerCase().includes(searchValue.toLowerCase()))
+      );
+    });
+    setFilteredPostData(filteredData);
+  }, 200);
+  useEffect(() => {
+    delayedSearch();
+  }, [searchValue, data, delayedSearch]);
   useEffect(() => {
     const projectId = "pvxi7c9s239h";
 
@@ -58,15 +84,20 @@ function LoginResultComponent() {
     };
     fetchPost();
   }, []);
+
   useEffect(() => {
     const sortData = () => {
-      let sortedPosts = [...data];
+      let sortedPosts = [...filteredPostData];
       switch (sortCriteria) {
         case "hot":
-          sortedPosts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+          sortedPosts.sort(
+            (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+          );
           break;
-          case "odlf":
-          sortedPosts.sort((a, b) =>  new Date(a.createdAt)-new Date(b.createdAt));
+        case "odlf":
+          sortedPosts.sort(
+            (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
+          );
           break;
         case "likeIncrease":
           sortedPosts.sort((a, b) => a.likeCount - b.likeCount);
@@ -78,7 +109,7 @@ function LoginResultComponent() {
           sortedPosts.sort((a, b) => a.commentCount - b.commentCount);
           break;
         case "CommentDecrease":
-          sortedPosts.sort((a, b) =>b.commentCount-a.commentCount);
+          sortedPosts.sort((a, b) => b.commentCount - a.commentCount);
           break;
         default:
           break;
@@ -87,7 +118,7 @@ function LoginResultComponent() {
       setSortedData(sortedPosts);
     };
     sortData();
-  }, [data, sortCriteria]);
+  }, [filteredPostData, sortCriteria]);
   const handleLikeIncrease = (postId) => {
     // Assuming data is an array of posts
     const updatedData = data.map((post) => {
@@ -99,7 +130,7 @@ function LoginResultComponent() {
 
     setData(updatedData);
   };
-  const handleLikedecrese= (postId) => {
+  const handleLikedecrese = (postId) => {
     // Assuming data is an array of posts
     const updatedData = data.map((post) => {
       if (post._id === postId) {
@@ -114,27 +145,27 @@ function LoginResultComponent() {
     // Assuming data is an array of posts
     const updatedData = data.filter((post) => post._id !== postId);
     setData(updatedData);
-};
-const commenchangefunction =(postId)=>{
-  const updatedData = data.map((post) => {
-    if (post._id === postId) {
-      return { ...post, commentCount: post.commentCount + 1 };
-    }
-    return post;
-  });
+  };
+  const commenchangefunction = (postId) => {
+    const updatedData = data.map((post) => {
+      if (post._id === postId) {
+        return { ...post, commentCount: post.commentCount + 1 };
+      }
+      return post;
+    });
 
-  setData(updatedData);
-}
-const commentDeleteFunction =(postId)=>{
-  const updatedData = data.map((post) => {
-    if (post._id === postId) {
-      return { ...post, commentCount: post.commentCount - 1 };
-    }
-    return post;
-  });
+    setData(updatedData);
+  };
+  const commentDeleteFunction = (postId) => {
+    const updatedData = data.map((post) => {
+      if (post._id === postId) {
+        return { ...post, commentCount: post.commentCount - 1 };
+      }
+      return post;
+    });
 
-  setData(updatedData);
-}
+    setData(updatedData);
+  };
   const gotopremium = () => {
     navigate("/premium");
   };
@@ -176,24 +207,48 @@ const commentDeleteFunction =(postId)=>{
             </div>
           </div>
           <div className="Bestdiv">
-            <p onClick={() => setSortCriteria("hot")} className="FilterFunction">Hot</p>
-            <p onClick={() => setSortCriteria("likeIncrease")}className="FilterFunction">Like Up</p>
-            <p onClick={() => setSortCriteria("likeDecrease")}className="FilterFunction">Like Down</p>
-            <p onClick={() => setSortCriteria("CommentIncrese")}className="FilterFunction">
+            <p
+              onClick={() => setSortCriteria("hot")}
+              className="FilterFunction"
+            >
+              Hot
+            </p>
+            <p
+              onClick={() => setSortCriteria("likeIncrease")}
+              className="FilterFunction"
+            >
+              Like Up
+            </p>
+            <p
+              onClick={() => setSortCriteria("likeDecrease")}
+              className="FilterFunction"
+            >
+              Like Down
+            </p>
+            <p
+              onClick={() => setSortCriteria("CommentIncrese")}
+              className="FilterFunction"
+            >
               Comment Up
             </p>
-            <p onClick={() => setSortCriteria("CommentDecrease")}className="FilterFunction">
+            <p
+              onClick={() => setSortCriteria("CommentDecrease")}
+              className="FilterFunction"
+            >
               Comment Down
             </p>
-            <p onClick={() => setSortCriteria("odlf")}className="FilterFunction">
+            <p
+              onClick={() => setSortCriteria("odlf")}
+              className="FilterFunction"
+            >
               Old First
             </p>
             {/* Add similar lines for other sorting criteria */}
           </div>
-          {sortedData.map((item) => {
+          {sortedData.length>0?
+            sortedData.map((item) => {
             return (
-             
-             <div className="postdiv">
+              <div className="postdiv">
                 <LoginResultPost
                   name={item.author.name}
                   commentCount={item.commentCount}
@@ -203,17 +258,19 @@ const commentDeleteFunction =(postId)=>{
                   channelImage={item.images}
                   profileImage={item.author.profileImage}
                   onLikeIncrease={() => handleLikeIncrease(item._id)}
-                  onLikeIDecrease={()=>handleLikedecrese(item._id)}
-                  Deltepoat={()=>HandelPostDelete(item._id)}
-                  content={item.title ?item.title:item.content}
+                  onLikeIDecrease={() => handleLikedecrese(item._id)}
+                  Deltepoat={() => HandelPostDelete(item._id)}
+                  content={item.title ? item.title : item.content}
                   createdAt={formatCreatedAtDate(item.createdAt)}
-                  Setcommentnumberfunction={() =>commenchangefunction(item._id)}
-                  commentDelete={()=>commentDeleteFunction(item._id)}
+                  Setcommentnumberfunction={() =>
+                    commenchangefunction(item._id)
+                  }
+                  commentDelete={() => commentDeleteFunction(item._id)}
                 />
               </div>
-             
             );
-          })}
+          })
+          :<Noresultcomponent/>}
         </div>
         <div className="rightSideOfLoginResult">
           <div className="redditPrimeiumDiv">
@@ -244,9 +301,11 @@ const commentDeleteFunction =(postId)=>{
               Your personal Reddit frontpage. Come here to check in with your
               favorite communities.
             </p>
-            
-              <button className="creatPost" onClick={()=>HandelCreatenewPost()}>Creat Post</button>
-            
+
+            <button className="creatPost" onClick={() => HandelCreatenewPost()}>
+              Creat Post
+            </button>
+
             <button className="creatcommunity" onClick={handelDead}>
               Creat Communitiy
             </button>
