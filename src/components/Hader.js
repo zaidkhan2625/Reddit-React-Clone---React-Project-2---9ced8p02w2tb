@@ -131,7 +131,8 @@ function Hader() {
         }),
       });
       if (!response.ok) {
-        SetcommonError("hey something is wrong");
+        SetcommonError("Wrong Email or Password");
+        console.log("jlflho",commonError);
         return;
       }
       const data = await response.json();
@@ -410,6 +411,8 @@ function Hader() {
         >
           <Box sx={style} className="PopupBoxLogi">
             <h5 className="LOgintext"> Log in</h5>
+            <p  className="commoneroro" style={{color:"red"}}>{commonError}</p>
+
             <input
               className="LoginInputFeild"
               type="text"

@@ -16,7 +16,10 @@
     background-color: #333;
     color: #fff;
   }
-
+.commoneroro{
+    margin: 0px !important;
+    padding: 0px !important;
+}
 .popup {
     z-index: 999999999;
 }
