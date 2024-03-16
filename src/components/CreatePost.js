@@ -28,7 +28,7 @@ function CreatePost() {
   const [PostBoxLink, SetPostBoxLink] = useState(false);
   const [selectedMedia, setSelectedMedia] = useState(null);
   const [mediaType, setMediaType] = useState(null);
-  const { LoginJwt, creatPost, update ,PostBox, SetPostBox} = useStateValue();
+  const { LoginJwt, creatPost, update ,PostBox, SetPostBox,SetSdearchValue} = useStateValue();
   const [PostTitle, SetPostTitle] = useState(null);
   const [textareaContent, setTextareaContent] = useState("");
   const navigate = useNavigate();
@@ -230,6 +230,8 @@ function CreatePost() {
       </>
     );
   }
+  SetSdearchValue("");
+
   return (
     <>
       {/* < /> */}

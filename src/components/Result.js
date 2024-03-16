@@ -14,7 +14,7 @@ function Result() {
   const [postData, SetpostData] = useState([]);
   const [filteredPostData, setFilteredPostData] = useState(postData); // State for filtered data
   const [searchres, Setsearch] = useState(false);
-  const { searchValue } = useStateValue();
+  const { searchValue,SetSdearchValue } = useStateValue();
   useEffect(() => {
     // Fetch data when the component mounts
     Setsearch(false);
@@ -90,7 +90,6 @@ function Result() {
       );
     });
     setFilteredPostData(filteredData);
-    
   }, 1000);
   useEffect(() => {
     // Filter post data whenever search value changes

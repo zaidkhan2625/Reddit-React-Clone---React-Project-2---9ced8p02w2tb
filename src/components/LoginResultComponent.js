@@ -16,7 +16,7 @@ import Noresultcomponent from "./Noresultcomponent";
 
 function LoginResultComponent() {
   const [data, setData] = useState([]);
-  const { searchValue, SetcreatPost, Setupdate, SetPostBox } = useStateValue();
+  const { searchValue, SetcreatPost, Setupdate, SetPostBox,SetSdearchValue } = useStateValue();
   const navigate = useNavigate();
   const [sortedData, setSortedData] = useState([]);
   const [sortCriteria, setSortCriteria] = useState("hot");
@@ -186,6 +186,7 @@ function LoginResultComponent() {
       year: "numeric",
     });
   };
+  
   return (
     <>
       {/* <Hader/> */}

@@ -64,7 +64,7 @@ function LoginResultPost({
   const LoginJwt = sessionStorage.getItem("jwttoken");
   const UserNameLogin = localStorage.getItem("loginuserName");
   const LoginUserId = sessionStorage.getItem("userId");
-  const {Setupdate,SetcreatPost}=useStateValue();
+  const {Setupdate,SetcreatPost,SetSdearchValue}=useStateValue();
   const navigate = useNavigate();
   const HandelPostDelete = async (id)=>{
     // alert(`"this post id delete" , ${id}`);
@@ -358,6 +358,7 @@ function LoginResultPost({
     event.target.src =
       "https://cdn.vectorstock.com/i/1000x1000/51/05/male-profile-avatar-with-brown-hair-vector-12055105.webp";
   };
+  
   return (
     <div className="LoginResultPost">
       <div className="Vote">
