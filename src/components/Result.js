@@ -12,11 +12,12 @@ function Result() {
   const [popularData, SetpopularData] = useState("");
   const [showMore, setShowMore] = useState(false);
   const [postData, SetpostData] = useState([]);
-  const [filteredPostData, setFilteredPostData] = useState([]); // State for filtered data
-  const [searchtrue, Setsearchtrue] = useState(false);
+  const [filteredPostData, setFilteredPostData] = useState(postData); // State for filtered data
+  const [searchres, Setsearch] = useState(false);
   const { searchValue } = useStateValue();
   useEffect(() => {
     // Fetch data when the component mounts
+    Setsearch(false);
     const fetchData = async () => {
       try {
         const response = await fetch(
@@ -81,7 +82,9 @@ function Result() {
   };
   const delayedSearch = debounce(() => {
     // Filter post data whenever search value changes
-    Setsearchtrue(true);
+    if (searchValue.trim() != "") {
+      Setsearch(filteredPostData.length === 0);
+    }
     const filteredData = postData.filter((item) => {
       return (
         item.content.toLowerCase().includes(searchValue.toLowerCase()) ||
@@ -89,12 +92,11 @@ function Result() {
       );
     });
     setFilteredPostData(filteredData);
-  }, 1000);
+  }, 500);
   useEffect(() => {
     // Filter post data whenever search value changes
     delayedSearch();
   }, [searchValue, postData]);
-  
 
   const handleSeeMore = () => {
     setShowMore(true);
@@ -110,26 +112,11 @@ function Result() {
           <HomeComponent className="sidebar" />
         </div>
         <div className="resultboadypart">
-          {(searchValue.trim() === "" && postData.length === 0 )?(<Noresultcomponent />):
-          (searchValue.trim() !== "" && filteredPostData.length === 0) ?(<Noresultcomponent />)
-
-          :(searchValue.trim() === "" &&
-            postData.length > 0)?
-            postData.map((item) => (
-              <PostDataFunction
-                key={item.id}
-                image={item.author.profileImage}
-                name={item.author.name}
-                content={item.content}
-                likeCount={item.likeCount}
-                commentCount={item.commentCount}
-                PostImages={item.images[0]}
-              />
-            )):(searchValue.trim() !== "" &&
-            filteredPostData.length > 0 )?
+          {searchres && filteredPostData.length === 0 ? (
+            <Noresultcomponent />
+          ) : (
             filteredPostData.map((item) => (
               <PostDataFunction
-                key={item.id}
                 image={item.author.profileImage}
                 name={item.author.name}
                 content={item.content}
@@ -137,7 +124,8 @@ function Result() {
                 commentCount={item.commentCount}
                 PostImages={item.images[0]}
               />
-            )):null}
+            ))
+          )}
         </div>
         <div className="popularResult">
           <p className="PopularCommunites">POPULAR COMMUNITIES</p>

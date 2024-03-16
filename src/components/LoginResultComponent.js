@@ -20,7 +20,7 @@ function LoginResultComponent() {
   const navigate = useNavigate();
   const [sortedData, setSortedData] = useState([]);
   const [sortCriteria, setSortCriteria] = useState("hot");
-  const [commentnumber, Setcommentnumber] = useState(0);
+  const [searchres, Setsearch] = useState(false);
   const [filteredPostData, setFilteredPostData] = useState([]); // State for filtered data
 
   const HandelCreatenewPost = () => {
@@ -49,12 +49,14 @@ function LoginResultComponent() {
           item.title.toLowerCase().includes(searchValue.toLowerCase()))
       );
     });
+
     setFilteredPostData(filteredData);
-  }, 200);
+  }, 100);
   useEffect(() => {
     delayedSearch();
   }, [searchValue, data, delayedSearch]);
   useEffect(() => {
+    Setsearch(false);
     const projectId = "pvxi7c9s239h";
 
     const fetchPost = async () => {
@@ -86,6 +88,11 @@ function LoginResultComponent() {
   }, []);
 
   useEffect(() => {
+    if(searchValue.trim()!="")
+    {
+      Setsearch(filteredPostData.length === 0);
+    }
+    
     const sortData = () => {
       let sortedPosts = [...filteredPostData];
       switch (sortCriteria) {
@@ -245,9 +252,10 @@ function LoginResultComponent() {
             </p>
             {/* Add similar lines for other sorting criteria */}
           </div>
-          {sortedData.length>0?
-            sortedData.map((item) => {
-            return (
+          {searchres && sortedData.length === 0 ? (
+            <Noresultcomponent />
+          ) : (
+            sortedData.map((item) => (
               <div className="postdiv">
                 <LoginResultPost
                   name={item.author.name}
@@ -268,9 +276,8 @@ function LoginResultComponent() {
                   commentDelete={() => commentDeleteFunction(item._id)}
                 />
               </div>
-            );
-          })
-          :<Noresultcomponent/>}
+            ))
+          )}
         </div>
         <div className="rightSideOfLoginResult">
           <div className="redditPrimeiumDiv">
