@@ -449,7 +449,7 @@ function LoginResultPost({
           </div>
           <div className="resultbutton">
           
-            {LoginUserId === authid ?<p onClick={()=>HandPostEdit(id)} className="logoedir"><UpdateIcon/> Edit</p>:<YourComponentNoneComment/>}
+            {LoginUserId === authid ?<p onClick={()=>HandPostEdit(id)} className="logoedir">Edit</p>:<YourComponentNoneComment/>}
           </div>
         </div>
       </div>
