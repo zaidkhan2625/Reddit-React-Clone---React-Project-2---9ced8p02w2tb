@@ -51,7 +51,7 @@ function LoginResultComponent() {
     });
 
     setFilteredPostData(filteredData);
-  }, 100);
+  }, 1000);
   useEffect(() => {
     delayedSearch();
   }, [searchValue, data, delayedSearch]);

@@ -82,9 +82,7 @@ function Result() {
   };
   const delayedSearch = debounce(() => {
     // Filter post data whenever search value changes
-    if (searchValue.trim() != "") {
-      Setsearch(filteredPostData.length === 0);
-    }
+    
     const filteredData = postData.filter((item) => {
       return (
         item.content.toLowerCase().includes(searchValue.toLowerCase()) ||
@@ -92,9 +90,13 @@ function Result() {
       );
     });
     setFilteredPostData(filteredData);
-  }, 500);
+    
+  }, 1000);
   useEffect(() => {
     // Filter post data whenever search value changes
+    if (searchValue.trim()!="") {
+      Setsearch(true);
+    }
     delayedSearch();
   }, [searchValue, postData]);
 
