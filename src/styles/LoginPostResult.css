@@ -167,7 +167,11 @@
     margin-left: 20px;
     margin-right: 20px;
 }
-
+.logoedir{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .LikeInComment1 {
     color: rgb(134, 126, 126);
     transform: scale(2, 2);

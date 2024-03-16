@@ -25,6 +25,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useStateValue } from "./StatePeovider";
 import { useNavigate } from "react-router-dom";
+import UpdateIcon from '@mui/icons-material/Update';
 const style = {
   position: "absolute",
   top: "27%",
@@ -64,7 +65,7 @@ function LoginResultPost({
   const LoginJwt = sessionStorage.getItem("jwttoken");
   const UserNameLogin = localStorage.getItem("loginuserName");
   const LoginUserId = sessionStorage.getItem("userId");
-  const {Setupdate,SetcreatPost,SetSdearchValue}=useStateValue();
+  const {Setupdate,SetcreatPost,SetSdearchValue,SetPostBox}=useStateValue();
   const navigate = useNavigate();
   const HandelPostDelete = async (id)=>{
     // alert(`"this post id delete" , ${id}`);
@@ -101,6 +102,7 @@ function LoginResultPost({
   const HandPostEdit = (id) => {
     Setupdate(true);
     SetcreatPost(false);
+    SetPostBox(true);
     navigate("/Createpost", { state });
   };
   
@@ -132,7 +134,7 @@ function LoginResultPost({
           getContentAnchorEl={null}
         >
           <MenuItem>Save</MenuItem>
-          <MenuItem onClick={()=>HandPostEdit(id)}>Edit</MenuItem>
+          <MenuItem >Edit</MenuItem>
           <MenuItem>Follow</MenuItem>
           <MenuItem onClick={()=>HandelPostDelete(id)}>Delete </MenuItem>
           
@@ -446,7 +448,8 @@ function LoginResultPost({
             <p className="ButtonNameforsher">Save</p>
           </div>
           <div className="resultbutton">
-            {LoginUserId === authid ?<YourComponent/>:<YourComponentNoneComment/>}
+          
+            {LoginUserId === authid ?<p onClick={()=>HandPostEdit(id)} className="logoedir"><UpdateIcon/> Edit</p>:<YourComponentNoneComment/>}
           </div>
         </div>
       </div>
