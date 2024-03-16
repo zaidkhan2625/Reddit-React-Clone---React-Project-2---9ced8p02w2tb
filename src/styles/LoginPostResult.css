@@ -682,9 +682,9 @@
 
     .LoginPostImge {
         width: 100%;
-        height: 100%;
         margin-left: 0 !important;
         padding-right: 15px;
+        object-fit: contain;
     }
 
     .RestOfCommentPart {
