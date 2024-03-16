@@ -284,12 +284,25 @@
     .leftSideofLoginResult{
         margin-left: 0;
         margin-right: 0;
-        width: auto;
+        width: 100%;
     }
     .Logincomponentresult{
-        width: 100%;
+       width: 100%;
+        
     }
     .FilterFunction{
         font-size: 10px;
+    }
+    .createPostdiv{
+        margin-left: 8px;
+        margin-right: 8px;
+    }
+    .Bestdiv{
+        margin-left: 8px;
+        margin-right: 8px;
+    }
+    .postdiv{
+        margin-left: 8px;
+        margin-right: 8px;
     }
 }
