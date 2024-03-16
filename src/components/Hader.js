@@ -34,7 +34,7 @@ const style = {
   p: 4,
 };
 function Hader() {
-  const { isloggedin, Setisloggedin, SetLoginUserId, setIsUserLoggedIn,searchValue, SetSdearchValue } =
+  const { isloggedin, Setisloggedin, setIsUserLoggedIn,searchValue, SetSdearchValue } =
     useStateValue();
   const [signEmail, setsignEmail] = useState("");
   const [SignPassword, SetSignPassword] = useState("");
@@ -103,6 +103,8 @@ function Hader() {
       console.log("Signup successful:", data);
       if (data.status === "success") {
         alert("Your sign up is successful move backe for login");
+        SetSdearchValue("");
+
         handleOpen();
       }
     } catch (error) {
@@ -136,6 +138,7 @@ function Hader() {
       console.log("Login successful:", data);
       if (data.status === "success") {
         setIsUserLoggedIn(true);
+        SetSdearchValue("");
         Setisloggedin(true);
         sessionStorage.setItem("jwttoken", data.token);
         localStorage.setItem("loginuserName", data.data.name);
@@ -349,6 +352,7 @@ function Hader() {
     }
     setIsUserLoggedIn(false);
     Setisloggedin(false);
+    SetSdearchValue("");
     localStorage.setItem("login", false);
   };
   const HandelSignInPopUpBox = () => {
