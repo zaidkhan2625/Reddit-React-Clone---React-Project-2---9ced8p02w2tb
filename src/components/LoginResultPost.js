@@ -108,6 +108,7 @@ function LoginResultPost({
     name:channelName,
     HotelId:id,
     commentCount:commentCount,
+    Image:channelImage,
   }
   const HandelProfileTOdata = async () => {
     navigate("/Subreddit",{state})

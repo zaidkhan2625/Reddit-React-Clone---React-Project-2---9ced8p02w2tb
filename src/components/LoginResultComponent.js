@@ -474,7 +474,7 @@ function LoginResultComponent() {
               <p className="nsfwbtn">NSFW</p><p> 18+ year old community</p>
             </div>
             <div  className="communityButton">
-            <button onClick={createCommunity}>Create community</button>
+            <button onClick={createCommunity} style={{cursor:"pointer"}}>Create community</button>
             </div>
           </Box>
         </Modal>

@@ -18,7 +18,7 @@ function SubReddit() {
   const location = useLocation(); 
   const [Data,setData]=useState([]);
  
-  const { idforchannel, name, namecreate } = location.state || {};
+  const { idforchannel, name, namecreate,Image } = location.state || {};
   const postname =name?name:namecreate?namecreate:"No Channel";
     const config = {
       headers: {
@@ -102,7 +102,9 @@ function SubReddit() {
                   return <SubredditPost/>;
                 }):<Noresultcomponent/>
               } */}
-              <SubredditPost/>
+              <SubredditPost Image={Image}
+                channelname={postname}
+              />
               {/* <Noresultcomponent/> */}
             </div>
           </div>
