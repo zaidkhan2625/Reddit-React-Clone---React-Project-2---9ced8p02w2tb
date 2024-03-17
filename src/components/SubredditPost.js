@@ -46,7 +46,7 @@ const profileimg = Image?Image:"https://i.pinimg.com/280x280_RS/79/dd/11/79dd11a
           <p className="commentcountnumber">{1}</p>
           <p>Comments</p>
         </div>
-        <div className="resultbutton">
+        <div className="resultbutton" style={{cursor:"not-allowed"}}>
           <FontAwesomeIcon icon={faShareNodes} style={{cursor:"not-allowed"}}/>
           <p className="ButtonNameforsher">Share</p>
         </div>
