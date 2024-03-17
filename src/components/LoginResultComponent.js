@@ -18,6 +18,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Hoc from "../Hoc/Hoc";
 import Noresultcomponent from "./Noresultcomponent";
+import axios from "axios";
 const style = {
   position: "absolute",
   top: "50%", // Position the modal 50% from the top
@@ -30,7 +31,7 @@ const style = {
 
 function LoginResultComponent() {
   const [data, setData] = useState([]);
-  const { searchValue, SetcreatPost, Setupdate, SetPostBox, SetSdearchValue } =
+  const { searchValue, SetcreatPost, Setupdate, SetPostBox, LoginJwt } =
     useStateValue();
   const navigate = useNavigate();
   const [sortedData, setSortedData] = useState([]);
@@ -38,7 +39,9 @@ function LoginResultComponent() {
   const [openCreateCommunity, SetopenCreateCommunity] = useState(false);
   const [searchres, Setsearch] = useState(false);
   const [filteredPostData, setFilteredPostData] = useState([]); // State for filtered data
-
+  const [communityName , SetcommunityName]=useState("");
+  const [nsfwSelected, setNsfwSelected] = useState(true);
+  const jwttoken = sessionStorage.getItem("jwttoken");
   const HandelCreatenewPost = () => {
     navigate("/Createpost");
     console.log("bkhdjvveg;lfwbkrnbkhgjv");
@@ -59,10 +62,10 @@ function LoginResultComponent() {
     // Filter post data whenever search value changes
     const filteredData = data.filter((item) => {
       return (
-        item.content.toLowerCase().includes(searchValue.toLowerCase()) ||
-        item.author.name.toLowerCase() === searchValue.toLowerCase() ||
+        item.content.toLowerCase().includes(searchValue.trim("").toLowerCase()) ||
+        item.author.name.toLowerCase().includes(searchValue.trim("").toLowerCase()) ||
         (item.title &&
-          item.title.toLowerCase().includes(searchValue.toLowerCase()))
+          item.title.trim("").toLowerCase().includes(searchValue.toLowerCase()))
       );
     });
 
@@ -105,7 +108,35 @@ function LoginResultComponent() {
   const Gotosubreddit =()=>{
     navigate("/Subreddit");
   }
+  const config = {
+    headers: {
+      Authorization: `Bearer ${jwttoken}`,
+      projectID: "pvxi7c9s239h",
+    },
+  };
+  const formData = new FormData();
+  formData.append("name", communityName);
+  // console.log(communityName.replace("/r", ""));
 
+  const createCommunity = async () => {
+    try {
+      const res = await axios.post(
+        "https://academics.newtonschool.co/api/v1/reddit/channel/",
+        formData,
+        config
+      );
+      console.log("logitdts",res.data.data.name);
+      const namee=res.data.data.name;
+      const state={
+        namecreate:namee,
+      }
+      navigate("/Subreddit",{state});
+      sessionStorage.setItem("community", JSON.stringify(true));
+      // setOpen(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   useEffect(() => {
     if (searchValue.trim() != "") {
       Setsearch(filteredPostData.length === 0);
@@ -205,8 +236,8 @@ function LoginResultComponent() {
     });
   };
   const handelCreatecommunity = () => {
-    // SetopenCreateCommunity(true);
-    navigate("/Dead");
+    SetopenCreateCommunity(true);
+    // navigate("/Dead");
   };
   const handleClose = () => {
     SetopenCreateCommunity(false);
@@ -218,10 +249,12 @@ function LoginResultComponent() {
         <div className="leftSideofLoginResult">
           <div className="createPostdiv">
             <img
+            style={{cursor:"pointer"}}
               className="PostDivLogo"
               src="https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/366.jpg"
             />
             <input
+            style={{cursor:"pointer"}}
               className="PostDivInput"
               type="text"
               placeholder="Creat Post"
@@ -288,6 +321,8 @@ function LoginResultComponent() {
                   id={item._id}
                   authid={item.author._id}
                   likeCount={item.likeCount}
+                  channelid={item.channel ? item.channel._id:"1"}
+                  channelName={item.channel?item.channel.name:null}
                   channelImage={item.images}
                   profileImage={item.author.profileImage}
                   onLikeIncrease={() => handleLikeIncrease(item._id)}
@@ -397,9 +432,10 @@ function LoginResultComponent() {
               type="text"
               placeholder="Name"
               className="inputforcommunityName"
+              onChange={(e)=>SetcommunityName(e.target.value)}
             />
             <div className="forPublicselect">
-              <input type="radio" />
+              <input type="radio" checked  />
               <PersonIcon />
               <p>
                 <strong>Public</strong>
@@ -407,7 +443,7 @@ function LoginResultComponent() {
               <p>Anyone can view, post, and comment to this community</p>
             </div>
             <div className="forPublicselect">
-              <input type="radio" />
+              <input type="radio" disabled/>
               <RemoveRedEyeIcon />
               <p>
                 <strong>Restricted</strong>
@@ -417,7 +453,7 @@ function LoginResultComponent() {
               </p>
             </div>
             <div className="forPublicselect">
-              <input type="radio" />
+              <input type="radio" disabled/>
               <HttpsIcon />
               <p>
                 <strong>Private</strong>
@@ -430,11 +466,15 @@ function LoginResultComponent() {
               <strong>Adult content</strong>
             </p>
             <div className="forwarning">
-              <input type="radio" />
+              <input type="radio" 
+                          checked={nsfwSelected}
+
+                onChange={() => setNsfwSelected(!nsfwSelected)}
+              />
               <p className="nsfwbtn">NSFW</p><p> 18+ year old community</p>
             </div>
             <div  className="communityButton">
-            <button onClick={Gotosubreddit}>Create community</button>
+            <button onClick={createCommunity}>Create community</button>
             </div>
           </Box>
         </Modal>

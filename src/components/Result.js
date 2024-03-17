@@ -86,7 +86,7 @@ function Result() {
     const filteredData = postData.filter((item) => {
       return (
         item.content.toLowerCase().includes(searchValue.toLowerCase()) ||
-        item.author.name.toLowerCase() === searchValue.toLowerCase()
+        item.author.name.toLowerCase().includes(searchValue.toLowerCase())
       );
     });
     setFilteredPostData(filteredData);

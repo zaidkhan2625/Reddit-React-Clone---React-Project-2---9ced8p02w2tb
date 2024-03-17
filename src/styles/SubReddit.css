@@ -108,7 +108,9 @@
 .right-side-community-create-post>div>p {
     padding: 2rem
 }
-
+.noresult{
+    margin-top: 30px;
+}
 .right-side-community-create-post>div>button {
     background-color: #00cd85;
     border: none;
@@ -124,4 +126,17 @@
 
 .divforpostside {
     width: 70%;
+}
+@media only screen and (max-width: 767px) {
+    .right-side-community-create-post{
+        display: none;
+    }
+    .divforpostside{
+       width: 100%;
+    }
+    .community-container-2{
+        width: 100%;
+        margin-left: 8px;
+        margin-right: 8px;
+    }
 }

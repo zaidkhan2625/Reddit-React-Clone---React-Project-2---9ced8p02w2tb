@@ -12,10 +12,17 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
-        <Route path="/Subreddit" element={<SubReddit/>}></Route>   
+          <Route
+            path="/Subreddit"
+            element={
+              <ProtectedRouter>
+                <SubReddit />
+              </ProtectedRouter>
+            }
+          ></Route>
 
-         <Route path="/Dead" element={<Dead/>}></Route>   
-        <Route path="/premium" element={<PremiumimComponent/>}></Route>
+          <Route path="/Dead" element={<Dead />}></Route>
+          <Route path="/premium" element={<PremiumimComponent />}></Route>
           <Route
             path="/Createpost"
             element={

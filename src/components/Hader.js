@@ -59,13 +59,13 @@ function Hader() {
     let valid = true;
     if (LoginEmail.trim() === "") {
       valid = false;
-      SetEmailError("Hey Email is requierd");
+      SetEmailError("Hey Email is require");
     } else {
       SetEmailError("");
     }
     if (LoginPassword.trim() === "") {
       valid = false;
-      SetPasswordError("Hello Password is requierd");
+      SetPasswordError("Hello Password is require");
     } else {
       SetPasswordError("");
     }
@@ -385,6 +385,7 @@ function Hader() {
 
         <div className="headerserchinput">
           <input
+          style={{cursor:"pointer"}}
             type="text"
             name=""
             placeholder="Search reddit"

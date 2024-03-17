@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Hoc from "../Hoc/Hoc";
 import "../styles/SubReddit.css";
 import "../styles/LoginResultComponent.css";
@@ -8,8 +8,49 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Noresultcomponent from "./Noresultcomponent";
+import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
+import LoginResultPost from "./LoginResultPost";
+import SubredditPost from "./SubredditPost";
 
 function SubReddit() {
+  const navigate = useNavigate();
+  const location = useLocation(); 
+  const [Data,setData]=useState([]);
+ 
+  const { idforchannel, name, namecreate } = location.state || {};
+  const postname =name?name:namecreate?namecreate:"No Channel";
+    const config = {
+      headers: {
+        projectID: "pvxi7c9s239h",
+      },
+    };
+  useEffect(()=>{
+    const HandelProfileTOdata = async () => {
+      try {
+        const res = await axios.get(
+          `https://academics.newtonschool.co/api/v1/reddit/channel/${
+            idforchannel.length > 1 && idforchannel
+          }/posts`,
+          config
+        );
+        console.log(res.data.data);
+        setData(res.data.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    HandelProfileTOdata();
+  },[])
+  console.log(`"name0",${idforchannel}`);
+  const formatCreatedAtDate = (createdAt) => {
+    return new Date(createdAt).toLocaleDateString("en-US", {
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+    });
+  };
+  console.log(`lofi ngbebthl , ${namecreate}`);
   return (
     <div className="mainreddit">
       <div className="communityhead"></div>
@@ -23,7 +64,7 @@ function SubReddit() {
           </div>
         </div>
         <div>
-          <h2>name</h2>
+          <h2>{postname.toUpperCase()}</h2>
           <h6>Social Post</h6>
         </div>
         <div>
@@ -55,15 +96,25 @@ function SubReddit() {
                 <FontAwesomeIcon className="logopost" icon={faLink} />
               </div>
             </div>
-            <Noresultcomponent/>
+            <div className="noresult">
+              {/* {
+                Data && Data.length>0?Data.map((item)=>{
+                  return <SubredditPost/>;
+                }):<Noresultcomponent/>
+              } */}
+              <Noresultcomponent/>
+            </div>
           </div>
           <div className="right-side-community-create-post">
             <div><h3>About Community</h3></div>
-            <div><p>Post</p>
+            <div><p>{Data.length}  Post</p>
             <p>1 Online</p>
             </div>
             <div>
-            <button>Create Post</button>
+            <button style={{cursor:"pointer"}} 
+                            onClick={() => navigate("/Createpost")}
+
+            >Create Post</button>
             </div>
 
           </div>
