@@ -96,7 +96,8 @@ function LoginResultPost({
       console.log(error);
     }
   }
-  
+  const profileimg = profileImage?profileImage:"https://i.pinimg.com/280x280_RS/79/dd/11/79dd11a9452a92a1accceec38a45e16a.jpg";
+
   const config = {
     headers: {
       projectID: "pvxi7c9s239h",
@@ -394,7 +395,7 @@ function LoginResultPost({
 
       <div className="restoftheloginresult">
         <div className="headerLoginResult">
-          <img className="logo" style={{cursor:"pointer"}} src={profileImage} onError={()=>handleImageError} onClick={()=>HandelProfileTOdata(channelid)} />
+          <img className="logo" style={{cursor:"pointer"}} src={profileimg}  onClick={()=>HandelProfileTOdata(channelid)} />
           <p className="COMMUNITYNAme" style={{cursor:"pointer"}} onClick={()=>HandelProfileTOdata(channelid)}>{channelName}</p>
           <p className="posauth" onMouseOver={handleOpen}>
             {name}
@@ -500,7 +501,7 @@ function LoginResultPost({
                   </div>
                   <div className="PostDivInComment">
                     <div className="headerLoginResult">
-                      <img className="logo" src={profileImage} />
+                      <img className="logo" src={profileimg} />
                       <p className="COMMUNITYNAme">{channelName}</p>
                       <p className="posauth">Posted by</p>
                       <p className="posauth" onMouseOver={handleOpen}>
@@ -518,7 +519,7 @@ function LoginResultPost({
                           }}
                         >
                           <Box sx={style} className="ModelBox">
-                            <img className="imglogodrop" src={profileImage} />
+                            <img className="imglogodrop" src={profileimg} />
                             <p className="authorname"> {name}</p>
                             <p className="ChannelName">{channelName}</p>
                             <div className="likeandFallow">
@@ -620,7 +621,7 @@ function LoginResultPost({
                     return (
                       <>
                         <CommentData
-                          profileImage={profileImage}
+                          profileImage={profileimg}
                           commentcontent={item.content}
                           commentuserId={item.author}
                           commentid={item._id}
@@ -632,7 +633,7 @@ function LoginResultPost({
                             <>
                               {item.children.map((childItem) => (
                                 <CommentDataforChild
-                                  profileImage={profileImage}
+                                  profileImage={profileimg}
                                   commentcontent={childItem.content}
                                   childauth={childItem.author}
                                   createdAt={childItem.createdAt}
@@ -660,7 +661,7 @@ function LoginResultPost({
               }}
             >
               <Box sx={style} className="ModelBox">
-                <img className="imglogodrop" src={profileImage} onError={handleImageErrorProfile}/>
+                <img className="imglogodrop" src={profileimg} onError={handleImageErrorProfile}/>
                 <p className="authorname"> {name}</p>
                 <p className="ChannelName">{channelName}</p>
                 <div className="likeandFallow">

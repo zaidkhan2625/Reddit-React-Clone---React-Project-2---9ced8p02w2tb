@@ -2,10 +2,7 @@ import React, { useEffect, useState } from "react";
 import Hoc from "../Hoc/Hoc";
 import "../styles/SubReddit.css";
 import "../styles/LoginResultComponent.css";
-import {
-  faLink,
-  faImage,
-} from "@fortawesome/free-solid-svg-icons";
+import { faLink, faImage } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Noresultcomponent from "./Noresultcomponent";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -15,17 +12,17 @@ import SubredditPost from "./SubredditPost";
 
 function SubReddit() {
   const navigate = useNavigate();
-  const location = useLocation(); 
-  const [Data,setData]=useState([]);
- 
-  const { idforchannel, name, namecreate,Image } = location.state || {};
-  const postname =name?name:namecreate?namecreate:"No Channel";
-    const config = {
-      headers: {
-        projectID: "pvxi7c9s239h",
-      },
-    };
-  useEffect(()=>{
+  const location = useLocation();
+  const [Data, setData] = useState([]);
+
+  const { idforchannel, name, namecreate, Image } = location.state || {};
+  const postname = name ? name : namecreate ? namecreate : "No Channel";
+  const config = {
+    headers: {
+      projectID: "pvxi7c9s239h",
+    },
+  };
+  useEffect(() => {
     const HandelProfileTOdata = async () => {
       try {
         const res = await axios.get(
@@ -41,7 +38,7 @@ function SubReddit() {
       }
     };
     HandelProfileTOdata();
-  },[])
+  }, []);
   console.log(`"name0",${idforchannel}`);
   const formatCreatedAtDate = (createdAt) => {
     return new Date(createdAt).toLocaleDateString("en-US", {
@@ -97,29 +94,42 @@ function SubReddit() {
               </div>
             </div>
             <div className="noresult">
-              {/* {
-                Data && Data.length>0?Data.map((item)=>{
-                  return <SubredditPost/>;
-                }):<Noresultcomponent/>
-              } */}
-              <SubredditPost Image={Image}
-                channelname={postname}
-              />
-              {/* <Noresultcomponent/> */}
+              {Data && Data.length > 0 ? (
+                Data.map((item ,index) => {
+                  return item ? (
+                    <SubredditPost
+                      key={item._id}
+                      Image={Image}
+                      channelname={postname}
+                      content={item.content}
+                      images={item.images[0]}
+                      createdAt={formatCreatedAtDate(item.createdAt)}
+                      postname={postname}
+                    />
+                  ) : null;
+                })
+              ) : (
+                <Noresultcomponent />
+              )}
+              <SubredditPost />
             </div>
           </div>
           <div className="right-side-community-create-post">
-            <div><h3>About Community</h3></div>
-            <div><p>{Data.length}  Post</p>
-            <p>1 Online</p>
+            <div>
+              <h3>About Community</h3>
             </div>
             <div>
-            <button style={{cursor:"pointer"}} 
-                            onClick={() => navigate("/Createpost")}
-
-            >Create Post</button>
+              <p>{Data.length} Post</p>
+              <p>1 Online</p>
             </div>
-
+            <div>
+              <button
+                style={{ cursor: "pointer" }}
+                onClick={() => navigate("/Createpost")}
+              >
+                Create Post
+              </button>
+            </div>
           </div>
         </div>
       </div>
