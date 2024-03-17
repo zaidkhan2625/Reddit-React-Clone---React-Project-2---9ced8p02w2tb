@@ -102,7 +102,8 @@ function SubReddit() {
                   return <SubredditPost/>;
                 }):<Noresultcomponent/>
               } */}
-              <Noresultcomponent/>
+              <SubredditPost/>
+              {/* <Noresultcomponent/> */}
             </div>
           </div>
           <div className="right-side-community-create-post">

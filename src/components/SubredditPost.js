@@ -3,7 +3,9 @@ import '../styles/SubredditPost.css';
 function SubredditPost() {
   return (
     <div className='posforsubreddit'>
-      <h2>hjk</h2>
+    <div className='headerdiv'>
+      hello
+    </div>
     </div>
   )
 }

@@ -1,5 +1,16 @@
 .posforsubreddit{
- min-height: 150px;
+    display: flex;
+    flex-direction: column;
+ min-height: 250px;
  width: 100%;
- background: #000;
+ background: yellow;
+ padding: 0px;
+ padding-left: 5px;
+ border-radius: 8px;
+}
+.headerdiv{
+    display: flex;
+    flex-direction: row;
+    background: rgb(150, 126, 150);
+    height: 35px;
 }
