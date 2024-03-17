@@ -109,7 +109,7 @@
     padding: 2rem
 }
 .noresult{
-    margin-top: 30px;
+    margin-top: 50px;
 }
 .right-side-community-create-post>div>button {
     background-color: #00cd85;
@@ -142,6 +142,5 @@
     .noresult{
         margin-left: 8px;
         margin-right: 8px;
-        margin-top: 15px;
     }
 }
