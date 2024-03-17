@@ -686,7 +686,10 @@
         padding-right: 15px;
         object-fit: contain;
     }
-
+    
+    .lolo{
+        display: none;
+    }
     .RestOfCommentPart {
         margin: 0;
     }

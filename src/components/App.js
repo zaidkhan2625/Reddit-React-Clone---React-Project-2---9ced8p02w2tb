@@ -6,11 +6,14 @@ import CreatePost from "./CreatePost";
 import ProtectedRouter from "./ProtectedRouter";
 import PremiumimComponent from "./PremiumimComponent";
 import Dead from "./Dead";
+import SubReddit from "./SubReddit";
 function App() {
   return (
     <Router>
       <div className="App">
         <Routes>
+        <Route path="/Subreddit" element={<SubReddit/>}></Route>   
+
          <Route path="/Dead" element={<Dead/>}></Route>   
         <Route path="/premium" element={<PremiumimComponent/>}></Route>
           <Route

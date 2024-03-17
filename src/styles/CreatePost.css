@@ -156,6 +156,7 @@
     width: 100%;
     min-height: 500px;
     margin-top: 10px;
+    margin-left: 8px;
     background: white;
 }
 
@@ -406,7 +407,18 @@
     .leftsidecreatepost{
         display: flex;
         flex-direction: column;
+        
         margin: 0;
+    }
+    .forcreteposttext{
+        margin-left: 8px;
+        margin-right: 8px;
+        margin-top: 8px;
+    }
+    .communityfeild{
+        margin-left: 8px;
+        margin-right: 8px;
+        margin-top: 8px;
     }
     .createpodtiv {
         display: flex;

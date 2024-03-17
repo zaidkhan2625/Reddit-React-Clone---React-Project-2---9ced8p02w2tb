@@ -2,7 +2,12 @@ import React, { Suspense, useEffect } from "react";
 import "../styles/LoginResultComponent.css";
 import { useStateValue } from "./StatePeovider";
 import ParkOutlinedIcon from "@mui/icons-material/ParkOutlined";
+import Modal from "@mui/material/Modal";
+import Box from "@mui/material/Box";
+import PersonIcon from "@mui/icons-material/Person";
 import LoginResultPost from "./LoginResultPost";
+import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
+import HttpsIcon from "@mui/icons-material/Https";
 import {
   faFireFlameSimple,
   faLink,
@@ -13,13 +18,24 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Hoc from "../Hoc/Hoc";
 import Noresultcomponent from "./Noresultcomponent";
+const style = {
+  position: "absolute",
+  top: "50%", // Position the modal 50% from the top
+  left: "45%", // Position the modal 50% from the left
+  transform: "translate(-50%, -50%)", // Center the modal horizontally and vertically
+  width: 400,
+  height: 450,
+  bgcolor: "background.paper",
+};
 
 function LoginResultComponent() {
   const [data, setData] = useState([]);
-  const { searchValue, SetcreatPost, Setupdate, SetPostBox,SetSdearchValue } = useStateValue();
+  const { searchValue, SetcreatPost, Setupdate, SetPostBox, SetSdearchValue } =
+    useStateValue();
   const navigate = useNavigate();
   const [sortedData, setSortedData] = useState([]);
   const [sortCriteria, setSortCriteria] = useState("hot");
+  const [openCreateCommunity, SetopenCreateCommunity] = useState(false);
   const [searchres, Setsearch] = useState(false);
   const [filteredPostData, setFilteredPostData] = useState([]); // State for filtered data
 
@@ -85,14 +101,16 @@ function LoginResultComponent() {
       }
     };
     fetchPost();
-  }, []);
+  }, []); 
+  const Gotosubreddit =()=>{
+    navigate("/Subreddit");
+  }
 
   useEffect(() => {
-    if(searchValue.trim()!="")
-    {
+    if (searchValue.trim() != "") {
       Setsearch(filteredPostData.length === 0);
     }
-    
+
     const sortData = () => {
       let sortedPosts = [...filteredPostData];
       switch (sortCriteria) {
@@ -186,7 +204,13 @@ function LoginResultComponent() {
       year: "numeric",
     });
   };
-  
+  const handelCreatecommunity = () => {
+    // SetopenCreateCommunity(true);
+    navigate("/Dead");
+  };
+  const handleClose = () => {
+    SetopenCreateCommunity(false);
+  };
   return (
     <>
       {/* <Hader/> */}
@@ -311,11 +335,11 @@ function LoginResultComponent() {
             </p>
 
             <button className="creatPost" onClick={() => HandelCreatenewPost()}>
-              Creat Post
+              Create Post
             </button>
 
-            <button className="creatcommunity" onClick={handelDead}>
-              Creat Communitiy
+            <button className="creatcommunity" onClick={handelCreatecommunity}>
+              Create Communitiy
             </button>
           </div>
           <div className="Agreement">
@@ -347,6 +371,73 @@ function LoginResultComponent() {
             </p>
           </div>
         </div>
+        <Modal
+          open={openCreateCommunity}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+          sx={{
+            boxShadow: "none",
+          }}
+        >
+          <Box sx={style} className="CreatecommunityPopUp">
+            <div className="fortopofBox">
+              <p>Create a community</p>
+              <p style={{ cursor: "pointer" }} onClick={handleClose}>
+                <strong>X</strong>
+              </p>
+            </div>
+            <div className="forNameandsuggest">
+              <p style={{ color: "black" }}>
+                <strong>Name</strong>
+              </p>
+              <p>Community names including capitalization cannot be changed.</p>
+            </div>
+            <input
+              type="text"
+              placeholder="Name"
+              className="inputforcommunityName"
+            />
+            <div className="forPublicselect">
+              <input type="radio" />
+              <PersonIcon />
+              <p>
+                <strong>Public</strong>
+              </p>
+              <p>Anyone can view, post, and comment to this community</p>
+            </div>
+            <div className="forPublicselect">
+              <input type="radio" />
+              <RemoveRedEyeIcon />
+              <p>
+                <strong>Restricted</strong>
+              </p>
+              <p style={{ fontSize: "11px", marginLeft: "8px" }}>
+                Anyone can view this community, but only approved users can post
+              </p>
+            </div>
+            <div className="forPublicselect">
+              <input type="radio" />
+              <HttpsIcon />
+              <p>
+                <strong>Private</strong>
+              </p>
+              <p style={{ fontSize: "11px" }}>
+                Only approved users can view and submit to this community
+              </p>
+            </div>
+            <p className="adult">
+              <strong>Adult content</strong>
+            </p>
+            <div className="forwarning">
+              <input type="radio" />
+              <p className="nsfwbtn">NSFW</p><p> 18+ year old community</p>
+            </div>
+            <div  className="communityButton">
+            <button onClick={Gotosubreddit}>Create community</button>
+            </div>
+          </Box>
+        </Modal>
       </div>
     </>
   );

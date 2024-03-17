@@ -408,6 +408,9 @@ function Hader() {
           onClose={handleClose}
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
+          sx={{
+            boxShadow: "none", // Override default boxShadow property
+          }}
         >
           <Box sx={style} className="PopupBoxLogi">
             <h5 className="LOgintext"> Log in</h5>

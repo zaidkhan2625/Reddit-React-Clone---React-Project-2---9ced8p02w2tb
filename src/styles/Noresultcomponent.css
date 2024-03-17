@@ -1,4 +1,4 @@
-.maindivfornoresult{
+.maindivfornoresult {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -7,9 +7,18 @@
     background: #bebbbb;
     max-height: 450px;
     border-radius: 8px;
+    margin-bottom:50vh;
 }
-.maindivfornoresult>img{
+
+.maindivfornoresult>img {
     height: 100%;
     width: 100%;
     border-radius: 8px;
+}
+
+@media only screen and (max-width: 767px) {
+    .maindivfornoresult {
+       margin-left: 8px;
+       margin-right: 8px;
+    } 
 }

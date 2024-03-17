@@ -84,6 +84,7 @@
     max-height: 350px;
     background: white;
     margin-top: 15px;
+    position: sticky;
 }
 
 /* .postdiv:hover{
@@ -98,7 +99,7 @@
 .Bestdiv {
     display: flex;
     border-radius: 7px;
-
+    position: sticky;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
@@ -276,6 +277,92 @@
     background: rgb(171, 171, 172);
     margin-top: 10px;
     cursor: pointer;
+}
+.CreatecommunityPopUp{
+    display:flex;
+    flex-direction: column;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.fortopofBox{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.fortopofBox>p{
+    padding: 0;
+    
+}
+.forNameandsuggest{
+    display: flex;
+    flex-direction: column;
+
+}
+.forNameandsuggest>p{
+    margin: 0px;
+    font-size: 12px;
+    color: #8f8b8b;
+}
+.forPublicselect{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}.forPublicselect>p{
+    font-size: 12px;
+    margin-left: 5px;
+}
+.inputforcommunityName{
+    height: 25px;
+    margin-top: 35px;
+    margin-bottom: 15px;
+    margin-left: 10px;
+    border: 1px solid black;
+    padding-left: 7px;
+    border-radius: 5px;
+}
+.inputforcommunityName:focus {
+    outline: none; /* Remove the border when the input is focused */
+}
+.forwarning{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 0px;
+}
+.communityButton{
+    display: flex;
+    margin-left: auto;
+    align-items: center;
+    justify-content: end;
+    background: transparent;
+    width: 100%;
+    height: 35px;
+    padding-right: 10px;
+    margin-top: 30px;
+}
+.communityButton>button{
+  color: white;
+  background: red;
+  border-style: none;
+  height: 30px;
+  border-radius: 7px;
+  
+  font-size: 15px;
+}
+.nsfwbtn{
+    color: white;
+    background: red;
+    font-size: 10px;
+    padding-left: 8px;
+    padding-right: 8px;
+     border-radius: 6px;
+     margin-left: 5px;
+     height: 18px;
+     margin-right: 8px;
+}
+.adult{
+    margin: 0px;
+    padding: 0px;
 }
 @media only screen and (max-width: 768px){
     .rightSideOfLoginResult{

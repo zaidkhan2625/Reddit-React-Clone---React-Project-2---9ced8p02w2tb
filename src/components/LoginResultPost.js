@@ -136,7 +136,7 @@ function LoginResultPost({
           <MenuItem>Save</MenuItem>
           <MenuItem >Edit</MenuItem>
           <MenuItem>Follow</MenuItem>
-          <MenuItem onClick={()=>HandelPostDelete(id)}>Delete </MenuItem>
+          <MenuItem >Delete </MenuItem>
           
         </Menu>
       </div>
@@ -443,13 +443,17 @@ function LoginResultPost({
             <FontAwesomeIcon icon={faShareNodes} />
             <p className="ButtonNameforsher">Share</p>
           </div>
-          <div className="resultbutton">
-            <FontAwesomeIcon icon={faBookmark} />
-            <p className="ButtonNameforsher">Save</p>
+          <div className="resultbutton lolo">
+            <FontAwesomeIcon icon={faBookmark} className="lolo" />
+            <p className="ButtonNameforsher lolo">Save</p>
           </div>
           <div className="resultbutton">
           
-            {LoginUserId === authid ?<p onClick={()=>HandPostEdit(id)} className="logoedir">Edit</p>:<YourComponentNoneComment/>}
+            {LoginUserId === authid ?<p onClick={()=>HandPostEdit(id)} className="logoedir">Edit </p>:<YourComponentNoneComment/>}
+          </div>
+          <div className="resultbutton">
+          
+            {LoginUserId === authid ?<p onClick={()=>HandelPostDelete(id)} className="logoedir">Delete </p>:null}
           </div>
         </div>
       </div>
