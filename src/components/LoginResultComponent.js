@@ -98,7 +98,6 @@ function LoginResultComponent() {
         // Handle the data as needed
         setData(data.data);
         console.log(data);
-        console.log("rtesukygbuhkyib", data);
       } catch (error) {
         // Handle fetch errors
         console.error("Fetch error:", error);
@@ -106,9 +105,7 @@ function LoginResultComponent() {
     };
     fetchPost();
   }, []); 
-  const Gotosubreddit =()=>{
-    navigate("/Subreddit");
-  }
+  
   const config = {
     headers: {
       Authorization: `Bearer ${jwttoken}`,
@@ -270,7 +267,6 @@ function LoginResultComponent() {
   };
   return (
     <>
-      {/* <Hader/> */}
       <div className="Logincomponentresult">
         <div className="leftSideofLoginResult">
           <div className="createPostdiv">

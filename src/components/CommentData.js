@@ -111,7 +111,7 @@ function CommentData({ commentcontent, commentuserId, commentid ,HandelComment,c
           </div>
           <div className="btnshare">share</div>
           {commentuserId === LoginUserId ? 
-           <p className="delteincomment" onClick={()=>DeleteComment(commentid)}> <DeleteIcon style={{margin:"2px"}}/>Delete </p>:null}
+           <p className="delteincomment" style={{cursor:"pointer"}} onClick={()=>DeleteComment(commentid)}> <DeleteIcon style={{margin:"2px"}}/>Delete </p>:null}
          
         </div>
         <Modal
