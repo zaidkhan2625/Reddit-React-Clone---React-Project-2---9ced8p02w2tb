@@ -2,19 +2,56 @@ import React, { useEffect, useState } from "react";
 import Hoc from "../Hoc/Hoc";
 import "../styles/SubReddit.css";
 import "../styles/LoginResultComponent.css";
-import { faLink, faImage } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Noresultcomponent from "./Noresultcomponent";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import LoginResultPost from "./LoginResultPost";
 import SubredditPost from "./SubredditPost";
+import CommentData from "./CommentData";
+import CommentDataforChild from "./CommentDataforChild";
+import Box from "@mui/material/Box";
+import Modal from "@mui/material/Modal";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import moment from "moment";
+import DeleteIcon from "@mui/icons-material/Delete";
+import {
+  faComment,
+  faShareNodes,
+  faBookmark,
+  faL,
+} from "@fortawesome/free-solid-svg-icons";
+import {
+  faHeading,
+  faLink,
+  faXmark,
+  faBold,
+  faItalic,
+  faStrikethrough,
+  faImage,
+} from "@fortawesome/free-solid-svg-icons";
+import { useStateValue } from "./StatePeovider";
+import UpdateIcon from "@mui/icons-material/Update";
+import EditIcon from "@mui/icons-material/Edit";
+const style = {
+  position: "absolute",
+  top: "27%",
+  left: "7%",
+  transform: "translate(-50%, -50%)",
+  width: 200,
+  height: 280,
+  bgcolor: "background.paper",
+  boxShadow: 4,
+  p: 4,
+};
 
 function SubReddit() {
   const navigate = useNavigate();
   const location = useLocation();
   const [Data, setData] = useState([]);
-
+  const [commentPop ,SetcommentPop ]= useState(false);
   const { idforchannel, name, namecreate, Image } = location.state || {};
   const postname = name ? name : namecreate ? namecreate : "No Channel";
   const config = {
@@ -48,6 +85,7 @@ function SubReddit() {
     });
   };
   console.log(`lofi ngbebthl , ${namecreate}`);
+  
   return (
     <div className="mainreddit">
       <div className="communityhead"></div>
@@ -105,6 +143,7 @@ function SubReddit() {
                       images={item.images[0]}
                       createdAt={formatCreatedAtDate(item.createdAt)}
                       postname={postname}
+                      SetcommentPop={SetcommentPop}
                     />
                   ) : null;
                 })
@@ -132,6 +171,8 @@ function SubReddit() {
           </div>
         </div>
       </div>
+
+      
     </div>
   );
 }

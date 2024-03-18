@@ -26,6 +26,7 @@ const StateProvider = ({ children }) => {
   const [update , Setupdate]= useState(false);
   const [creatPost ,SetcreatPost]=useState(false);
   const [searchValue, SetSdearchValue] = useState("");
+  const [openCreateCommunity, SetopenCreateCommunity] = useState(false);
 
   const [PostBox, SetPostBox] = useState(false);
 
@@ -44,7 +45,8 @@ const StateProvider = ({ children }) => {
         update , Setupdate,
         creatPost ,SetcreatPost,
         PostBox, SetPostBox,
-        searchValue, SetSdearchValue
+        searchValue, SetSdearchValue,
+        openCreateCommunity, SetopenCreateCommunity
 
       }}
     >

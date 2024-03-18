@@ -34,7 +34,7 @@ const style = {
   p: 4,
 };
 function Hader() {
-  const { isloggedin, Setisloggedin, setIsUserLoggedIn,searchValue, SetSdearchValue } =
+  const { isloggedin, Setisloggedin, setIsUserLoggedIn,searchValue, SetSdearchValue,openCreateCommunity, SetopenCreateCommunity } =
     useStateValue();
   const [signEmail, setsignEmail] = useState("");
   const [SignPassword, SetSignPassword] = useState("");
@@ -279,7 +279,7 @@ function Hader() {
                 <MenuItem onClick={handelDead}>Profile</MenuItem>
                 <MenuItem onClick={handelDead}>Create Avatar</MenuItem>
                 <MenuItem onClick={handelDead}>User Setting</MenuItem>
-
+                <MenuItem onClick={()=>SetopenCreateCommunity(true)}>Create Community</MenuItem>
                 <MenuItem onClick={Handellogout}>Log out</MenuItem>
               </div>
               {/* Add more menu items as needed */}

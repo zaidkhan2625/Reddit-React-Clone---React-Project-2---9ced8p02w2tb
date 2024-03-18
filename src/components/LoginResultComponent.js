@@ -31,12 +31,11 @@ const style = {
 
 function LoginResultComponent() {
   const [data, setData] = useState([]);
-  const { searchValue, SetcreatPost, Setupdate, SetPostBox, LoginJwt } =
+  const { searchValue, SetcreatPost, Setupdate, SetPostBox, LoginJwt,openCreateCommunity, SetopenCreateCommunity } =
     useStateValue();
   const navigate = useNavigate();
   const [sortedData, setSortedData] = useState([]);
   const [sortCriteria, setSortCriteria] = useState("hot");
-  const [openCreateCommunity, SetopenCreateCommunity] = useState(false);
   const [searchres, Setsearch] = useState(false);
   const [filteredPostData, setFilteredPostData] = useState([]); // State for filtered data
   const [communityName , SetcommunityName]=useState("");
