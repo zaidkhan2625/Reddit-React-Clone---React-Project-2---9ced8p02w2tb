@@ -423,12 +423,12 @@ function LoginResultPost({
         </div>
         <div className="resultFooter">
           <div className="resultbutton" onClick={() => handleCommentOpen()}>
-            <FontAwesomeIcon icon={faComment} />
+            <i class="fa-sharp fa-light fa-comment-dots"></i>{" "}
             <p className="commentcountnumber">{commentCount}</p>
             <p>Comments</p>
           </div>
           <div className="resultbutton">
-            <FontAwesomeIcon icon={faShareNodes} />
+            <i class="fa-sharp fa-thin fa-share"></i>{" "}
             <p className="ButtonNameforsher">Share</p>
           </div>
 
@@ -451,7 +451,12 @@ function LoginResultPost({
                 <DeleteIcon style={{ margin: "2px" }} />
                 Delete{" "}
               </p>
-            ) : null}
+            ) : (
+              <div className="resultbutton">
+                <i class="fa-regular fa-user-plus"></i>{" "}
+                <p className="ButtonNameforsher ">Follow</p>
+              </div>
+            )}
           </div>
         </div>
       </div>
