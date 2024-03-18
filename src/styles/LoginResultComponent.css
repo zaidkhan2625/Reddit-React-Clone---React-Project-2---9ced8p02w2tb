@@ -36,7 +36,16 @@
     margin-right: 100px;
     flex: 2;
 }
-
+.errormsg{
+    color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px;
+    padding: 0px;
+    margin-bottom: 0px;
+    margin-top: 8px;
+}
 .agreementTerm {
     display: flex;
     flex-direction: column;
@@ -313,7 +322,7 @@
 }
 .inputforcommunityName{
     height: 25px;
-    margin-top: 35px;
+    margin-top: 15px;
     margin-bottom: 15px;
     margin-left: 10px;
     border: 1px solid black;

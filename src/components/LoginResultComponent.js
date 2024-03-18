@@ -42,6 +42,7 @@ function LoginResultComponent() {
   const [communityName , SetcommunityName]=useState("");
   const [nsfwSelected, setNsfwSelected] = useState(true);
   const jwttoken = sessionStorage.getItem("jwttoken");
+  const [communityErro, SetcommunityErro]= useState("");
   const HandelCreatenewPost = () => {
     navigate("/Createpost");
     console.log("bkhdjvveg;lfwbkrnbkhgjv");
@@ -117,8 +118,24 @@ function LoginResultComponent() {
   const formData = new FormData();
   formData.append("name", communityName);
   // console.log(communityName.replace("/r", ""));
-
+  const namecommunityvlid=()=>{
+    let v = true;
+    if(communityName.trim()==="")
+    {
+      v =false;
+      SetcommunityErro("Please add  name")
+    }
+    else{
+      SetcommunityErro("");
+      v = true;
+    }
+    return v;
+  }
   const createCommunity = async () => {
+    if(!namecommunityvlid())
+    {
+      return;
+    }
     try {
       const res = await axios.post(
         "https://academics.newtonschool.co/api/v1/reddit/channel/",
@@ -130,11 +147,20 @@ function LoginResultComponent() {
       const state={
         namecreate:namee,
       }
+      
       navigate("/Subreddit",{state});
       sessionStorage.setItem("community", JSON.stringify(true));
+      SetcommunityErro("");
       // setOpen(false);
     } catch (error) {
       console.log(error);
+      if (error.response && error.response.status === 400) {
+        // Handle 400 Bad Request
+        SetcommunityErro("Already exists. Please add the new name.");
+    } else {
+        // Handle other errors
+        alert("An error occurred. Please try again later.");
+    }
     }
   };
   useEffect(() => {
@@ -428,6 +454,7 @@ function LoginResultComponent() {
               </p>
               <p>Community names including capitalization cannot be changed.</p>
             </div>
+            <p className="errormsg">{communityErro}</p>
             <input
               type="text"
               placeholder="Name"

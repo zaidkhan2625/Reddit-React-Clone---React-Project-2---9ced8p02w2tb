@@ -111,7 +111,6 @@ function SubReddit() {
               ) : (
                 <Noresultcomponent />
               )}
-              <SubredditPost />
             </div>
           </div>
           <div className="right-side-community-create-post">
