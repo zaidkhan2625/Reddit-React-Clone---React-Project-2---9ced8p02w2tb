@@ -3,6 +3,8 @@ import "../styles/LoginPostResult.css";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import DeleteIcon from '@mui/icons-material/Delete';
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ChatBubbleOutlineSharpIcon from "@mui/icons-material/ChatBubbleOutlineSharp";
 import Menu from "@mui/material/Menu";
@@ -77,89 +79,7 @@ function CommentData({ commentcontent, commentuserId, commentid ,HandelComment,c
       throw error;
     }
   }
-  function YourComponent() {
-    const [anchorEl, setAnchorEl] = useState(null);
-
-    const handleMenuClick = (event) => {
-      setAnchorEl(event.currentTarget);
-    };
-
-    const handleMenuClose = () => {
-      setAnchorEl(null);
-    };
-
-    const handleDeleteClick = () => {
-      DeleteComment(commentid); // Call the DeleteComment function
-      handleMenuClose(); // Close the menu after handling delete
-    };
-
-    return (
-      <div>
-        <MoreHorizIcon onClick={handleMenuClick} />
-
-        <Menu
-          anchorEl={anchorEl}
-          open={Boolean(anchorEl)}
-          onClose={handleMenuClose}
-          anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "right",
-          }}
-          transformOrigin={{
-            vertical: "top",
-            horizontal: "right",
-          }}
-          getContentAnchorEl={null}
-        >
-          <MenuItem>Save</MenuItem>
-          <MenuItem>Edit</MenuItem>
-          <MenuItem>Follow</MenuItem>
-
-          <MenuItem onClick={handleDeleteClick}>Delete </MenuItem>
-
-          {/* Add more menu items as needed */}
-        </Menu>
-      </div>
-    );
-  }
-  function YourComponentNoneComment({ commentid, DeleteComment }) {
-    const [anchorEl, setAnchorEl] = useState(null);
-
-    const handleMenuClick = (event) => {
-      setAnchorEl(event.currentTarget);
-    };
-
-    const handleMenuClose = () => {
-      setAnchorEl(null);
-    };
-
-    return (
-      <div>
-        <MoreHorizIcon onClick={handleMenuClick} />
-
-        <Menu
-          anchorEl={anchorEl}
-          open={Boolean(anchorEl)}
-          onClose={handleMenuClose}
-          anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "right",
-          }}
-          transformOrigin={{
-            vertical: "top",
-            horizontal: "right",
-          }}
-          getContentAnchorEl={null}
-        >
-          <MenuItem>Save</MenuItem>
-          <MenuItem>Edit</MenuItem>
-          <MenuItem>Follow</MenuItem>
-
-          {/* Add more menu items as needed */}
-        </Menu>
-      </div>
-    );
-  }
+  
   const HandelDeleteComment = () => {
     Setdelteboxincmnt(true);
   };
@@ -190,13 +110,9 @@ function CommentData({ commentcontent, commentuserId, commentid ,HandelComment,c
             <p>Reply</p>
           </div>
           <div className="btnshare">share</div>
-          {commentuserId === LoginUserId ? (
-            <YourComponent
-            />
-          ) : (
-            <YourComponentNoneComment />
-          )}
-          {/* <MoreHorizIcon /> */}
+          {commentuserId === LoginUserId ? 
+           <p className="delteincomment" onClick={()=>DeleteComment(commentid)}> <DeleteIcon style={{margin:"2px"}}/>Delete </p>:null}
+         
         </div>
         <Modal
           open={delteboxincmnt}
