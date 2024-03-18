@@ -71,7 +71,7 @@ function SubReddit() {
       <div className="community-container">
         <div className="community-container-2">
           <div className="divforpostside">
-            <div className="createPostdiv" style={{marginBottom:"10px"}}>
+            <div className="createPostdiv" >
               <img
                 className="PostDivLogo"
                 src="https://cdn-icons-png.flaticon.com/512/48/48952.png"
