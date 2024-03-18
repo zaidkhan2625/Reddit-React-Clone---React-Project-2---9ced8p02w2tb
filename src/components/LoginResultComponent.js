@@ -207,7 +207,7 @@ function LoginResultComponent() {
       return post;
     });
 
-    setData(updatedData);
+    // setData(updatedData);
   };
   const handleLikedecrese = (postId) => {
     // Assuming data is an array of posts
