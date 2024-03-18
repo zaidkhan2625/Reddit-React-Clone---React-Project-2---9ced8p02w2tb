@@ -109,7 +109,7 @@ function SubReddit() {
                   ) : null;
                 })
               ) : (
-                <Noresultcomponent />
+                <div style={{marginTop:"30px"}}><Noresultcomponent /></div>
               )}
             </div>
           </div>
