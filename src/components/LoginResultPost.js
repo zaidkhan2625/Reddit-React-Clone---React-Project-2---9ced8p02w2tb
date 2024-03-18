@@ -9,7 +9,7 @@ import MenuItem from "@mui/material/MenuItem";
 import moment from "moment";
 import CommentData from "./CommentData";
 import CommentDataforChild from "./CommentDataforChild";
-import DeleteIcon from '@mui/icons-material/Delete';
+import DeleteIcon from "@mui/icons-material/Delete";
 import {
   faComment,
   faShareNodes,
@@ -26,8 +26,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useStateValue } from "./StatePeovider";
 import { useNavigate } from "react-router-dom";
-import UpdateIcon from '@mui/icons-material/Update';
-import EditIcon from '@mui/icons-material/Edit';
+import UpdateIcon from "@mui/icons-material/Update";
+import EditIcon from "@mui/icons-material/Edit";
 const style = {
   position: "absolute",
   top: "27%",
@@ -62,41 +62,43 @@ function LoginResultPost({
   const [voteCount, setVoteCount] = useState(likeCount);
   const [commentPop, SetcommentPop] = useState(false);
   const [commentdata, setCommentdata] = useState([]);
-   const [cCount, SetcCount] = useState(commentCount);
+  const [cCount, SetcCount] = useState(commentCount);
   const [Commentdatebyuser, SetCommentdatebyuser] = useState("");
   const [follobtn, Setfollobtn] = useState(true);
   const LoginJwt = sessionStorage.getItem("jwttoken");
   const UserNameLogin = localStorage.getItem("loginuserName");
   const LoginUserId = sessionStorage.getItem("userId");
-  const {Setupdate,SetcreatPost,SetSdearchValue,SetPostBox}=useStateValue();
+  const { Setupdate, SetcreatPost, SetSdearchValue, SetPostBox } =
+    useStateValue();
   const navigate = useNavigate();
-  const HandelPostDelete = async (id)=>{
+  const HandelPostDelete = async (id) => {
     // alert(`"this post id delete" , ${id}`);
     const projectId = "pvxi7c9s239h";
-    try{
-      const response = await fetch(`https://academics.newtonschool.co/api/v1/reddit/post/${id}`,{
-      headers:{
-        method:"DELETE",
-        Authorization: `Bearer ${LoginJwt}`,
-        projectID: projectId,
+    try {
+      const response = await fetch(
+        `https://academics.newtonschool.co/api/v1/reddit/post/${id}`,
+        {
+          headers: {
+            method: "DELETE",
+            Authorization: `Bearer ${LoginJwt}`,
+            projectID: projectId,
+          },
+        }
+      );
+      const data = await response.json();
+      console.log("delete post data", data);
+      if (data.status === "success") {
+        if (Deltepoat) {
+          Deltepoat();
+        }
       }
-    });
-    const data =await response.json();
-    console.log("delete post data" , data);
-    if(data.status==="success"){
-      if(Deltepoat)
-      {
-        Deltepoat();
-      }
-    }
-
-    }
-    catch(error)
-    {
+    } catch (error) {
       console.log(error);
     }
-  }
-  const profileimg = profileImage?profileImage:"https://i.pinimg.com/280x280_RS/79/dd/11/79dd11a9452a92a1accceec38a45e16a.jpg";
+  };
+  const profileimg = profileImage
+    ? profileImage
+    : "https://i.pinimg.com/280x280_RS/79/dd/11/79dd11a9452a92a1accceec38a45e16a.jpg";
 
   const config = {
     headers: {
@@ -104,19 +106,19 @@ function LoginResultPost({
     },
   };
   // console.log(id, name);
-  const state={
-    idforchannel:channelid,
-    name:channelName,
-    HotelId:id,
-    commentCount:commentCount,
-    Image:channelImage,
-  }
-  const HandelProfileTOdata = async () => {
-    navigate("/Subreddit",{state})
+  const state = {
+    idforchannel: channelid,
+    name: channelName,
+    HotelId: id,
+    commentCount: commentCount,
+    Image: channelImage,
   };
-  const handeldead =()=>{
-    navigate('/Dead');
-  }
+  const HandelProfileTOdata = async () => {
+    navigate("/Subreddit", { state });
+  };
+  const handeldead = () => {
+    navigate("/Dead");
+  };
   // const state = {
   //   HotelId:id,
   // }
@@ -126,7 +128,7 @@ function LoginResultPost({
     SetPostBox(true);
     navigate("/Createpost", { state });
   };
-  function YourComponent(){
+  function YourComponent() {
     const [anchorEl, setAnchorEl] = useState(null);
     const handleMenuClick = (event) => {
       setAnchorEl(event.currentTarget);
@@ -134,7 +136,7 @@ function LoginResultPost({
     const handleMenuClose = () => {
       setAnchorEl(null);
     };
- 
+
     return (
       <div>
         <MoreHorizIcon onClick={handleMenuClick} />
@@ -154,10 +156,9 @@ function LoginResultPost({
           getContentAnchorEl={null}
         >
           <MenuItem>Save</MenuItem>
-          <MenuItem >Edit</MenuItem>
+          <MenuItem>Edit</MenuItem>
           <MenuItem>Follow</MenuItem>
-          <MenuItem >Delete </MenuItem>
-          
+          <MenuItem>Delete </MenuItem>
         </Menu>
       </div>
     );
@@ -289,7 +290,7 @@ function LoginResultPost({
       console.log("daata after posting the comment:", data);
       await HandelComment();
       SetCommentdatebyuser("");
-      if(Setcommentnumberfunction){
+      if (Setcommentnumberfunction) {
         Setcommentnumberfunction();
       }
       return data;
@@ -373,14 +374,12 @@ function LoginResultPost({
     SetcommentPop(false);
   };
   const handleImageError = (event) => {
-    event.target.src =
-      "https://cdn-icons-png.flaticon.com/512/48/48952.png";
+    event.target.src = "https://cdn-icons-png.flaticon.com/512/48/48952.png";
   };
   const handleImageErrorProfile = (event) => {
-    event.target.src =
-      "https://cdn-icons-png.flaticon.com/512/48/48952.png";
+    event.target.src = "https://cdn-icons-png.flaticon.com/512/48/48952.png";
   };
-  
+
   return (
     <div className="LoginResultPost">
       <div className="Vote">
@@ -395,15 +394,24 @@ function LoginResultPost({
 
       <div className="restoftheloginresult">
         <div className="headerLoginResult">
-          <img className="logo" style={{cursor:"pointer"}} src={profileimg}  onClick={()=>HandelProfileTOdata(channelid)} />
-          <p className="COMMUNITYNAme" style={{cursor:"pointer"}} onClick={()=>HandelProfileTOdata(channelid)}>{channelName}</p>
+          <img
+            className="logo"
+            style={{ cursor: "pointer" }}
+            src={profileimg}
+            onClick={() => HandelProfileTOdata(channelid)}
+          />
+          <p
+            className="COMMUNITYNAme"
+            style={{ cursor: "pointer" }}
+            onClick={() => HandelProfileTOdata(channelid)}
+          >
+            {channelName}
+          </p>
           <p className="posauth" onMouseOver={handleOpen}>
             {name}
           </p>
-          <p style={{marginLeft:"8px"}}>createdAt {createdAt}</p>
-          <div>
-           
-          </div>
+          <p style={{ marginLeft: "8px" }}>createdAt {createdAt}</p>
+          <div></div>
         </div>
         <p className="posttittle">{content}</p>
         <div className="imgdiv">
@@ -423,17 +431,27 @@ function LoginResultPost({
             <FontAwesomeIcon icon={faShareNodes} />
             <p className="ButtonNameforsher">Share</p>
           </div>
-          <div className="resultbutton lolo">
-            <FontAwesomeIcon icon={faBookmark} className="lolo" />
-            <p className="ButtonNameforsher lolo">Save</p>
+
+          <div className="resultbutton">
+            {LoginUserId === authid ? (
+              <p onClick={() => HandPostEdit(id)} className="logoedir">
+                <EditIcon style={{ margin: "2px" }} />
+                Edit{" "}
+              </p>
+            ) : (
+              <div className="resultbutton">
+                <FontAwesomeIcon icon={faBookmark} />
+                <p className="ButtonNameforsher ">Save</p>
+              </div>
+            )}
           </div>
           <div className="resultbutton">
-          
-            {LoginUserId === authid ?<p onClick={()=>HandPostEdit(id)} className="logoedir"><EditIcon style={{margin:"2px"}}/>Edit </p>:null}
-          </div>
-          <div className="resultbutton">
-          
-            {LoginUserId === authid ?<p onClick={()=>HandelPostDelete(id)} className="logoedir"><DeleteIcon style={{margin:"2px"}}/>Delete </p>:null}
+            {LoginUserId === authid ? (
+              <p onClick={() => HandelPostDelete(id)} className="logoedir">
+                <DeleteIcon style={{ margin: "2px" }} />
+                Delete{" "}
+              </p>
+            ) : null}
           </div>
         </div>
       </div>
@@ -556,7 +574,11 @@ function LoginResultPost({
                     </div>
                     <p className="posttittle">post titel</p>
                     <div className="imgdiv">
-                      <img className="LoginPostImge" src={channelImage} onError={handleImageError} />
+                      <img
+                        className="LoginPostImge"
+                        src={channelImage}
+                        onError={handleImageError}
+                      />
                     </div>
                     <div className="resultFooter">
                       <div className="resultbutton">
@@ -571,11 +593,12 @@ function LoginResultPost({
                         <FontAwesomeIcon icon={faBookmark} />
                         <p className="pline">Save</p>
                       </div>
-                     
                     </div>
                   </div>
                 </div>
-                <p className="commentByUserName" >Comment as <strong>{UserNameLogin.toUpperCase()}</strong></p>
+                <p className="commentByUserName">
+                  Comment as <strong>{UserNameLogin.toUpperCase()}</strong>
+                </p>
                 <div className="CommentBox">
                   <textarea
                     placeholder="What are your thought"
@@ -650,47 +673,51 @@ function LoginResultPost({
           </div>
         </Box>
       </Modal>
-       <Modal
-              open={open}
-              onClose={handleClose}
-              aria-labelledby="modal-modal-title"
-              aria-describedby="modal-modal-description"
-              style={{
-                top: `${modalPosition.y}px`,
-                left: `${modalPosition.x}px`,
-              }}
-            >
-              <Box sx={style} className="ModelBox">
-                <img className="imglogodrop" src={profileimg} onError={handleImageErrorProfile}/>
-                <p className="authorname"> {name}</p>
-                <p className="ChannelName">{channelName}</p>
-                <div className="likeandFallow">
-                  <div className="numberoffallower">
-                    <span className="numberofpodt">1.6K</span>
-                    <span className="karmatype">Post karma</span>
-                  </div>
-                  <div className="numberoffallower">
-                    <span className="numberofpodt">1.6K</span>
-                    <span className="karmatype">Comment karma</span>
-                  </div>
-                </div>
-                <button
-                  className="chatButton"
-                  onClick={() => alert("still under work")}
-                >
-                  Start Chat
-                </button>
-                {follobtn ? (
-                  <button className="fallowbtn" onClick={Handelfallow}>
-                    Follow
-                  </button>
-                ) : (
-                  <button className="unfallow" onClick={HandelUnfallow}>
-                    Unfallow
-                  </button>
-                )}
-              </Box>
-            </Modal>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+        style={{
+          top: `${modalPosition.y}px`,
+          left: `${modalPosition.x}px`,
+        }}
+      >
+        <Box sx={style} className="ModelBox">
+          <img
+            className="imglogodrop"
+            src={profileimg}
+            onError={handleImageErrorProfile}
+          />
+          <p className="authorname"> {name}</p>
+          <p className="ChannelName">{channelName}</p>
+          <div className="likeandFallow">
+            <div className="numberoffallower">
+              <span className="numberofpodt">1.6K</span>
+              <span className="karmatype">Post karma</span>
+            </div>
+            <div className="numberoffallower">
+              <span className="numberofpodt">1.6K</span>
+              <span className="karmatype">Comment karma</span>
+            </div>
+          </div>
+          <button
+            className="chatButton"
+            onClick={() => alert("still under work")}
+          >
+            Start Chat
+          </button>
+          {follobtn ? (
+            <button className="fallowbtn" onClick={Handelfallow}>
+              Follow
+            </button>
+          ) : (
+            <button className="unfallow" onClick={HandelUnfallow}>
+              Unfallow
+            </button>
+          )}
+        </Box>
+      </Modal>
     </div>
   );
 }

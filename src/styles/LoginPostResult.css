@@ -748,5 +748,11 @@
     .stlbtn {
         display: none;
     }
+    .resultbutton {
+        padding: 0px;
+    }
 
+     .resultFooter{
+        margin-left: 0px;
+     }
 }

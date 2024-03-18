@@ -139,7 +139,7 @@ function LoginResultComponent() {
         formData,
         config
       );
-      console.log("logitdts",res.data.data.name);
+      console.log("logitdts",res.data.data);
       const namee=res.data.data.name;
       const state={
         namecreate:namee,
@@ -207,7 +207,7 @@ function LoginResultComponent() {
       return post;
     });
 
-    // setData(updatedData);
+    setData(updatedData);
   };
   const handleLikedecrese = (postId) => {
     // Assuming data is an array of posts
