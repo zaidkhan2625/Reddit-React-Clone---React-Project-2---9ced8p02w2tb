@@ -24,9 +24,6 @@ function CommentData({
   const [modalPosition, setModalPosition] = useState({ x: 0, y: 0 });
   const LoginJwt = sessionStorage.getItem("jwttoken");
   const LoginUserId = sessionStorage.getItem("userId");
-
-  console.log("jwt in commendaata", LoginJwt);
-  console.log("id", LoginUserId);
   useEffect(() => {
     const fetchData = async () => {
       const apiUrl = `https://academics.newtonschool.co/api/v1/reddit/user/${commentuserId}`;
@@ -42,7 +39,6 @@ function CommentData({
         });
 
         const data = await response.json();
-        console.log("dess", data);
         setUserData(data.data);
       } catch (error) {
         console.error("Error fetching user data:", error.message);

@@ -37,9 +37,10 @@ function SubredditPost({
   const [commentPop, setCommentPop] = useState(false);
   const [commentCount, setCommentCount] = useState(0);
   const [commentdata, setCommentdata] = useState([]);
-  const [userComment, SetCommentdatebyuser ] = useState("");
+  const [userComment, SetCommentdatebyuser] = useState("");
   const UserNameLogin = localStorage.getItem("loginuserName");
-
+  const userId = sessionStorage.getItem("userId");
+  const [count , setCount]=useState(0);
   useEffect(() => {
     const fetchComments = async () => {
       const apiUrl = `https://academics.newtonschool.co/api/v1/reddit/post/${id}/comments`;
@@ -55,11 +56,9 @@ function SubredditPost({
           },
         });
         const data = await response.json();
-        console.log("Fetched comments:", data);
         if (data.status === "success") {
           setCommentCount(data.data.length);
           setCommentdata(data.data);
-          console.log(commentdata);
         }
       } catch (error) {
         console.error("Error fetching comments:", error.message);
@@ -67,7 +66,7 @@ function SubredditPost({
     };
 
     fetchComments();
-  }, [id, commentPop]);
+  }, [id, commentPop,count]);
 
   const postimg = images
     ? images
@@ -93,10 +92,37 @@ function SubredditPost({
     overflow: "auto", // Make the modal content scrollable
   };
   const HandelComment = () => {
-    alert("njhbvgh");
   };
-  const commentDelete = () => {};
-  const PostcommentHandel = () => {};
+  const commentDelete = () => {
+    setCount(p=>p-1);
+  };
+  const LoginJwt = sessionStorage.getItem("jwttoken");
+
+  const PostcommentHandel = async (id) => {
+    const apiUrl = `https://academics.newtonschool.co/api/v1/reddit/comment/${id}`;
+    const projectId = "pvxi7c9s239h";
+    try {
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${LoginJwt}`,
+          projectID: projectId,
+        },
+        body: JSON.stringify({
+          content: `${userComment}`,
+        }),
+      });
+      const data = await response.json();
+      SetCommentdatebyuser("");
+      setCount(p=>p+1);
+      return data;
+    } catch (error) {
+      console.error("Error during follow user:", error.message);
+      // Handle the error as needed
+      throw error;
+    }
+  };
   const handleCloseCommentPopupBox = () => {
     setCommentPop(false);
   };
@@ -118,7 +144,11 @@ function SubredditPost({
       </div>
       <p className="content">{content}</p>
       <div className="imgdiv">
-        <img className="postimageinsub" src={postimg} onError={handleImageError} />
+        <img
+          className="postimageinsub"
+          src={postimg}
+          onError={handleImageError}
+        />
       </div>
       <div className="resultFooter">
         <div
@@ -150,7 +180,7 @@ function SubredditPost({
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box  className="CommentPopUpBoxInSureddit">
+        <Box className="CommentPopUpBoxInSureddit">
           <div className="redultincomment">
             <div className="headerdiv">
               <img
@@ -172,7 +202,7 @@ function SubredditPost({
               onError={handleImageError}
             />
             <div className="resultFooter">
-              <div className="resultbutton" style={{cursor:"not-allowed"}}>
+              <div className="resultbutton" style={{ cursor: "not-allowed" }}>
                 <FontAwesomeIcon icon={faComment} />
                 <p className="commentcountnumber">{commentCount}</p>
                 <p>Comments</p>
@@ -192,12 +222,12 @@ function SubredditPost({
             </div>
           </div>
           <div className="forcommentbox">
-            <p className="commentByUserName" style={{margin:"0px"}}>
+            <p className="commentByUserName" style={{ margin: "0px" }}>
               Comment as <strong>{UserNameLogin.toUpperCase()}</strong>
             </p>
-            
-             <div className="createcommentbox">
-             <textarea
+
+            <div className="createcommentbox">
+              <textarea
                 placeholder="What are your thought"
                 className="commentboxtext"
                 value={userComment}
@@ -228,37 +258,37 @@ function SubredditPost({
 
                   <button
                     className="CommentBtn"
-                    onClick={() => PostcommentHandel()}
+                    onClick={() => PostcommentHandel(id)}
                   >
                     Comment
                   </button>
                 </div>
               </div>
-             </div>
-            
+            </div>
+
             {commentdata.map((item) => {
               return (
                 <>
                   <div className="commentinsub">
-                  <CommentData
-                    profileImage={profileimg}
-                    commentcontent={item.content}
-                    commentuserId={item.author}
-                    commentid={item._id}
-                    HandelComment={HandelComment}
-                    commentDelete={commentDelete}
-                  />
+                    <CommentData
+                      profileImage={profileimg}
+                      commentcontent={item.content}
+                      commentuserId={item.author}
+                      commentid={item._id}
+                      HandelComment={HandelComment}
+                      commentDelete={commentDelete}
+                    />
                   </div>
                   {Array.isArray(item.children) && item.children.length > 0 && (
                     <>
                       {item.children.map((childItem) => (
                         <div className="childcommentinsub">
-                        <CommentDataforChild
-                          profileImage={profileimg}
-                          commentcontent={childItem.content}
-                          childauth={childItem.author}
-                          createdAt={childItem.createdAt}
-                        />
+                          <CommentDataforChild
+                            profileImage={profileimg}
+                            commentcontent={childItem.content}
+                            childauth={childItem.author}
+                            createdAt={childItem.createdAt}
+                          />
                         </div>
                       ))}
                     </>

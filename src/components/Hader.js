@@ -167,8 +167,7 @@ function Hader() {
     }
   };
   const usernamelogin = localStorage.getItem("loginuserName");
-  console.log("userid in login", sessionStorage.getItem("userId"));
-  console.log("login user id after setting from local storage");
+ 
   const Withoutloggin = () => {
     return (
       <>
