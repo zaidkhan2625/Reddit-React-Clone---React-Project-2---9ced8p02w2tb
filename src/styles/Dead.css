@@ -1,52 +1,17 @@
-.maindiv {
+.maindiv{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start; /* Change to flex-start to position items at the top */
+    justify-content: center;
+    margin-top: 150px;
     font-size: 35px;
-    max-height: 89vh;
-    margin-top: 61px;
-    overflow-y: hidden;
-    overflow-x: hidden;
-    position: relative; /* Position relative for absolute positioning */
-  }
-  
-  .imgded {
-    max-height: 95vh;
-    width: 100%;
-    position: relative; /* Position relative for absolute positioning */
-  }
-  
-  .maindiv > img {
-    width: 100%;
-    max-height: 98%;
-  }
-  
-  .button {
+}
+.maindiv>button{
     color: white;
     background: red;
-    margin-top: -70px; /* Adjust margin-top to position the button above the image */
+    margin-top: 20px;
     height: 45px;
     width: 150px;
     border-style: none;
     border-radius: 8px;
-    position: absolute; /* Position absolute for placing above the image */
-    top: 95%; /* Align to the top */
-    left:85%; /* Align to the center */
-    transform: translate(-50%, -50%); /* Center horizontally and vertically */
-  }
-  @media only screen and (max-width: 767px) {
-    .imgded {
-      margin-right: 200px; /* Remove the right margin */
-      /* width: 100%; Set the width to 100% */
-      height: 100%; /* Allow the height to adjust proportionally */
-
-    }
-    .imgg{
-        height: 100% !important;
-    }
-    .button{
-        left: 77%;
-    }
-  }
-  
+}
