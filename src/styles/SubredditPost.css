@@ -1,16 +1,17 @@
-.posforsubreddit{
+.posforsubreddit {
     display: flex;
     flex-direction: column;
- min-height: 250px;
- width: 100%;
- background:white;
- padding: 0px;
- padding-left: 5px;
- border-radius: 8px;
- margin-top: 22px;
- padding-top: 5px;
+    min-height: 250px;
+    width: 100%;
+    background: #f6f7f8;
+    padding: 0px;
+    padding-left: 5px;
+    border-radius: 8px;
+    margin-top: 22px;
+    padding-top: 5px;
 
 }
+
 .CommentPopUpBoxInSureddit {
     overflow-x: hidden;
     width: 50%;
@@ -29,37 +30,42 @@
 }
 
 .MuiBackdrop-root {
-    background-color: transparent !important; /* Set the background color to transparent */
-  }
-  
-.CommentBoxinsub{
-    margin-bottom: 150px  !important;
+    background-color: transparent !important;
+    /* Set the background color to transparent */
+}
+
+.CommentBoxinsub {
+    margin-bottom: 150px !important;
     border-style: none !important;
     max-height: 505px;
     margin-top: 50px !important;
 }
-.createcommentbox{
+
+.createcommentbox {
     width: 100%;
     border: 1px solid black;
 }
 
-.redultincomment{
+.redultincomment {
     display: flex;
     flex-direction: column;
     max-height: 300px;
-    margin-bottom:170px;
+    margin-bottom: 170px;
     border-radius: 8px;
     margin-bottom: 200px;
 
 }
-.postimageincomment{
+
+.postimageincomment {
     height: 100%;
 }
-.commentinsub{
- margin-left: 10px;
- margin-right: 10px;
+
+.commentinsub {
+    margin-left: 10px;
+    margin-right: 10px;
 }
-.childcommentinsub{
+
+.childcommentinsub {
     background: #e0f6e2;
     margin-top: 10px;
     padding-top: 0px;
@@ -68,55 +74,65 @@
     margin-left: 25px;
     margin-right: 25px;
 }
-.forcommentbox{
+
+.forcommentbox {
     display: flex;
     flex-direction: column;
     min-height: 190px;
     margin-top: 85px;
     margin-bottom: 15px;
 }
-.channelImg{
+
+.channelImg {
     width: 30px;
     height: 30px;
     border-radius: 50%;
 }
-.postimageinsub{
-    max-height: 100%; /* Ensure the image doesn't exceed the height of its container */
+
+.postimageinsub {
+    max-height: 100%;
+    /* Ensure the image doesn't exceed the height of its container */
     object-fit: cover;
     width: 100%;
     margin-left: 8px;
     border-radius: 8px;
 }
-.content{
+
+.content {
     display: -webkit-box;
-  -webkit-line-clamp: 3; /* Number of lines to show */
-  -webkit-box-orient: vertical;  
-  overflow: hidden;
-  padding: 0px;
-  margin: 0px;
-  margin-top: 5px;
-  margin-bottom: 10px;
+    -webkit-line-clamp: 3;
+    /* Number of lines to show */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    padding: 0px;
+    margin: 0px;
+    margin-top: 5px;
+    margin-bottom: 10px;
 }
-.imgdiv{
+
+.imgdiv {
     max-height: 350px;
     margin-bottom: 20px;
 }
-.headerdiv{
+
+.headerdiv {
     display: flex;
     flex-direction: row;
     align-items: center;
-    background:white;
+    background: transparent;
     height: 35px;
 }
-.headerdiv>p{
+
+.headerdiv>p {
     margin-left: 8px;
-    color:black;
+    color: black;
     font-size: 15px;
 }
+
 @media only screen and (max-width: 767px) {
-    .CommentPopUpBoxInSureddit{
+    .CommentPopUpBoxInSureddit {
         margin: 0px;
-        width:90%;
+        width: 90%;
         max-height: 70vh;
         margin-top: 30px;
 

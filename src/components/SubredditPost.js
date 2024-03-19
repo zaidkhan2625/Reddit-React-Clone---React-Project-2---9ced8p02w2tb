@@ -156,6 +156,7 @@ function SubredditPost({
       <div className="resultFooter">
         <div
           className="resultbutton"
+          style={{background:"transparent"}}
           onClick={() => {
             setCommentPop(true);
           }}
@@ -165,14 +166,14 @@ function SubredditPost({
           <p>Comments</p>
         </div>
 
-        <div className="resultbutton" style={{ cursor: "not-allowed" }}>
+        <div className="resultbutton" style={{ cursor: "not-allowed",background:"transparent" }}>
           <FontAwesomeIcon
             icon={faShareNodes}
             style={{ cursor: "not-allowed" }}
           />
           <p className="ButtonNameforsher">Share</p>
         </div>
-        <div className="resultbutton " style={{ cursor: "not-allowed" }}>
+        <div className="resultbutton " style={{ cursor: "not-allowed" ,background:"transparent"}}>
           <FontAwesomeIcon icon={faBookmark} className="lolo" />
           <p className="ButtonNameforsher lolo">Save</p>
         </div>
