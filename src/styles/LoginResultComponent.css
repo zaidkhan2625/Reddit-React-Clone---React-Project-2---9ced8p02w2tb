@@ -254,6 +254,7 @@
     align-items: center;
     height: 70px;
     border-bottom: 1px solid black;
+    padding-left: 15px;
 }
 
 .textParagraph {
@@ -271,7 +272,7 @@
     margin-right: 15px;
     color: white;
     border-radius: 25px;
-    background: blue;
+    background: red;
     margin-top: 10px;
     cursor: pointer;
 }

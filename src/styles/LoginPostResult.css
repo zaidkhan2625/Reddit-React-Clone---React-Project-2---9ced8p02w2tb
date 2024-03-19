@@ -72,12 +72,13 @@
     overflow-x: hidden;
     width: 50%;
     max-height: 100vh;
-    margin-left: 20%;
+    margin-left: 16%;
     background: white;
     display: flex;
     flex-direction: column;
     overflow-y: auto;
     margin-bottom: 300px;
+    margin-top: 60px !important;
 }
 
 .MainCommentDiv {

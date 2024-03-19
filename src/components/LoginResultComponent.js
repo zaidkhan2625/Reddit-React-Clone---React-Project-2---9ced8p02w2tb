@@ -393,7 +393,7 @@ function LoginResultComponent() {
               Create Post
             </button>
 
-            <button className="creatcommunity" onClick={handelCreatecommunity}>
+            <button className="creatPost" onClick={handelCreatecommunity}>
               Create Communitiy
             </button>
           </div>
