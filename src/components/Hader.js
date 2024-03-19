@@ -79,6 +79,7 @@ function Hader() {
   const handleOpen = () => {
     setOpen(true);
     SetopenSignUp(false);
+    SetcommonError("");
   };
   const handleClose = () => setOpen(false);
   const handleClosedropw = () => SetdrowpOpen(false);
@@ -110,7 +111,6 @@ function Hader() {
       const data = await response.json();
       console.log("Signup successful:", data);
       if (data.status === "success") {
-        alert("Your sign up is successful move backe for login");
         SetSdearchValue("");
 
         SetcommonError("");
