@@ -83,6 +83,14 @@ function Hader() {
   const handleClose = () => setOpen(false);
   const handleClosedropw = () => SetdrowpOpen(false);
   const signupUser = async () => {
+    if(Signusername.trim()==="")
+    {
+      SetcommonError("Enter user name");
+      return ;
+    }
+    else{
+      SetcommonError("");
+    }
     const apiUrl = "https://academics.newtonschool.co/api/v1/user/signup";
     const projectId = "pvxi7c9s239h";
     try {
@@ -105,9 +113,15 @@ function Hader() {
         alert("Your sign up is successful move backe for login");
         SetSdearchValue("");
 
+        SetcommonError("");
         handleOpen();
       }
+      else{
+        SetcommonError(data.message);
+
+      }
     } catch (error) {
+     
       console.error("Error during signup:", error.message);
     }
   };
@@ -460,6 +474,8 @@ function Hader() {
           aria-describedby="modal-modal-description"
         >
           <Box sx={style} className="SignUpPopupBox">
+          <p  className="commoneroro" style={{color:"red"}}>{commonError}</p>
+
             <input
               type="text"
               placeholder="Name/Username"
