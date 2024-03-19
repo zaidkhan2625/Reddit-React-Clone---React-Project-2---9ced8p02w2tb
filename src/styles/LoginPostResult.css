@@ -771,4 +771,8 @@
      .resultFooter{
         margin-left: 0px;
      }
+     .CommentPopUpBox{
+        width: 100%;
+        margin-left: 0%;
+     }
 }

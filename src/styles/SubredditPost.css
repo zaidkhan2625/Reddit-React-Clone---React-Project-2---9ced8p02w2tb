@@ -110,3 +110,12 @@
     color:black;
     font-size: 15px;
 }
+@media only screen and (max-width: 767px) {
+    .CommentPopUpBoxInSureddit{
+        margin: 0px;
+        width:90%;
+        max-height: 70vh;
+        margin-top: 30px;
+
+    }
+}

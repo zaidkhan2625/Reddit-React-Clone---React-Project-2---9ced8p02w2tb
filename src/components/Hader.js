@@ -365,6 +365,7 @@ function Hader() {
   };
   const HandelLOgoClick = () => {
     navigate("/");
+    SetSdearchValue("");
   };
   return (
     <>
