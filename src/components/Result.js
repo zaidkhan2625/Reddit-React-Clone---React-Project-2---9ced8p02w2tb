@@ -36,7 +36,6 @@ function Result() {
         const data = await response.json();
         SetpopularData(data);
         // Handle the data as needed
-        console.log(data);
       } catch (error) {
         // Handle fetch errors
         console.error("Fetch error:", error);
@@ -62,7 +61,6 @@ function Result() {
         const data = await response.json();
         // Handle the data as needed
         SetpostData(data.data);
-        console.log(data);
       } catch (error) {
         // Handle fetch errors
         console.error("Fetch error:", error);

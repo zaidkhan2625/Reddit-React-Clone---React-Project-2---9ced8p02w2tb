@@ -150,7 +150,6 @@ function Hader() {
         return;
       }
       const data = await response.json();
-      console.log("Login successful:", data);
       if (data.status === "success") {
         setIsUserLoggedIn(true);
         SetSdearchValue("");

@@ -96,7 +96,6 @@ function LoginResultComponent() {
         const data = await response.json();
         // Handle the data as needed
         setData(data.data);
-        console.log(data);
       } catch (error) {
         // Handle fetch errors
         console.error("Fetch error:", error);
@@ -436,7 +435,7 @@ function LoginResultComponent() {
             boxShadow: "none",
           }}
         >
-          <Box sx={style} className="CreatecommunityPopUp">
+          <Box sx={style} className="CreatecommunityPopUp" style={{border:"black"}}>
             <div className="fortopofBox">
               <p>Create a community</p>
               <p style={{ cursor: "pointer" }} onClick={handleClose}>
@@ -454,10 +453,11 @@ function LoginResultComponent() {
               type="text"
               placeholder="Name"
               className="inputforcommunityName"
+              disabled style={{cursor:"pointer"}}
               onChange={(e)=>SetcommunityName(e.target.value)}
             />
             <div className="forPublicselect">
-              <input type="radio" checked  />
+              <input type="radio" checked  style={{cursor:"pointer"}} />
               <PersonIcon />
               <p>
                 <strong>Public</strong>
@@ -465,7 +465,7 @@ function LoginResultComponent() {
               <p>Anyone can view, post, and comment to this community</p>
             </div>
             <div className="forPublicselect">
-              <input type="radio" disabled/>
+              <input type="radio" disabled style={{cursor:"pointer"}}/>
               <RemoveRedEyeIcon />
               <p>
                 <strong>Restricted</strong>
@@ -475,7 +475,7 @@ function LoginResultComponent() {
               </p>
             </div>
             <div className="forPublicselect">
-              <input type="radio" disabled/>
+              <input type="radio" disabled  style={{cursor:"pointer"}}/>
               <HttpsIcon />
               <p>
                 <strong>Private</strong>

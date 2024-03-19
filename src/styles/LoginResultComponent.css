@@ -292,6 +292,8 @@
     flex-direction: column;
     padding-left: 15px;
     padding-right: 15px;
+    border: 1px solid black !important;
+    border-radius: 8px !important;
 }
 .fortopofBox{
     display: flex;

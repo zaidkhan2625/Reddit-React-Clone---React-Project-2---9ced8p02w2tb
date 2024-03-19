@@ -527,7 +527,7 @@ function LoginResultPost({
                 />
               </div>
               <div className="resultFooter">
-                <div className="resultbutton">
+                <div className="resultbutton" style={{cursor:"not-allowed"}}>
                   <FontAwesomeIcon /> <p>{commentCount}</p>
                   <p className="pline">Comment</p>
                 </div>
