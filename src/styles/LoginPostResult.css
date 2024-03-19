@@ -64,7 +64,10 @@
 .ButtonNameforsher {
     margin-left: 8px;
 }
-
+.MuiPaper-root {
+    border: none !important; /* Remove the border */
+  }
+  
 .CommentPopUpBox {
     overflow-x: hidden;
     width: 50%;
