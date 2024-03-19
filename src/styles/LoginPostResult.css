@@ -72,7 +72,7 @@
 .CommentPopUpBox {
     overflow-x: hidden;
     width: 50%;
-    max-height: 100vh;
+    max-height: 88vh;
     margin-left: 16%;
     background: white;
     display: flex;

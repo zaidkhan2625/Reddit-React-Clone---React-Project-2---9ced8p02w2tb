@@ -123,6 +123,9 @@ function SubredditPost({
       throw error;
     }
   };
+  const sortedCommentData = [...commentdata].sort((a, b) =>
+  new Date(b.createdAt) - new Date(a.createdAt)
+);
   const handleCloseCommentPopupBox = () => {
     setCommentPop(false);
   };
@@ -266,7 +269,7 @@ function SubredditPost({
               </div>
             </div>
 
-            {commentdata.map((item) => {
+            {sortedCommentData.map((item) => {
               return (
                 <>
                   <div className="commentinsub">

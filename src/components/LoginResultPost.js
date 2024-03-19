@@ -379,7 +379,9 @@ function LoginResultPost({
   const handleImageErrorProfile = (event) => {
     event.target.src = "https://cdn-icons-png.flaticon.com/512/48/48952.png";
   };
-
+  const sortedCommentData = [...commentdata].sort((a, b) =>
+    new Date(b.createdAt) - new Date(a.createdAt)
+  );
   return (
     <div className="LoginResultPost">
       <div className="Vote">
@@ -584,7 +586,7 @@ function LoginResultPost({
             </div>
           </div>
           <div className="commentDataDiv">
-            {commentdata.map((item) => {
+            {sortedCommentData.map((item) => {
               return (
                 <>
                   <div className="commentinsub">
