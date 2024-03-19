@@ -427,7 +427,7 @@ function LoginResultPost({
             <p className="commentcountnumber">{commentCount}</p>
             <p>Comments</p>
           </div>
-          <div className="resultbutton">
+          <div className="resultbutton" style={{cursor:"not-allowed"}}>
             <i class="fa-sharp fa-thin fa-share"></i>{" "}
             <p className="ButtonNameforsher">Share</p>
           </div>
@@ -439,7 +439,7 @@ function LoginResultPost({
                 Edit{" "}
               </p>
             ) : (
-              <div className="resultbutton">
+              <div className="resultbutton" style={{cursor:"not-allowed"}}>
                 <FontAwesomeIcon icon={faBookmark} />
                 <p className="ButtonNameforsher ">Save</p>
               </div>
