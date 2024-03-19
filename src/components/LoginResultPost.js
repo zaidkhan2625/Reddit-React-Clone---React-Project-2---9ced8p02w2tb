@@ -410,7 +410,7 @@ function LoginResultPost({
           <p className="posauth" onMouseOver={handleOpen}>
             {name}
           </p>
-          <p style={{ marginLeft: "8px" }}>createdAt {createdAt}</p>
+          <p style={{ marginLeft: "8px" }}> {createdAt}</p>
           <div></div>
         </div>
         <p className="posttittle">{content}</p>
