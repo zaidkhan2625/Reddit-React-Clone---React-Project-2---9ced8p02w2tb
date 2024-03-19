@@ -144,6 +144,8 @@ function SubReddit() {
                       createdAt={formatCreatedAtDate(item.createdAt)}
                       postname={postname}
                       SetcommentPop={SetcommentPop}
+                      
+                      id={item._id}
                     />
                   ) : null;
                 })

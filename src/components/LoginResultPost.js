@@ -31,13 +31,13 @@ import EditIcon from "@mui/icons-material/Edit";
 const style = {
   position: "absolute",
   top: "27%",
-  left: "7%",
+  left: "17%",
   transform: "translate(-50%, -50%)",
   width: 200,
   height: 280,
   bgcolor: "background.paper",
   boxShadow: 4,
-  p: 4,
+  p: 2,
 };
 function LoginResultPost({
   name,
@@ -452,7 +452,7 @@ function LoginResultPost({
                 Delete{" "}
               </p>
             ) : (
-              <div className="resultbutton">
+              <div className="resultbutton" style={{ cursor: "not-allowed" }}>
                 <i class="fa-regular fa-user-plus"></i>{" "}
                 <p className="ButtonNameforsher ">Follow</p>
               </div>
@@ -467,214 +467,153 @@ function LoginResultPost({
         aria-describedby="modal-modal-description"
       >
         <Box className="CommentPopUpBox">
-          <div className="MainCommentDiv">
-            <div className="RestOfCommentPart">
-              <div className="CommentHeader">
-                <div className="LeftHeader">
-                  <div className="voteUpDown">
-                    <span
-                      className="CommentUpVote"
-                      onClick={() => HandelUpVOte()}
-                    >
-                      ⇧
-                    </span>
-                    <p className="likecount"> {likeCount}</p>
-                    <p
-                      className="CommentDownVote"
-                      onClick={() => HandelDownVOte()}
-                    >
-                      ⇩
-                    </p>
-                  </div>
-                </div>
-                <FontAwesomeIcon icon={faImage} className="imagelogoinhead" />
-
-                <div className="CommentHeaderTitle">
-                  <p className="ptext">
-                    here will be the post titel shown in the comment header
-                    partt and after some lenght it will be doted and after click
-                    the logo dot dot it will be shown and it ccan be undefibe
-                    lenfhtg{" "}
-                  </p>
-                </div>
-                <button className="coloseButton">
-                  <FontAwesomeIcon
-                    icon={faXmark}
-                    className="faXmark"
-                    onClick={handleCloseCommentpopupbox}
-                  />
-                </button>
-              </div>
-              <div className="postdivforcomment">
-                <div className="commentPostdiv">
-                  <div className="likesection">
-                    <span
-                      className="LikeInComment1"
-                      onClick={() => HandelUpVOte()}
-                    >
-                      ⇧
-                    </span>
-                    {likeCount}
-                    <p
-                      className="LikeInComment2"
-                      onClick={() => HandelDownVOte()}
-                    >
-                      ⇩
-                    </p>
-                  </div>
-                  <div className="PostDivInComment">
-                    <div className="headerLoginResult">
-                      <img className="logo" src={profileimg} />
-                      <p className="COMMUNITYNAme">{channelName}</p>
-                      <p className="posauth">Posted by</p>
-                      <p className="posauth" onMouseOver={handleOpen}>
-                        {name}
-                      </p>
-                      <div>
-                        <Modal
-                          open={open}
-                          onClose={handleClose}
-                          aria-labelledby="modal-modal-title"
-                          aria-describedby="modal-modal-description"
-                          style={{
-                            top: `${modalPosition.y}px`,
-                            left: `${modalPosition.x}px`,
-                          }}
-                        >
-                          <Box sx={style} className="ModelBox">
-                            <img className="imglogodrop" src={profileimg} />
-                            <p className="authorname"> {name}</p>
-                            <p className="ChannelName">{channelName}</p>
-                            <div className="likeandFallow">
-                              <div className="numberoffallower">
-                                <span className="numberofpodt">1.6K</span>
-                                <span className="karmatype">Post karma</span>
-                              </div>
-                              <div className="numberoffallower">
-                                <span className="numberofpodt">1.6K</span>
-                                <span className="karmatype">Comment karma</span>
-                              </div>
-                            </div>
-                            <button className="chatButton">Start Chat</button>
-                            {follobtn ? (
-                              <button
-                                className="fallowbtn"
-                                onClick={Handelfallow}
-                              >
-                                Follow
-                              </button>
-                            ) : (
-                              <button
-                                className="unfallow"
-                                onClick={HandelUnfallow}
-                              >
-                                Unfallow
-                              </button>
-                            )}
-                          </Box>
-                        </Modal>
-                      </div>
-
-                      <p className="posauth">posting time</p>
-                    </div>
-                    <p className="posttittle">post titel</p>
-                    <div className="imgdiv">
-                      <img
-                        className="LoginPostImge"
-                        src={channelImage}
-                        onError={handleImageError}
-                      />
-                    </div>
-                    <div className="resultFooter">
-                      <div className="resultbutton">
-                        <FontAwesomeIcon /> <p>{commentCount}</p>
-                        <p className="pline">Comment</p>
-                      </div>
-                      <div className="resultbutton">
-                        <FontAwesomeIcon icon={faShareNodes} />
-                        <p className="pline">Share</p>
-                      </div>
-                      <div className="resultbutton">
-                        <FontAwesomeIcon icon={faBookmark} />
-                        <p className="pline">Save</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <p className="commentByUserName">
-                  Comment as <strong>{UserNameLogin.toUpperCase()}</strong>
+          <div className="CommentHeader">
+            <div className="LeftHeader">
+              <div className="voteUpDown">
+                <span className="CommentUpVote" onClick={() => HandelUpVOte()}>
+                  ⇧
+                </span>
+                <p className="likecount"> {likeCount}</p>
+                <p className="CommentDownVote" onClick={() => HandelDownVOte()}>
+                  ⇩
                 </p>
-                <div className="CommentBox">
-                  <textarea
-                    placeholder="What are your thought"
-                    className="commentboxtext"
-                    value={Commentdatebyuser}
-                    onChange={(e) => SetCommentdatebyuser(e.target.value)}
-                  />
-                  <div className="styeltypeofcontent">
-                    <div className="stylebtn">
-                      <button className="stlbtn">
-                        <FontAwesomeIcon icon={faBold} />
-                      </button>
-                      <button className="stlbtn">
-                        <FontAwesomeIcon icon={faItalic} />
-                      </button>
-                      <button className="stlbtn">
-                        <FontAwesomeIcon icon={faLink} />
-                      </button>
-                      <button className="stlbtn">
-                        <FontAwesomeIcon icon={faStrikethrough} />
-                      </button>
-                      <button className="stlbtn">b</button>
-                      <button className="stlbtn">s</button>
-                      <button className="stlbtn">
-                        <FontAwesomeIcon icon={faHeading} />
-                      </button>
-                      <button className="stlbtn">
-                        <MoreHorizIcon />
-                      </button>
+              </div>
+            </div>
+            <FontAwesomeIcon icon={faImage} className="imagelogoinhead" />
 
-                      <button className="commentMarket">MarkDown Mode</button>
-                      <button
-                        className="CommentBtn"
-                        onClick={() => PostcommentHandel()}
-                      >
-                        Comment
-                      </button>
-                    </div>
-                  </div>
+            <div className="CommentHeaderTitle">
+              <p className="ptext">
+                here will be the post titel shown in the comment header partt
+                and after some lenght it will be doted and after click the logo
+                dot dot it will be shown and it ccan be undefibe lenfhtg{" "}
+              </p>
+            </div>
+            <button className="coloseButton">
+              <FontAwesomeIcon
+                icon={faXmark}
+                className="faXmark"
+                onClick={handleCloseCommentpopupbox}
+              />
+            </button>
+          </div>
+
+          <div className="commentPostdiv">
+            <div className="likesection">
+              <span className="LikeInComment1" onClick={() => HandelUpVOte()}>
+                ⇧
+              </span>
+              {likeCount}
+              <p className="LikeInComment2" onClick={() => HandelDownVOte()}>
+                ⇩
+              </p>
+            </div>
+            <div className="PostDivInComment">
+              <div className="headerLoginResult">
+                <img className="logo" src={profileimg} />
+                <p className="COMMUNITYNAme">{channelName}</p>
+                <p className="posauth">Posted by</p>
+                <p className="posauth" onMouseOver={handleOpen}>
+                  {name}
+                </p>
+
+                <p className="posauth">posting time</p>
+              </div>
+              <p className="posttittle">post titel</p>
+              <div className="imgdiv">
+                <img
+                  className="LoginPostImge"
+                  src={channelImage}
+                  onError={handleImageError}
+                />
+              </div>
+              <div className="resultFooter">
+                <div className="resultbutton">
+                  <FontAwesomeIcon /> <p>{commentCount}</p>
+                  <p className="pline">Comment</p>
                 </div>
-                <div className="commentDataDiv">
-                  {commentdata.map((item) => {
-                    return (
-                      <>
-                        <CommentData
-                          profileImage={profileimg}
-                          commentcontent={item.content}
-                          commentuserId={item.author}
-                          commentid={item._id}
-                          HandelComment={HandelComment}
-                          commentDelete={commentDelete}
-                        />
-                        {Array.isArray(item.children) &&
-                          item.children.length > 0 && (
-                            <>
-                              {item.children.map((childItem) => (
-                                <CommentDataforChild
-                                  profileImage={profileimg}
-                                  commentcontent={childItem.content}
-                                  childauth={childItem.author}
-                                  createdAt={childItem.createdAt}
-                                />
-                              ))}
-                            </>
-                          )}
-                      </>
-                    );
-                  })}
+                <div className="resultbutton">
+                  <FontAwesomeIcon icon={faShareNodes} />
+                  <p className="pline">Share</p>
+                </div>
+                <div className="resultbutton">
+                  <FontAwesomeIcon icon={faBookmark} />
+                  <p className="pline">Save</p>
                 </div>
               </div>
             </div>
+          </div>
+          <p className="commentByUserName">
+            Comment as <strong>{UserNameLogin.toUpperCase()}</strong>
+          </p>
+          <div className="CommentBox">
+            <textarea
+              placeholder="What are your thought"
+              className="commentboxtext"
+              value={Commentdatebyuser}
+              onChange={(e) => SetCommentdatebyuser(e.target.value)}
+            />
+            <div className="styeltypeofcontent">
+              <div className="stylebtn">
+                <button className="stlbtn">
+                  <FontAwesomeIcon icon={faBold} />
+                </button>
+                <button className="stlbtn">
+                  <FontAwesomeIcon icon={faItalic} />
+                </button>
+                <button className="stlbtn">
+                  <FontAwesomeIcon icon={faLink} />
+                </button>
+                <button className="stlbtn">
+                  <FontAwesomeIcon icon={faStrikethrough} />
+                </button>
+                <button className="stlbtn">b</button>
+                <button className="stlbtn">s</button>
+                <button className="stlbtn">
+                  <FontAwesomeIcon icon={faHeading} />
+                </button>
+                <button className="stlbtn">
+                  <MoreHorizIcon />
+                </button>
+                <button
+                  className="CommentBtn"
+                  onClick={() => PostcommentHandel()}
+                >
+                  Comment
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className="commentDataDiv">
+            {commentdata.map((item) => {
+              return (
+                <>
+                  <div className="commentinsub">
+                    <CommentData
+                      profileImage={profileimg}
+                      commentcontent={item.content}
+                      commentuserId={item.author}
+                      commentid={item._id}
+                      HandelComment={HandelComment}
+                      commentDelete={commentDelete}
+                    />
+                  </div>
+                  {Array.isArray(item.children) && item.children.length > 0 && (
+                    <>
+                      {item.children.map((childItem) => (
+                        <div className="childcomment">
+                          <CommentDataforChild
+                            profileImage={profileimg}
+                            commentcontent={childItem.content}
+                            childauth={childItem.author}
+                            createdAt={childItem.createdAt}
+                          />
+                        </div>
+                      ))}
+                    </>
+                  )}
+                </>
+              );
+            })}
           </div>
         </Box>
       </Modal>

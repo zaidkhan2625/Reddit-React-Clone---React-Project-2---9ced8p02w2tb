@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/LoginPostResult.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Box from "@mui/material/Box";
@@ -10,7 +10,17 @@ import {
   faL,
 } from "@fortawesome/free-solid-svg-icons";
 import "../styles/SubredditPost.css";
+import CommentData from "./CommentData";
+import CommentDataforChild from "./CommentDataforChild";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 
+import {
+  faHeading,
+  faLink,
+  faBold,
+  faItalic,
+  faStrikethrough,
+} from "@fortawesome/free-solid-svg-icons";
 function SubredditPost({
   Image,
   createdAt,
@@ -18,16 +28,46 @@ function SubredditPost({
   postname,
   content,
   images,
+  id,
 }) {
   const handleImageError = (e) => {
     e.target.src = Image;
   };
 
-  const [commentPop, SetcommentPop] = useState(false);
+  const [commentPop, setCommentPop] = useState(false);
+  const [commentCount, setCommentCount] = useState(0);
+  const [commentdata, setCommentdata] = useState([]);
+  const [userComment, SetCommentdatebyuser ] = useState("");
+  const UserNameLogin = localStorage.getItem("loginuserName");
 
-  const handleCloseCommentpopupbox = () => {
-    SetcommentPop(false);
-  };
+  useEffect(() => {
+    const fetchComments = async () => {
+      const apiUrl = `https://academics.newtonschool.co/api/v1/reddit/post/${id}/comments`;
+      const projectId = "pvxi7c9s239h";
+      const LoginJwt = sessionStorage.getItem("jwttoken");
+
+      try {
+        const response = await fetch(apiUrl, {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${LoginJwt}`,
+            projectID: projectId,
+          },
+        });
+        const data = await response.json();
+        console.log("Fetched comments:", data);
+        if (data.status === "success") {
+          setCommentCount(data.data.length);
+          setCommentdata(data.data);
+          console.log(commentdata);
+        }
+      } catch (error) {
+        console.error("Error fetching comments:", error.message);
+      }
+    };
+
+    fetchComments();
+  }, [id, commentPop]);
 
   const postimg = images
     ? images
@@ -52,6 +92,14 @@ function SubredditPost({
     marginBottom: "10px", // Adjust margin top as needed
     overflow: "auto", // Make the modal content scrollable
   };
+  const HandelComment = () => {
+    alert("njhbvgh");
+  };
+  const commentDelete = () => {};
+  const PostcommentHandel = () => {};
+  const handleCloseCommentPopupBox = () => {
+    setCommentPop(false);
+  };
 
   return (
     <div className="posforsubreddit">
@@ -59,7 +107,7 @@ function SubredditPost({
         <img
           className="channelImg"
           src={profileimg}
-          alt="he;lo"
+          alt="profile"
           style={{ cursor: "not-allowed" }}
         />
         <p>{cname}</p>
@@ -70,12 +118,17 @@ function SubredditPost({
       </div>
       <p className="content">{content}</p>
       <div className="imgdiv">
-        <img className="postimage" src={postimg} onError={handleImageError} />
+        <img className="postimageinsub" src={postimg} onError={handleImageError} />
       </div>
       <div className="resultFooter">
-        <div className="resultbutton" onClick={() => SetcommentPop(false)}>
+        <div
+          className="resultbutton"
+          onClick={() => {
+            setCommentPop(true);
+          }}
+        >
           <FontAwesomeIcon icon={faComment} />
-          <p className="commentcountnumber">{1}</p>
+          <p className="commentcountnumber">{commentCount}</p>
           <p>Comments</p>
         </div>
 
@@ -93,11 +146,11 @@ function SubredditPost({
       </div>
       <Modal
         open={commentPop}
-        onClose={handleCloseCommentpopupbox}
+        onClose={handleCloseCommentPopupBox}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style} className="CommentBox">
+        <Box  className="CommentPopUpBoxInSureddit">
           <div className="redultincomment">
             <div className="headerdiv">
               <img
@@ -111,35 +164,109 @@ function SubredditPost({
                 <b>{create}</b>
               </p>
               <p>Because you have already visited</p>
-            
             </div>
             <p className="content">{content}</p>
             <img
-                className="postimageincomment"
-                src={postimg}
-                onError={handleImageError}
-              />
-               <div className="resultFooter">
-        <div className="resultbutton" onClick={() => SetcommentPop(true)}>
-          <FontAwesomeIcon icon={faComment} />
-          <p className="commentcountnumber">{1}</p>
-          <p>Comments</p>
-        </div>
+              className="postimageincomment"
+              src={postimg}
+              onError={handleImageError}
+            />
+            <div className="resultFooter">
+              <div className="resultbutton" style={{cursor:"not-allowed"}}>
+                <FontAwesomeIcon icon={faComment} />
+                <p className="commentcountnumber">{commentCount}</p>
+                <p>Comments</p>
+              </div>
 
-        <div className="resultbutton" style={{ cursor: "not-allowed" }}>
-          <FontAwesomeIcon
-            icon={faShareNodes}
-            style={{ cursor: "not-allowed" }}
-          />
-          <p className="ButtonNameforsher">Share</p>
-        </div>
-        <div className="resultbutton " style={{ cursor: "not-allowed" }}>
-          <FontAwesomeIcon icon={faBookmark} className="lolo" />
-          <p className="ButtonNameforsher lolo">Save</p>
-        </div>
-      </div>
+              <div className="resultbutton" style={{ cursor: "not-allowed" }}>
+                <FontAwesomeIcon
+                  icon={faShareNodes}
+                  style={{ cursor: "not-allowed" }}
+                />
+                <p className="ButtonNameforsher">Share</p>
+              </div>
+              <div className="resultbutton " style={{ cursor: "not-allowed" }}>
+                <FontAwesomeIcon icon={faBookmark} className="lolo" />
+                <p className="ButtonNameforsher lolo">Save</p>
+              </div>
+            </div>
           </div>
-          <div className="forcommentbox"></div>
+          <div className="forcommentbox">
+            <p className="commentByUserName" style={{margin:"0px"}}>
+              Comment as <strong>{UserNameLogin.toUpperCase()}</strong>
+            </p>
+            
+             <div className="createcommentbox">
+             <textarea
+                placeholder="What are your thought"
+                className="commentboxtext"
+                value={userComment}
+                onChange={(e) => SetCommentdatebyuser(e.target.value)}
+              />
+              <div className="styeltypeofcontent">
+                <div className="stylebtn">
+                  <button className="stlbtn">
+                    <FontAwesomeIcon icon={faBold} />
+                  </button>
+                  <button className="stlbtn">
+                    <FontAwesomeIcon icon={faItalic} />
+                  </button>
+                  <button className="stlbtn">
+                    <FontAwesomeIcon icon={faLink} />
+                  </button>
+                  <button className="stlbtn">
+                    <FontAwesomeIcon icon={faStrikethrough} />
+                  </button>
+                  <button className="stlbtn">b</button>
+                  <button className="stlbtn">s</button>
+                  <button className="stlbtn">
+                    <FontAwesomeIcon icon={faHeading} />
+                  </button>
+                  <button className="stlbtn">
+                    <MoreHorizIcon />
+                  </button>
+
+                  <button
+                    className="CommentBtn"
+                    onClick={() => PostcommentHandel()}
+                  >
+                    Comment
+                  </button>
+                </div>
+              </div>
+             </div>
+            
+            {commentdata.map((item) => {
+              return (
+                <>
+                  <div className="commentinsub">
+                  <CommentData
+                    profileImage={profileimg}
+                    commentcontent={item.content}
+                    commentuserId={item.author}
+                    commentid={item._id}
+                    HandelComment={HandelComment}
+                    commentDelete={commentDelete}
+                  />
+                  </div>
+                  {Array.isArray(item.children) && item.children.length > 0 && (
+                    <>
+                      {item.children.map((childItem) => (
+                        <div className="childcommentinsub">
+                        <CommentDataforChild
+                          profileImage={profileimg}
+                          commentcontent={childItem.content}
+                          childauth={childItem.author}
+                          createdAt={childItem.createdAt}
+                        />
+                        </div>
+                      ))}
+                    </>
+                  )}
+                </>
+              );
+            })}
+          </div>
         </Box>
       </Modal>
     </div>

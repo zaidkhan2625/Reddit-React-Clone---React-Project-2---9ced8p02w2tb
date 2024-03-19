@@ -66,15 +66,15 @@
 }
 
 .CommentPopUpBox {
-    margin-top: 62px;
-    position: absolute;
-    width: 100%;
+    overflow-x: hidden;
+    width: 50%;
     max-height: 100vh;
+    margin-left: 20%;
     background: white;
     display: flex;
     flex-direction: column;
-    z-index: -1;
     overflow-y: auto;
+    margin-bottom: 300px;
 }
 
 .MainCommentDiv {
@@ -93,19 +93,15 @@
 
 .CommentHeader {
     display: flex;
+    margin-bottom: 20px;
     flex-direction: row;
-    position: relative;
     height: 45px;
-    position: fixed;
     background: black;
     margin-right: 80px;
     margin-top: 0;
-    width: 56%;
     z-index: 2;
-    /* padding-left: 35px;
-    padding-right: 20px; */
+    width: 100%; /* Set width to 100% */
     align-items: center;
-
 }
 
 .CommentHeaderTitle {
@@ -126,8 +122,7 @@
     flex-direction: row;
     justify-content: space-between;
     width: auto;
-    margin-left: 80px;
-    margin-right: 80px;
+   
     height: auto;
     background: rgb(243, 247, 243);
     min-height: 100vh;
@@ -140,8 +135,10 @@
     display: flex;
     flex-direction: row;
     background: white;
+    border: 1px solid black;
     height: auto;
-    width: 100%;
+    width: 95%;
+    margin-left: 10px;
 
     /* overflow-y: auto; */
     /* flex: 1; */
@@ -240,6 +237,7 @@
 .resultFooter {
     display: flex;
     flex-direction: row;
+    align-items: center;
     margin-top: 10px;
 }
 
@@ -273,6 +271,8 @@
     margin-right: 30px;
     margin-top: 0;
     min-height: auto;
+    margin-bottom: 0px;
+    background: #807e7e;
     border: 1px solid rgb(79, 78, 81);
 }
 
@@ -311,11 +311,13 @@
     word-wrap: break-word;
     overflow-wrap: break-word;
     resize: vertical;
-    width: auto;
+    width: 98%;
     padding-top: 5px;
     padding-left: 4px;
     font-style: bold;
     font-weight: bold;
+    background: rgb(252, 250, 250);
+    cursor: pointer;
 }
 
 .LoginPostImge {
@@ -537,14 +539,24 @@
 .coloseButton>p {
     height: 25px;
 }
-
+.childcomment{
+    background: #c8f4ce;
+    margin-top: 10px;
+    margin-left: 35px;
+    padding: 5px;
+    border-radius: 8px;
+    padding-top: 0px;
+    margin-right: 10px;
+}
 .CommentDataDiv {
     display: flex;
     flex-direction: column;
     width: 100%;
     min-height: 100px;
-    background: white;
+    background: rgb(232, 232, 248);
     margin-top: 15px;
+    border-radius: 8px;
+    
 }
 
 .CommentDataDivforchildcomment {
@@ -552,8 +564,8 @@
     flex-direction: column;
     width: 91%;
     min-height: 50px;
-    background: white;
-    margin-left: 40px;
+    background: transparent;
+    margin-top: 10px;
 }
 
 .CommentDataDivforchildcomment>p {
@@ -591,6 +603,7 @@
 .divforbuttonincomment {
     display: flex;
     flex-direction: row;
+    align-items: center;
     width: 100%;
     align-items: center;
     height: 30px;

@@ -11,37 +11,66 @@
  padding-top: 5px;
 
 }
-.CommentBox{
+.CommentPopUpBoxInSureddit {
+    overflow-x: hidden;
+    width: 50%;
+    max-height: 100vh;
+    margin-left: 20%;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+   padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: -35px;
+}
+.CommentBoxinsub{
     margin-bottom: 150px  !important;
     border-style: none !important;
     max-height: 505px;
     margin-top: 50px !important;
+}
+.createcommentbox{
+    width: 100%;
+    border: 1px solid black;
 }
 
 .redultincomment{
     display: flex;
     flex-direction: column;
     max-height: 300px;
-    margin-bottom: 25px;
+    margin-bottom:170px;
     border-radius: 8px;
 
 }
 .postimageincomment{
     height: 100%;
 }
+.commentinsub{
+ margin-left: 10px;
+ margin-right: 10px;
+}
+.childcommentinsub{
+    background: #e0f6e2;
+    margin-top: 10px;
+    margin-left: 35px;
+    margin-right: 35px;
+    padding-left: 5px;
+    border-radius: 8px;
+}
 .forcommentbox{
     display: flex;
     flex-direction: column;
-    background: #cf1616;
     min-height: 190px;
     margin-top: 85px;
+    margin-bottom: 15px;
 }
 .channelImg{
     width: 30px;
     height: 30px;
     border-radius: 50%;
 }
-.postimage{
+.postimageinsub{
     max-height: 100%; /* Ensure the image doesn't exceed the height of its container */
     object-fit: cover;
     width: 100%;
