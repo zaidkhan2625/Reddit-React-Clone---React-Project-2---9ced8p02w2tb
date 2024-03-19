@@ -43,7 +43,7 @@ function CommentDataforChild({ commentcontent, childauth }) {
           {userData && <p>{userData.name}</p>}
           <p>creat time</p>
         </div>
-        <p>{commentcontent}</p>
+        <p className="childcommrnt">{commentcontent}</p>
         <div className="divforbuttonincomment">
           <div className="voteUpDownincomment">
             <svg

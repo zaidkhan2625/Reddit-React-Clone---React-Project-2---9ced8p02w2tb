@@ -308,7 +308,7 @@
 } */
 
 .commentboxtext {
-    min-height: 100px;
+    min-height:50px;
     border-style: none;
     outline: none;
     word-wrap: break-word;
@@ -659,6 +659,9 @@
     padding-left: 7px;
     padding-right: 7px;
     align-items: center;
+}
+.childcommrnt{
+    font-size: 25px;
 }
 
 .CommentinsideComment>p {
