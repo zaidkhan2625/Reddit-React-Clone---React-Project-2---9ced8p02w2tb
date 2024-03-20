@@ -453,7 +453,7 @@ function LoginResultComponent() {
               type="text"
               placeholder="Name"
               className="inputforcommunityName"
-              disabled style={{cursor:"pointer"}}
+               style={{cursor:"pointer"}}
               onChange={(e)=>SetcommunityName(e.target.value)}
             />
             <div className="forPublicselect">

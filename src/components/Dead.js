@@ -14,7 +14,8 @@ function Dead() {
   return (
     <div className='maindiv'>
       Hey,this page is still in progress
-      <button onClick={handeGoBack}> Go Back</button>
+      <img className='imgg' src='https://cdn.pixabay.com/photo/2017/06/20/08/12/maintenance-2422172_1280.jpg'/>
+      <button onClick={handeGoBack}>Go Back</button>
     </div>
   )
 }
