@@ -200,11 +200,13 @@ function SubredditPost({
               <p>Because you have already visited</p>
             </div>
             <p className="content">{content}</p>
+            <div className="imgsubbredditpopup">
             <img
               className="postimageincomment"
               src={postimg}
               onError={handleImageError}
             />
+            </div>
             <div className="resultFooter">
               <div className="resultbutton" style={{ cursor: "not-allowed" }}>
                 <FontAwesomeIcon icon={faComment} />
