@@ -14,6 +14,7 @@ function PostDataFunction({
   likeCount,
   commentCount,
   PostImages,
+  createdAt,
 }) {
   return (
     <>
@@ -22,7 +23,7 @@ function PostDataFunction({
           <div className="rightheaddata">
             <img className="profilelogo" src={image} />
             <p className="username">{name}</p>
-            <p className="timePost">time of post</p>
+            <p className="timePost">{createdAt}</p>
           </div>
           <div className="joinbutton">
             <button className="join">join</button>
@@ -30,7 +31,7 @@ function PostDataFunction({
           </div>
         </div>
         <div className="resultBody">
-          <p className="twoLineEllipsis">{content}</p>
+          <p className="">{content}</p>
           <img className="PostImage" src={PostImages} />
         </div>
         <div className="resultFooter">

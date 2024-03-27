@@ -15,6 +15,13 @@ function Result() {
   const [filteredPostData, setFilteredPostData] = useState(postData); // State for filtered data
   const [searchres, Setsearch] = useState(false);
   const { searchValue,SetSdearchValue } = useStateValue();
+  const formatCreatedAtDate = (createdAt) => {
+    return new Date(createdAt).toLocaleDateString("en-US", {
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+    });
+  };
   useEffect(() => {
     // Fetch data when the component mounts
     Setsearch(false);
@@ -122,6 +129,8 @@ function Result() {
                 likeCount={item.likeCount}
                 commentCount={item.commentCount}
                 PostImages={item.images[0]}
+                createdAt={formatCreatedAtDate(item.createdAt)}
+
               />
             ))
           )}
