@@ -5,7 +5,7 @@ export const stateContext = createContext();
 
 const StateProvider = ({ children }) => {
   const [isloggedin, Setisloggedin] = useState(false);
-  
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const saved_isloggedin = window.localStorage.getItem("isloggedin");
@@ -35,8 +35,7 @@ const StateProvider = ({ children }) => {
       value={{
         isloggedin,
         Setisloggedin,
-        // LoginJwt,
-        // setLoginjwt,
+        open, setOpen,
         LoginUserId,
         SetLoginUserId,
         isUserLoggedIn, setIsUserLoggedIn,

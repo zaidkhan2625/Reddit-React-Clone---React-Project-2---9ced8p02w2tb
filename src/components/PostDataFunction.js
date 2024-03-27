@@ -6,6 +6,7 @@ import ThumbDownAltOutlinedIcon from "@mui/icons-material/ThumbDownAltOutlined";
 import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUpFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { useStateValue } from "./StatePeovider";
 
 function PostDataFunction({
   image,
@@ -16,6 +17,7 @@ function PostDataFunction({
   PostImages,
   createdAt,
 }) {
+  const {open, setOpen}=useStateValue();
   return (
     <>
       <div className="resultdivsection">
@@ -35,7 +37,7 @@ function PostDataFunction({
           <img className="PostImage" src={PostImages} />
         </div>
         <div className="resultFooter">
-          <div className="Like">
+          <div className="Like" onClick={()=>setOpen(true)}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -66,11 +68,11 @@ function PostDataFunction({
               <path d="M15 6v6h4l-7 7-7-7h4V6h6z" />
             </svg>
           </div>
-          <div className="commentdiv">
+          <div className="commentdiv" onClick={()=>setOpen(true)}>
             <ChatBubbleOutlineOutlinedIcon />
             <p className="comment">{commentCount}</p>
           </div>
-          <div className="commentdiv">
+          <div className="commentdiv" onClick={()=>setOpen(true)}>
             <FontAwesomeIcon icon={faArrowUpFromBracket} />
             <p className="share">share</p>
           </div>

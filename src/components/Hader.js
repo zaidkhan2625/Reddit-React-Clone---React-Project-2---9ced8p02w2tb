@@ -34,12 +34,20 @@ const style = {
   p: 4,
 };
 function Hader() {
-  const { isloggedin, Setisloggedin, setIsUserLoggedIn,searchValue, SetSdearchValue,openCreateCommunity, SetopenCreateCommunity } =
-    useStateValue();
+  const {
+    isloggedin,
+    open,
+    setOpen,
+    Setisloggedin,
+    setIsUserLoggedIn,
+    searchValue,
+    SetSdearchValue,
+    openCreateCommunity,
+    SetopenCreateCommunity,
+  } = useStateValue();
   const [signEmail, setsignEmail] = useState("");
   const [SignPassword, SetSignPassword] = useState("");
   const [Signusername, SetSignusername] = useState("");
-  const [open, setOpen] = useState(false);
   const [toggel, settoggel] = useState(false);
   const [LoginEmail, SetLoginEmail] = useState("");
   const [LoginPassword, SetLoginPassword] = useState("");
@@ -63,6 +71,12 @@ function Hader() {
     } else {
       SetEmailError("");
     }
+    if (LoginEmail.trim() !== "" && !LoginEmail.includes("@")) {
+      valid = false;
+      SetEmailError("Email is Incorrect");
+    } else {
+      SetEmailError("");
+    }
     if (LoginPassword.trim() === "") {
       valid = false;
       SetPasswordError("Password is required");
@@ -81,16 +95,51 @@ function Hader() {
     SetopenSignUp(false);
     SetcommonError("");
   };
+  const [spassworderror, Setspassworderror] = useState("");
+  const [semailerror, Setemailerror] = useState("");
+  const [susererror , Setsusererror] = useState("");
   const handleClose = () => setOpen(false);
   const handleClosedropw = () => SetdrowpOpen(false);
-  const signupUser = async () => {
-    if(Signusername.trim()==="")
-    {
-      SetcommonError("Enter user name");
-      return ;
-    }
-    else{
+  const signupValidate = () => {
+    let valid = true;
+
+    if (SignPassword.trim() === "") {
+      Setspassworderror("Password is required");
       SetcommonError("");
+      valid = false;
+    } else {
+      Setspassworderror("");
+    }
+    if (signEmail.trim() === "") {
+      Setemailerror("Email is required");
+      SetcommonError("");
+
+      valid = false;
+    } else {
+      Setemailerror("");
+    }
+    if (signEmail.trim() !== "" && !signEmail.includes("@")) {
+      SetcommonError("");
+
+      Setemailerror("Incorrect Email Address");
+
+      valid = false;
+    } else {
+      Setemailerror("");
+    }
+    if (Signusername.trim() === "") {
+      Setsusererror("Enter username");
+      SetcommonError("");
+
+      valid = false;
+    } else {
+      Setsusererror("");
+    }
+    return valid;
+  };
+  const signupUser = async () => {
+    if (!signupValidate()) {
+      return;
     }
     const apiUrl = "https://academics.newtonschool.co/api/v1/user/signup";
     const projectId = "pvxi7c9s239h";
@@ -115,13 +164,10 @@ function Hader() {
 
         SetcommonError("");
         handleOpen();
-      }
-      else{
+      } else {
         SetcommonError(data.message);
-
       }
     } catch (error) {
-     
       console.error("Error during signup:", error.message);
     }
   };
@@ -146,7 +192,7 @@ function Hader() {
       });
       if (!response.ok) {
         SetcommonError("Wrong Email or Password");
-        console.log("jlflho",commonError);
+        console.log("jlflho", commonError);
         return;
       }
       const data = await response.json();
@@ -166,7 +212,7 @@ function Hader() {
     }
   };
   const usernamelogin = localStorage.getItem("loginuserName");
- 
+
   const Withoutloggin = () => {
     return (
       <>
@@ -291,7 +337,9 @@ function Hader() {
                 <MenuItem onClick={handelDead}>Profile</MenuItem>
                 <MenuItem onClick={handelDead}>Create Avatar</MenuItem>
                 <MenuItem onClick={handelDead}>User Setting</MenuItem>
-                <MenuItem onClick={()=>SetopenCreateCommunity(true)}>Create Community</MenuItem>
+                <MenuItem onClick={() => SetopenCreateCommunity(true)}>
+                  Create Community
+                </MenuItem>
                 <MenuItem onClick={Handellogout}>Log out</MenuItem>
               </div>
               {/* Add more menu items as needed */}
@@ -398,7 +446,7 @@ function Hader() {
 
         <div className="headerserchinput">
           <input
-          style={{cursor:"pointer"}}
+            style={{ cursor: "pointer" }}
             type="text"
             name=""
             placeholder="Search reddit"
@@ -428,12 +476,15 @@ function Hader() {
         >
           <Box sx={style} className="PopupBoxLogi">
             <h5 className="LOgintext"> Log in</h5>
-            <p  className="commoneroro" style={{color:"red"}}>{commonError}</p>
+            <p className="commoneroro" style={{ color: "red" }}>
+              {commonError}
+            </p>
 
             <input
               className="LoginInputFeild"
               type="text"
               placeholder="user Email"
+              maxLength={20}
               onChange={(e) => SetLoginEmail(e.target.value)}
             />
             <p style={{ color: "red", padding: "0px", margin: "0px" }}>
@@ -451,9 +502,9 @@ function Hader() {
               {PasswordError}
             </p>
 
-            <a className="forgetPassword" href="#" style={{cursor:"not-allowed"}}>
+            <p className="forgetPassword" style={{ cursor: "not-allowed" }}>
               forget password?
-            </a>
+            </p>
             <p className="Signup">
               New to Reddit?
               <span className="signupinlogin" onClick={HandelSignInPopUpBox}>
@@ -472,23 +523,37 @@ function Hader() {
           aria-describedby="modal-modal-description"
         >
           <Box sx={style} className="SignUpPopupBox">
-          <p  className="commoneroro" style={{color:"red"}}>{commonError}</p>
-
+          <p className="commoneroro" style={{ color: "red" }}>
+              {commonError}
+            </p>
             <input
               type="text"
-              placeholder="Name/Username"
+              placeholder="Username"
               onChange={(e) => SetSignusername(e.target.value)}
             />
+            
+            <p className="commoneroro" style={{ color: "red" }}>
+              {susererror}
+            </p>
             <input
               type="email"
-              placeholder="email"
+              placeholder="Email"
               onChange={(e) => setsignEmail(e.target.value)}
+              maxLength={20}
             />
+            <p className="commoneroro" style={{ color: "red" }}>
+              {semailerror}
+            </p>
+
             <input
               type="password"
               placeholder="Password"
               onChange={(e) => SetSignPassword(e.target.value)}
             />
+            <p className="commoneroro" style={{ color: "red" }}>
+              {spassworderror}
+            </p>
+
             <p>
               already a reddit ?
               <span onClick={handleOpen} className="logininsignup">
