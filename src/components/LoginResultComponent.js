@@ -70,7 +70,7 @@ function LoginResultComponent() {
     });
 
     setFilteredPostData(filteredData);
-  }, 1000);
+  }, 100);
   useEffect(() => {
     delayedSearch();
   }, [searchValue, data, delayedSearch]);

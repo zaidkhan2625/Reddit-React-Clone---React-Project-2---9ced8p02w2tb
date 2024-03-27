@@ -59,13 +59,13 @@ function Hader() {
     let valid = true;
     if (LoginEmail.trim() === "") {
       valid = false;
-      SetEmailError("Hey Email is required");
+      SetEmailError("Email is required");
     } else {
       SetEmailError("");
     }
     if (LoginPassword.trim() === "") {
       valid = false;
-      SetPasswordError("Hello Password is required");
+      SetPasswordError("Password is required");
     } else {
       SetPasswordError("");
     }

@@ -40,7 +40,7 @@ function SubredditPost({
   const [userComment, SetCommentdatebyuser] = useState("");
   const UserNameLogin = localStorage.getItem("loginuserName");
   const userId = localStorage.getItem("userId");
-  const [count , setCount]=useState(0);
+  const [count, setCount] = useState(0);
   useEffect(() => {
     const fetchComments = async () => {
       const apiUrl = `https://academics.newtonschool.co/api/v1/reddit/post/${id}/comments`;
@@ -66,7 +66,7 @@ function SubredditPost({
     };
 
     fetchComments();
-  }, [id, commentPop,count]);
+  }, [id, commentPop, count]);
 
   const postimg = images
     ? images
@@ -91,10 +91,9 @@ function SubredditPost({
     marginBottom: "10px", // Adjust margin top as needed
     overflow: "auto", // Make the modal content scrollable
   };
-  const HandelComment = () => {
-  };
+  const HandelComment = () => {};
   const commentDelete = () => {
-    setCount(p=>p-1);
+    setCount((p) => p - 1);
   };
   const LoginJwt = localStorage.getItem("jwttoken");
 
@@ -115,7 +114,7 @@ function SubredditPost({
       });
       const data = await response.json();
       SetCommentdatebyuser("");
-      setCount(p=>p+1);
+      setCount((p) => p + 1);
       return data;
     } catch (error) {
       console.error("Error during follow user:", error.message);
@@ -123,9 +122,9 @@ function SubredditPost({
       throw error;
     }
   };
-  const sortedCommentData = [...commentdata].sort((a, b) =>
-  new Date(b.createdAt) - new Date(a.createdAt)
-);
+  const sortedCommentData = [...commentdata].sort(
+    (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+  );
   const handleCloseCommentPopupBox = () => {
     setCommentPop(false);
   };
@@ -156,7 +155,7 @@ function SubredditPost({
       <div className="resultFooter">
         <div
           className="resultbutton"
-          style={{background:"transparent"}}
+          style={{ background: "transparent" }}
           onClick={() => {
             setCommentPop(true);
           }}
@@ -166,14 +165,20 @@ function SubredditPost({
           <p>Comments</p>
         </div>
 
-        <div className="resultbutton" style={{ cursor: "not-allowed",background:"transparent" }}>
+        <div
+          className="resultbutton"
+          style={{ cursor: "not-allowed", background: "transparent" }}
+        >
           <FontAwesomeIcon
             icon={faShareNodes}
             style={{ cursor: "not-allowed" }}
           />
           <p className="ButtonNameforsher">Share</p>
         </div>
-        <div className="resultbutton " style={{ cursor: "not-allowed" ,background:"transparent"}}>
+        <div
+          className="resultbutton "
+          style={{ cursor: "not-allowed", background: "transparent" }}
+        >
           <FontAwesomeIcon icon={faBookmark} className="lolo" />
           <p className="ButtonNameforsher lolo">Save</p>
         </div>
@@ -201,30 +206,30 @@ function SubredditPost({
             </div>
             <p className="content">{content}</p>
             <div className="imgsubbredditpopup">
-            <img
-              className="postimageincomment"
-              src={postimg}
-              onError={handleImageError}
-            />
+              <img
+                className="postimageincomment"
+                src={postimg}
+                onError={handleImageError}
+              />
             </div>
-            <div className="resultFooter">
-              <div className="resultbutton" style={{ cursor: "not-allowed" }}>
-                <FontAwesomeIcon icon={faComment} />
-                <p className="commentcountnumber">{commentCount}</p>
-                <p>Comments</p>
-              </div>
+          </div>
+          <div className="resultFooter">
+            <div className="resultbutton" style={{ cursor: "not-allowed" }}>
+              <FontAwesomeIcon icon={faComment} />
+              <p className="commentcountnumber">{commentCount}</p>
+              <p>Comments</p>
+            </div>
 
-              <div className="resultbutton" style={{ cursor: "not-allowed" }}>
-                <FontAwesomeIcon
-                  icon={faShareNodes}
-                  style={{ cursor: "not-allowed" }}
-                />
-                <p className="ButtonNameforsher">Share</p>
-              </div>
-              <div className="resultbutton " style={{ cursor: "not-allowed" }}>
-                <FontAwesomeIcon icon={faBookmark} className="lolo" />
-                <p className="ButtonNameforsher lolo">Save</p>
-              </div>
+            <div className="resultbutton" style={{ cursor: "not-allowed" }}>
+              <FontAwesomeIcon
+                icon={faShareNodes}
+                style={{ cursor: "not-allowed" }}
+              />
+              <p className="ButtonNameforsher">Share</p>
+            </div>
+            <div className="resultbutton " style={{ cursor: "not-allowed" }}>
+              <FontAwesomeIcon icon={faBookmark} className="lolo" />
+              <p className="ButtonNameforsher lolo">Save</p>
             </div>
           </div>
           <div className="forcommentbox">

@@ -101,7 +101,7 @@ function CommentData({
         </div>
         <p>{commentcontent}</p>
         <div className="divforbuttonincomment">
-          <div className="voteUpDownincomment">
+          <div className="voteUpDownincomment" style={{cursor:"not-allowed"}}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -116,7 +116,7 @@ function CommentData({
             >
               <path d="M9 18v-6H5l7-7 7 7h-4v6H9z" />
             </svg>
-            <p className="likecount">4</p>
+            <p className="likecount">0</p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -132,14 +132,14 @@ function CommentData({
               <path d="M15 6v6h4l-7 7-7-7h4V6h6z" />
             </svg>
           </div>
-          <div className="CommentinsideComment">
+          <div className="CommentinsideComment" style={{cursor:"not-allowed"}}>
             <i
               class="fa-sharp fa-light fa-comment-dots"
               style={{ marginRight: "5px" }}
             ></i>{" "}
             <p>Reply</p>
           </div>
-          <div className="btnshare">
+          <div className="btnshare" style={{cursor:"not-allowed"}}>
             {" "}
             <i
               class="fa-sharp fa-thin fa-share"

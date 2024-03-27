@@ -527,7 +527,7 @@ function LoginResultPost({
 
                 <p className="posauth">posting time</p>
               </div>
-              <p className="posttittle">post titel</p>
+              <p className="posttittle">{content}</p>
               <div className="imgdiv">
                 <img
                   className="LoginPostImge"
@@ -540,11 +540,11 @@ function LoginResultPost({
                   <FontAwesomeIcon /> <p>{commentCount}</p>
                   <p className="pline">Comment</p>
                 </div>
-                <div className="resultbutton">
+                <div className="resultbutton" style={{cursor:"not-allowed"}}>
                   <FontAwesomeIcon icon={faShareNodes} />
                   <p className="pline">Share</p>
                 </div>
-                <div className="resultbutton">
+                <div className="resultbutton" style={{cursor:"not-allowed"}}>
                   <FontAwesomeIcon icon={faBookmark} />
                   <p className="pline">Save</p>
                 </div>
