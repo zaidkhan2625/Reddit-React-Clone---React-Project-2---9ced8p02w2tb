@@ -65,9 +65,9 @@ function LoginResultPost({
   const [cCount, SetcCount] = useState(commentCount);
   const [Commentdatebyuser, SetCommentdatebyuser] = useState("");
   const [follobtn, Setfollobtn] = useState(true);
-  const LoginJwt = sessionStorage.getItem("jwttoken");
+  const LoginJwt = localStorage.getItem("jwttoken");
   const UserNameLogin = localStorage.getItem("loginuserName");
-  const LoginUserId = sessionStorage.getItem("userId");
+  const LoginUserId = localStorage.getItem("userId");
   const { Setupdate, SetcreatPost, SetSdearchValue, SetPostBox } =
     useStateValue();
   const navigate = useNavigate();
@@ -319,6 +319,7 @@ function LoginResultPost({
      
       const data = await response.json();
       console.log("Follow user successful:", data);
+      console.log("jwt ",LoginJwt);
       if (data.status === "success") {
         if (onLikeIncrease) {
           onLikeIncrease();

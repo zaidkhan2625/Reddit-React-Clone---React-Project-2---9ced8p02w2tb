@@ -22,8 +22,8 @@ function CommentData({
   const [userData, setUserData] = useState([]);
   const [delteboxincmnt, Setdelteboxincmnt] = useState(false);
   const [modalPosition, setModalPosition] = useState({ x: 0, y: 0 });
-  const LoginJwt = sessionStorage.getItem("jwttoken");
-  const LoginUserId = sessionStorage.getItem("userId");
+  const LoginJwt = localStorage.getItem("jwttoken");
+  const LoginUserId = localStorage.getItem("userId");
   useEffect(() => {
     const fetchData = async () => {
       const apiUrl = `https://academics.newtonschool.co/api/v1/reddit/user/${commentuserId}`;

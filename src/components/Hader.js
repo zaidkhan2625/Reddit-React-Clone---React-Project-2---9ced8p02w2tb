@@ -154,10 +154,10 @@ function Hader() {
         setIsUserLoggedIn(true);
         SetSdearchValue("");
         Setisloggedin(true);
-        sessionStorage.setItem("jwttoken", data.token);
+        localStorage.setItem("jwttoken", data.token);
         localStorage.setItem("loginuserName", data.data.name);
         // SetLoginUserId(data.data._id);
-        sessionStorage.setItem("userId", data.data._id);
+        localStorage.setItem("userId", data.data._id);
       }
       return data;
     } catch (error) {

@@ -7,7 +7,7 @@ import ChatBubbleOutlineSharpIcon from "@mui/icons-material/ChatBubbleOutlineSha
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import moment from "moment";
 function CommentDataforChild({ commentcontent, childauth }) {
-  const LoginJwt = sessionStorage.getItem("jwttoken");
+  const LoginJwt = localStorage.getItem("jwttoken");
 
   const [userData, setUserData] = useState({});
 

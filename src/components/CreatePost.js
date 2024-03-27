@@ -149,10 +149,12 @@ function CreatePost() {
         headers: {
           Authorization: `Bearer ${LoginJwt}`,
           projectID: projectId,
-          Authorization: `Bearer ${sessionStorage.getItem("jwttoken")}`,
+          Authorization: `Bearer ${localStorage.getItem("jwttoken")}`,
+        
         },
         body: formData,
       });
+      
       const data = await response.json();
       console.log("Post created successfully:", data);
       if (data.status === "success") {
@@ -193,7 +195,7 @@ function CreatePost() {
         headers: {
           Authorization: `Bearer ${LoginJwt}`,
           projectID: projectId,
-          Authorization: `Bearer ${sessionStorage.getItem("jwttoken")}`,
+          Authorization: `Bearer ${localStorage.getItem("jwttoken")}`,
         },
         body: formData,
       });

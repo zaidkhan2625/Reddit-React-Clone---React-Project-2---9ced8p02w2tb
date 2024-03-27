@@ -40,7 +40,7 @@ function LoginResultComponent() {
   const [filteredPostData, setFilteredPostData] = useState([]); // State for filtered data
   const [communityName , SetcommunityName]=useState("");
   const [nsfwSelected, setNsfwSelected] = useState(true);
-  const jwttoken = sessionStorage.getItem("jwttoken");
+  const jwttoken = localStorage.getItem("jwttoken");
   const [communityErro, SetcommunityErro]= useState("");
   const HandelCreatenewPost = () => {
     navigate("/Createpost");
@@ -144,7 +144,7 @@ function LoginResultComponent() {
       }
       
       navigate("/Subreddit",{state});
-      sessionStorage.setItem("community", JSON.stringify(true));
+      localStorage.setItem("community", JSON.stringify(true));
       SetcommunityErro("");
       // setOpen(false);
     } catch (error) {

@@ -39,7 +39,7 @@ function SubredditPost({
   const [commentdata, setCommentdata] = useState([]);
   const [userComment, SetCommentdatebyuser] = useState("");
   const UserNameLogin = localStorage.getItem("loginuserName");
-  const userId = sessionStorage.getItem("userId");
+  const userId = localStorage.getItem("userId");
   const [count , setCount]=useState(0);
   useEffect(() => {
     const fetchComments = async () => {
@@ -96,7 +96,7 @@ function SubredditPost({
   const commentDelete = () => {
     setCount(p=>p-1);
   };
-  const LoginJwt = sessionStorage.getItem("jwttoken");
+  const LoginJwt = localStorage.getItem("jwttoken");
 
   const PostcommentHandel = async (id) => {
     const apiUrl = `https://academics.newtonschool.co/api/v1/reddit/comment/${id}`;
