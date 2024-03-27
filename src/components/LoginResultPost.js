@@ -232,10 +232,14 @@ function LoginResultPost({
         },
       });
       const data = await response.json();
+      console.log("down vote d",data);
       if (data.status === "success") {
         if (onLikeIDecrease) {
           onLikeIDecrease();
         }
+      }
+      else{
+        alert("You haven't liked this post yet");
       }
       return data;
     } catch (error) {
@@ -312,14 +316,16 @@ function LoginResultPost({
           projectID: projectId,
         },
       });
-      console.log("jwt toke in login result post :", LoginJwt);
-      console.log("authb id :", authid);
+     
       const data = await response.json();
       console.log("Follow user successful:", data);
       if (data.status === "success") {
         if (onLikeIncrease) {
           onLikeIncrease();
         }
+      }
+      else{
+        alert("You already liked this post");
       }
       return data;
     } catch (error) {

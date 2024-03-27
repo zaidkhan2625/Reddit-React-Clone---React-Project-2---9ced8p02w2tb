@@ -263,7 +263,6 @@ function LoginResultComponent() {
   const handleClose = () => {
     SetopenCreateCommunity(false);
   };
-  console.log("mnrkjtgb",data);
   return (
     <>
       <div className="Logincomponentresult">
