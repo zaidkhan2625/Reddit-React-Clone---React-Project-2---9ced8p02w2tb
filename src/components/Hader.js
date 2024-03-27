@@ -451,7 +451,7 @@ function Hader() {
               {PasswordError}
             </p>
 
-            <a className="forgetPassword" href="#">
+            <a className="forgetPassword" href="#" style={{cursor:"not-allowed"}}>
               forget password?
             </a>
             <p className="Signup">
@@ -486,7 +486,7 @@ function Hader() {
             />
             <input
               type="password"
-              placeholder="Passwpord"
+              placeholder="Password"
               onChange={(e) => SetSignPassword(e.target.value)}
             />
             <p>

@@ -28,7 +28,7 @@ const StateProvider = ({ children }) => {
   const [searchValue, SetSdearchValue] = useState("");
   const [openCreateCommunity, SetopenCreateCommunity] = useState(false);
 
-  const [PostBox, SetPostBox] = useState(false);
+  const [PostBox, SetPostBox] = useState(true);
 
   return (
     <stateContext.Provider
