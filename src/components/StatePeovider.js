@@ -8,12 +8,12 @@ const StateProvider = ({ children }) => {
   
 
   useEffect(() => {
-    const saved_isloggedin = window.sessionStorage.getItem("isloggedin");
+    const saved_isloggedin = window.localStorage.getItem("isloggedin");
     if (saved_isloggedin != null) Setisloggedin(JSON.parse(saved_isloggedin))
   }, [])
 
   useEffect(() => {
-    window.sessionStorage.setItem("isloggedin", JSON.stringify(isloggedin))
+    window.localStorage.setItem("isloggedin", JSON.stringify(isloggedin))
   }, [isloggedin])
   const [LoginUserId, SetLoginUserId] = useState("");
 
