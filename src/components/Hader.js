@@ -204,6 +204,7 @@ function Hader() {
         localStorage.setItem("loginuserName", data.data.name);
         // SetLoginUserId(data.data._id);
         localStorage.setItem("userId", data.data._id);
+        setOpen(false);
       }
       return data;
     } catch (error) {
